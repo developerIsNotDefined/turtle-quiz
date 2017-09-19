@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h2 class="modal-title">{{$ctrl.activeTurtle.type}}</h2>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <img ng-src="{{$ctrl.activeTurtle.image_url}}" class ="img-rounded img-responsive">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col md-6 margin-left-modal">
+            <p><strong>locations: </strong>{{$ctrl.activeTurtle.locations}}</p>
+            <p><strong>Size: </strong>{{$ctrl.activeTurtle.size}}</p>
+            <p><strong>Avarage Lifespan: </strong>{{$ctrl.activeTurtle.lifespan}}</p>
+            <p><strong>Diet: </strong>{{$ctrl.activeTurtle.diet}}</p>
+        </div>
+        <div class="col-xs-12 top-buffer">
+            <p>{{$ctrl.activeTurtle.description}}</p>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger center-block btn-lg" ng-click="$ctrl.ok()">Close</button>
+</div>

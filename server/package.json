@@ -1,0 +1,17 @@
+{
+  "name": "turtle-quiz",
+  "version": "1.0.0",
+  "description": "quiz server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.11",
+	"mongoose-connect-db": "^1.4.4"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "turtleApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Turtle Quiz</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"
+          rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">
+    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
+    <link rel="stylesheet" href="assets/stylesheets/style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="page-header">
+        <img ng-src="assets/images/TurtleQuiz.png">
+    </div>
+
+    <ui-view></ui-view>
+</div>
+
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<!--<script src="node_modules/angular-touch/angular-touch.js"></script>-->
+
+<script src="app/app.js"></script>
+<script src="app/stateful-components/facts/facts.component.js"></script>
+<script src="app/stateful-components/facts/modal.turtle-info/modal.turtle-info.component.js"></script>
+<script src="app/stateful-components/quiz/quiz.component.js"></script>
+<script src="app/stateful-components/quiz/quiz.data-for-component.js"></script>
+<script src="app/stateful-components/results/results.component.js"></script>
+<script src="app/stateful-components/results/results.data-for-component.js"></script>
+<script src="app/shared/services/data-service.js"></script>
+<script src="app/shared/services/quiz-metrics.js"></script>
+<script src="app/shared/services/toastr.config.js"></script>
+
+<script src="app/shared/stateless-components/carousel-turtles/carousel-turtles.component.js"></script>
+<script src="app/shared/stateless-components/confirm.finalise/confirm.finalise.component.js"></script>
+<script src="app/shared/stateless-components/progress-button-toolbar/progress-button-toolbar.component.js"></script>
+<script src="app/shared/stateless-components/progress-ui-bar/progress-ui-bar.component.js"></script>
+<script src="app/shared/stateless-components/question-bar/question-bar.component.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div>
+    <progress-ui-bar
+            css-options="$ctrl.cssOptions.progressBar"
+            num-answered-questions="$ctrl.numCorrectAnswers"
+            quiz-length="$ctrl.quizQuestions.length">
+    </progress-ui-bar>
+
+    <progress-button-toolbar
+            progress-toolbar-options="$ctrl.cssOptions.progressButtonToolbar"
+            on-change="$ctrl.onUpdateProgressButtonToolbar($event);"
+            quiz-questions="$ctrl.quizQuestions"
+            get-progress-class="$ctrl.getProgressClass">
+    </progress-button-toolbar>
+
+    <confirm-finalise
+            ng-if="$ctrl.askForConfirm"
+            on-result="$ctrl.onConfirmFinalise($event);">
+    </confirm-finalise>
+
+    <question-bar
+            proceed="$ctrl.proceed"
+            on-change="$ctrl.onUpdateQuestionBar($event);"
+            active-question="$ctrl.activeQuestion"
+            quiz-questions="$ctrl.quizQuestions"
+            button-options="{{$ctrl.cssOptions.button}}"
+            get-answer-class="$ctrl.getAnswerClass">
+    </question-bar>
+</div>
