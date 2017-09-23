@@ -13,6 +13,6 @@ const turtleSchema = new Schema({
   description: String
 });
 
-const Turtles = mongoose.model('Turtles', turtleSchema);
+const Turtle = mongoose.model('Turtle', turtleSchema);
 
-module.exports = Turtles;
+module.exports = Turtle;

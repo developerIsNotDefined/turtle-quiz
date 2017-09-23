@@ -26,6 +26,6 @@ const questionSchema = new Schema({
   correct: Number
 });
 
-const Questions = mongoose.model('Questions', questionSchema);
+const Question = mongoose.model('Question', questionSchema);
 
-module.exports = Questions;
+module.exports = Question;

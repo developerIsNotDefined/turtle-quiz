@@ -1,16 +1,13 @@
-const Turtles = require('../models/turtleModel');
+const Turtle = require('../models/turtleModel');
 
 module.exports = app => {
 
   app.get('/api/turtlesFacts', (req, res) => {
 
-    Turtles.find((err, turtles) => {
-      res.header("Access-Control-Allow-Origin", "*");
-      if (err){
-        res.send(err);
-      } else {
-        res.send(turtles);
-      }
+    Turtle.find().then(turtles => {
+      res.send(turtles);
+    }, err => {
+      res.status(400).send(err);
     });
 
   });
