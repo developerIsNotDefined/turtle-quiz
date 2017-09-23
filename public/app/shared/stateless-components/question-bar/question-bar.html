@@ -6,8 +6,8 @@
                 <h4>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</h4>
                 <div class="row">
                     <div class="col-sm-6" ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
-                        <h4 ng-class="$ctrl.getAnswerClass($index)"
-                            ng-click="$ctrl.selectAnswer($index)">
+                        <h4 ng-class="$ctrl.getAnswerClass(answer.id)"
+                            ng-click="$ctrl.selectAnswer(answer.id)">
                             <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'">{{answer.answer}}</span>
                             <img ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'" ng-src="{{answer.answer}}">
                         </h4>

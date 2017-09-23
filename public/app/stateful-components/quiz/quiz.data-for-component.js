@@ -40,7 +40,7 @@
     }
 
     proceed() {
-      if(this.confirmedAnswer.questionNumber !== this.activeQuestion){
+      if((this.confirmedAnswer.questionNumber !== this.activeQuestion) && (this.activeQuestion.selected === false)){
         this.toastr.warning('You probably forgot to choose an answer!');
         return;
       }

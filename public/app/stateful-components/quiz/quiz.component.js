@@ -20,7 +20,7 @@
       this.dataService.getQuizQuestions()
         .then(response => {
           this.toastr.success('Questions for quiz have been successfully loaded!');
-          this.quizQuestions = response.data
+          this.quizQuestions = response.data.sort((a, b) => a.id - b.id);
         })
         .catch(response => {
           this.toastr.error('Questions for quiz haven\'t been loaded!', {timeOut: 0});

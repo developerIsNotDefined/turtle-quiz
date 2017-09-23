@@ -14,7 +14,7 @@
     <carousel-turtles ng-if="$ctrl.carouselVisible" turtles="$ctrl.turtles"></carousel-turtles>
 
     <div class="row carousel-margin-bot">
-        <div class="col-sm-6" ng-repeat="turtle in $ctrl.turtles | filter:$ctrl.search">
+        <div class="col-sm-6" ng-repeat="turtle in $ctrl.turtles | filter:$ctrl.search track by turtle.id">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-6">

@@ -1,11 +1,11 @@
 {
   "name": "turtle-quiz",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "quiz client",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "jsGitHubDeveloper",
   "license": "ISC",
   "dependencies": {
     "angular": "~1.6.6",
