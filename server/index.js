@@ -2,41 +2,34 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const connectDb = require('mongoose-connect-db');
-const apiTurtlesFacts = require('./apiControllers/turtlesFacts');
-const apiQuizQuestions = require('./apiControllers/quizQuestions');
+const apiTurtlesFacts = require('./turtles-facts/api-turtles-facts.controller');
+const apiQuizQuestions = require('./quiz-questions/api-quiz-questions.controller');
+const apiUsers = require('./users/api-users.controller');
 
 // userName: "admin"
 // password: "admin"
 // mongodb://<dbuser>:<dbpassword>@ds137054.mlab.com:37054/turtle-quiz
 
 const app = express();
+
 const port = process.env.PORT || 3003;
+process.env.JWT_SECRET_KEY = 'my_jwt_secret_key';
 const dbConnectUrl = "mongodb://admin:admin@ds137054.mlab.com:37054/turtle-quiz";
 
 connectDb(mongoose, dbConnectUrl);
 
+app.use(bodyParser.json());
+
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Expose-Headers", "Authorization");
   next();
 })
 
 apiTurtlesFacts(app);
 apiQuizQuestions(app);
-
-// When successfully connected
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open to ' + dbConnectUrl);
-});
-
-// If the connection throws an error
-mongoose.connection.on('error', err => {
-  console.log('Mongoose default connection error: ' + err);
-});
-
-// When the connection is disconnected
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose default connection disconnected');
-});
+apiUsers(app);
 
 app.listen(port);
