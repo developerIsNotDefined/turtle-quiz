@@ -1,26 +1,27 @@
 (function(){
-  const service = class{
-    constructor($http){
-      this.$http = $http;
+  const service = class {
+    constructor(){
+      this.numCorrect = 0;
+      this.quizQuestions = {};
     }
 
-    // node index.js
-    // json-server -w db.json -d 2000
-
-    getQuizQuestions() {
-      return this.$http.get('http://localhost:3003/api/quizQuestions');
-      // return this.$http.get('http://localhost:3000/quizQuestions'); for json-server
+    markQuiz(quizQuestions) {
+      quizQuestions.forEach(quizQuestion => {
+        if(quizQuestion.selected === quizQuestion.correct){
+          this.numCorrect++;
+        }
+      })
+      this.quizQuestions = quizQuestions;
     }
 
-    getTurtlesData() {
-      return this.$http.get('http://localhost:3003/api/turtlesFacts');
-      // return this.$http.get('http://localhost:3000/turtlesData'); for json-server
+    isAuthenticated() {
+      return localStorage.getItem('jwt_auth') !== null
     }
   };
-
-  service.$inject = ['$http'];
 
   angular
     .module('turtleApp')
     .service("dataService", service);
 })();
+
+

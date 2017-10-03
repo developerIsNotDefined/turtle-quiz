@@ -1,18 +1,18 @@
 (function(){
   const controller = class{
-    constructor(quizMetrics, $state, resultsService, toastr){
+    constructor(dataService, $state, resultsService, toastr){
       this.$state = $state;
-      this.quizMetrics = quizMetrics;
+      this.dataService = dataService;
       this.toastr = toastr;
 
-      this.numCorrectAnswers = quizMetrics.numCorrect;
+      this.numCorrectAnswers = dataService.numCorrect;
       this.askForConfirm = false;
       this.activeQuestion = 0;
-      this.quizQuestions = quizMetrics.quizQuestions;
-      this.cssOptions = resultsService.grabCssOptions();
-      this.getAnswerClass = resultsService.grabGetAnswerClass();
-      this.getProgressClass = resultsService.grabGetProgressClass();
-      this.proceed = resultsService.grabProceed();
+      this.quizQuestions = dataService.quizQuestions;
+      this.cssOptions = resultsService.cssOptions;
+      this.getAnswerClass = resultsService.getAnswerClass;
+      this.getProgressClass = resultsService.getProgressClass;
+      this.proceed = resultsService.proceed;
     }
 
     $onInit() {
@@ -32,17 +32,19 @@
     }
 
     onConfirmFinalise(event) {
-      if(event.confirmed === true){
-        this.quizMetrics.numCorrect = 0;
-        this.$state.go('facts');
-      }
-      if(event.confirmed === false){
-        this.askForConfirm = false;
+      if(typeof event.confirmed !== 'undefined'){
+        if(event.confirmed === true){
+          this.dataService.numCorrect = 0;
+          this.quizQuestions.forEach(item => item.selected = false);
+          this.$state.go('facts');
+        } else {
+          this.askForConfirm = false;
+        }
       }
     }
   };
 
-  controller.$inject = ['quizMetrics', '$state', 'resultsService', 'toastr'];
+  controller.$inject = ['dataService', '$state', 'resultsService', 'toastr'];
 
   angular
     .module('turtleApp')

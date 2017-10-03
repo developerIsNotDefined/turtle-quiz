@@ -42,22 +42,6 @@
         }
       });
     }
-
-    grabCssOptions() {
-      return this.cssOptions;
-    }
-
-    grabGetAnswerClass() {
-      return this.getAnswerClass;
-    }
-
-    grabGetProgressClass() {
-      return this.getProgressClass;
-    }
-
-    grabProceed(){
-      return this.proceed
-    }
   };
 
   angular

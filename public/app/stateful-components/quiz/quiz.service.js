@@ -1,6 +1,8 @@
 (function(){
   const service = class {
-    constructor(){
+    constructor($http, toastr){
+      this.$http = $http;
+      this.toastr = toastr;
       this.cssOptions = {
         progressBar : {
           values: [{value: 0, type: 'info', number: 0 + '/' + '∞'},
@@ -16,6 +18,24 @@
           icon: ['glyphicon glyphicon-pencil btn-info btn btn-lg', 'glyphicon glyphicon-question-sign btn-warning btn btn-lg']
         }
       };
+    }
+
+    getQuizQuestions(){
+      return new Promise((resolve, reject) => {
+        let quizQuestions = sessionStorage.getItem('quizQuestions');
+        if (quizQuestions !== null){
+          return resolve(JSON.parse(quizQuestions));
+        }
+        this.toastr.info('Questions for quiz are being loaded!');
+        this.$http.get('http://localhost:3003/api/quizQuestions')
+          .then(response => {
+            sessionStorage.setItem('quizQuestions', JSON.stringify(response.data));
+            resolve(response.data);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
 
     getAnswerClass(index) {
@@ -73,23 +93,9 @@
         });
       }
     }
-
-    grabCssOptions() {
-      return this.cssOptions;
-    }
-
-    grabGetAnswerClass() {
-      return this.getAnswerClass;
-    }
-
-    grabGetProgressClass() {
-      return this.getProgressClass;
-    }
-
-    grabProceed(){
-      return this.proceed
-    }
   };
+
+  service.$inject = ['$http', 'toastr'];
 
   angular
     .module('turtleApp')

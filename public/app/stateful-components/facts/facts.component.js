@@ -1,8 +1,8 @@
 (function(){
   const controller = class {
-    constructor($state, dataService, toastr){
+    constructor($state, factsService, toastr){
       this.$state = $state;
-      this.dataService = dataService;
+      this.factsService = factsService;
       this.toastr = toastr;
 
       this.carouselVisible = false;
@@ -10,15 +10,18 @@
     }
 
     $onInit() {
-      this.toastr.info('Turtles information is being loaded!');
-      this.dataService.getTurtlesData()
-        .then(response => {
+      this.factsService.getTurtlesData()
+        .then(turtlesFacts => {
           this.toastr.success('Turtles information has been successfully loaded!');
-          this.turtles = response.data;
+          this.turtlesFacts = turtlesFacts;
         })
-        .catch(response => {
+        .catch(error => {
           this.toastr.error('Turtles information hasn\'t been loaded!', {timeOut: 0});
         });
+    }
+
+    auth() {
+      this.$state.go('facts.authorization');
     }
 
     activateQuiz() {
@@ -26,7 +29,7 @@
     }
 
     showCarousel() {
-      if(this.turtles){
+      if(this.turtlesFacts){
         this.carouselVisible = !this.carouselVisible;
       }
       else {
@@ -42,7 +45,7 @@
     }
   };
 
-  controller.$inject = ['$state', 'dataService', 'toastr'];
+  controller.$inject = ['$state', 'factsService', 'toastr'];
 
   angular
     .module('turtleApp')

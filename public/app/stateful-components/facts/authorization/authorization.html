@@ -1,0 +1,45 @@
+<div class="login-wrap">
+    <div class="login-html">
+        <input id="tab-sign-in" type="radio" name="tab" class="sign-in" checked><label for="tab-sign-in" class="tab">Sign In</label>
+        <input id="tab-sign-up" type="radio" name="tab" class="sign-up"><label for="tab-sign-up" class="tab">Sign Up</label>
+        <div class="login-form">
+            <div class="sign-in-htm" ng-if="!$ctrl.isAuthenticated">
+                <div class="group">
+                    <label class="label">Email</label>
+                    <input  ng-model="$ctrl.email" type="text" class="input">
+                </div>
+                <div class="group">
+                    <label class="label">Password</label>
+                    <input ng-model="$ctrl.password" type="password" class="input" data-type="password">
+                </div>
+                <div class="hr"></div>
+                <div class="group">
+                    <input type="button" class="button" value="Sign In" ng-click="$ctrl.ok({method:'signIn'})">
+                </div>
+            </div>
+            <div class="sign-in-htm" ng-if="$ctrl.isAuthenticated">
+                <div class="group margin-top-sign-out">
+                    <input type="button" class="button" value="Sign Out" ng-click="$ctrl.ok({method:'signOut'})">
+                </div>
+            </div>
+            <div class="sign-up-htm">
+                <div class="group">
+                    <label class="label">Username</label>
+                    <input ng-model="$ctrl.name" type="text" class="input">
+                </div>
+                <div class="group">
+                    <label class="label">Email</label>
+                    <input ng-model="$ctrl.email" type="text" class="input">
+                </div>
+                <div class="group">
+                    <label class="label">Password</label>
+                    <input ng-model="$ctrl.password" type="password" class="input" data-type="password">
+                </div>
+                <div class="hr"></div>
+                <div class="group">
+                    <input type="button" class="button" value="Sign Up" ng-click="$ctrl.ok({method:'signUp'})">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,27 @@
 (function(){
   const controller = class {
-    constructor(quizMetrics, $state, dataService, quizService, toastr){
-      this.quizMetrics = quizMetrics;
-      this.$state = $state;
+    constructor(dataService, $state, quizService, toastr){
       this.dataService = dataService;
+      this.$state = $state;
+      this.quizService = quizService;
       this.toastr = toastr;
 
       this.numAnsweredQuestions = 0;
       this.askForConfirm = false;
       this.activeQuestion = 0;
-      this.cssOptions = quizService.grabCssOptions();
-      this.getAnswerClass = quizService.grabGetAnswerClass();
-      this.getProgressClass = quizService.grabGetProgressClass();
-      this.proceed = quizService.grabProceed();
+      this.cssOptions = quizService.cssOptions;
+      this.getAnswerClass = quizService.getAnswerClass;
+      this.getProgressClass = quizService.getProgressClass;
+      this.proceed = quizService.proceed;
     }
 
     $onInit() {
-      this.toastr.info('Questions for quiz are being loaded!');
-      this.dataService.getQuizQuestions()
-        .then(response => {
+      this.quizService.getQuizQuestions()
+        .then(quizQuestions => {
           this.toastr.success('Questions for quiz have been successfully loaded!');
-          this.quizQuestions = response.data.sort((a, b) => a.id - b.id);
+          this.quizQuestions = quizQuestions.sort((a, b) => a.id - b.id);
         })
-        .catch(response => {
+        .catch(error => {
           this.toastr.error('Questions for quiz haven\'t been loaded!', {timeOut: 0});
         });
     }
@@ -49,7 +48,7 @@
 
     onConfirmFinalise(event) {
       if(event.confirmed === true){
-        this.quizMetrics.markQuiz(this.quizQuestions);
+        this.dataService.markQuiz(this.quizQuestions);
         this.$state.go('results',{
           quizQuestions: this.quizQuestions
         });
@@ -61,7 +60,7 @@
     }
   };
 
-  controller.$inject = ['quizMetrics', '$state', 'dataService', 'quizService', 'toastr'];
+  controller.$inject = ['dataService', '$state', 'quizService', 'toastr'];
 
   angular
     .module('turtleApp')

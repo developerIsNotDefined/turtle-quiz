@@ -9,12 +9,15 @@
         <button class="btn btn-success pull-right menu-margin-right-button" ng-click="$ctrl.showCarousel()">
             <strong>Carousel</strong>
         </button>
+        <button class="btn btn-success pull-right menu-margin-right-button" ng-click="$ctrl.auth()">
+            <strong>Auth</strong>
+        </button>
     </form>
 
-    <carousel-turtles ng-if="$ctrl.carouselVisible" turtles="$ctrl.turtles"></carousel-turtles>
+    <carousel-turtles ng-if="$ctrl.carouselVisible" turtles-facts="$ctrl.turtlesFacts"></carousel-turtles>
 
     <div class="row carousel-margin-bot">
-        <div class="col-sm-6" ng-repeat="turtle in $ctrl.turtles | filter:$ctrl.search track by turtle.id">
+        <div class="col-sm-6" ng-repeat="turtle in $ctrl.turtlesFacts | filter:$ctrl.search track by turtle.id">
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-md-6">

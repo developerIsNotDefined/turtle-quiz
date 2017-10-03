@@ -1,5 +1,7 @@
 (function(){
   const controller = class {
+    constructor() {}
+
     $onChanges(changes) {
       if(typeof changes.numAnsweredQuestions !== 'undefined'){
         if(this.numAnsweredQuestions !== 0){

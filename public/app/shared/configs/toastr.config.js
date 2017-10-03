@@ -1,11 +1,5 @@
 (function(){
-  angular
-    .module('turtleApp')
-    .config(ToastrConfig);
-
-  ToastrConfig.$inject = ['toastrConfig'];
-
-  function ToastrConfig(toastrConfig){
+  const config = toastrConfig => {
     angular.extend(toastrConfig, {
       closeButton: true,
       iconClasses: {
@@ -27,4 +21,10 @@
       target: 'body'
     });
   };
+
+  config.$inject = ['toastrConfig'];
+
+  angular
+    .module('turtleApp')
+    .config(config);
 })();
