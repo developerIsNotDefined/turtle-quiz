@@ -7,7 +7,7 @@
         resolve:{
           checkPermission(dataService, $state, toastr) {
             if(!dataService.isAuthenticated()){
-              dataService.quizQuestions.forEach(item => item.selected = false);
+              dataService.resetQuiz();
               toastr.warning('You have to be authenticated to start quiz!');
               return $state.go('facts.authorization');
             }

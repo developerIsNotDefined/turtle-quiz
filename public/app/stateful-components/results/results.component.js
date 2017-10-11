@@ -34,8 +34,7 @@
     onConfirmFinalise(event) {
       if(typeof event.confirmed !== 'undefined'){
         if(event.confirmed === true){
-          this.dataService.numCorrect = 0;
-          this.quizQuestions.forEach(item => item.selected = false);
+          this.dataService.resetQuiz();
           this.$state.go('facts');
         } else {
           this.askForConfirm = false;

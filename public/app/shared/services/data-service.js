@@ -17,6 +17,11 @@
     isAuthenticated() {
       return localStorage.getItem('jwt_auth') !== null
     }
+
+    resetQuiz() {
+      this.quizQuestions.forEach(item => item.selected = false);
+      this.numCorrect = 0;
+    }
   };
 
   angular
