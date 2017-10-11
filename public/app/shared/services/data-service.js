@@ -2,7 +2,7 @@
   const service = class {
     constructor(){
       this.numCorrect = 0;
-      this.quizQuestions = {};
+      this.quizQuestions;
     }
 
     markQuiz(quizQuestions) {
@@ -19,8 +19,10 @@
     }
 
     resetQuiz() {
-      this.quizQuestions.forEach(item => item.selected = false);
-      this.numCorrect = 0;
+      if(typeof this.quizQuestions !== "undefined"){
+        this.quizQuestions.forEach(item => item.selected = false);
+        this.numCorrect = 0;
+      }
     }
   };
 
