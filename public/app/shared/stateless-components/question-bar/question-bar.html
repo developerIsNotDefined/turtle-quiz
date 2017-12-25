@@ -1,20 +1,24 @@
-<div class="row">
-    <h3>Question:</h3>
-    <div class="well well-sm">
-        <div class="row">
-            <div class="col-xs-12">
-                <h4>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</h4>
-                <div class="row">
-                    <div class="col-sm-6" ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
-                        <h4 ng-class="$ctrl.getAnswerClass(answer.id)"
-                            ng-click="$ctrl.selectAnswer(answer.id)">
-                            <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'">{{answer.answer}}</span>
-                            <img ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'" ng-src="{{answer.answer}}">
-                        </h4>
-                    </div>
-                </div>
+<article class="question-bar-card">
+    <div class="question-bar-card__question col-12 ">
+        <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
+    </div>
+    <div class="row col-12">
+        <div class="col-md-6 question-bar-card__answer"
+             ng-click="$ctrl.selectAnswer(answer.id)"
+             ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
+            <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"
+                  class="question-bar-card__answer--text"
+                  ng-class="$ctrl.getAnswerClass(answer.id)">
+                {{answer.answer}}
+            </span>
+            <div ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'"
+                 class="question-bar-card__answer--image"
+                 ng-class="$ctrl.getAnswerClass(answer.id)">
+                <img ng-src="{{answer.answer}}">
             </div>
         </div>
-        <button class="btn btn-primary btn-lg center-block" ng-click="$ctrl.proceed()">{{::$ctrl.buttonOptions}}</button>
     </div>
-</div>
+    <div class="col-12 question-bar-card__button">
+        <button class="btn" ng-click="$ctrl.proceed()">{{::$ctrl.buttonOptions}}</button>
+    </div>
+</article>

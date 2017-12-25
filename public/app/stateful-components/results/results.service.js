@@ -13,21 +13,18 @@
         },
         button: 'Go Back To Facts',
         progressButtonToolbar: {
-          icon: ['glyphicon glyphicon-ok btn-success btn btn-lg', 'glyphicon glyphicon-remove btn-danger btn btn-lg']
+          icon: ['progress-btn-toolbar__button--correct', 'progress-btn-toolbar__button--incorrect']
         }
       };
     }
 
     getAnswerClass(index) {
-      let answerClass = "";
       const question = this.quizQuestions[this.activeQuestion];
-
       if (index === question.correct){
-        answerClass = "bg-success ";
+        return "bg-success";
       } else if (index === question.selected){
-        answerClass = "bg-danger ";
+        return "bg-danger";
       }
-      return question.type === 'text' ? answerClass + 'answer' : answerClass + 'image-answer';
     }
 
     getProgressClass(question) {

@@ -1,0 +1,51 @@
+.container{
+  padding: 0 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-facts{
+  margin-top: var(--header-height);
+}
+
+.facts-turtles{
+  flex-wrap: wrap;
+}
+
+.header-main{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  &__logo{
+    background-color: var(--color-grey-light-1);
+    opacity: .8;
+    flex: 1 1;
+    height: var(--header-height);
+
+    img{
+      height: 100%;
+    }
+  }
+
+}
+
+//.section-about{
+//  background-color: $color-grey-light-1;
+//  padding: 25rem 0;
+//  margin-top: -20vh;
+//}
+//
+//.section-features{
+//  padding: 20rem 0;
+//  background: linear-gradient(to right bottom, rgba($color-primary-light,.8), rgba($color-primary-dark,.8)), url("../img/nat-4.jpg");
+//  background-size: cover;
+//  transform: skewY(-7deg);
+//  margin-top: -10rem;
+//
+//  & > *{
+//    transform: skewY(7deg);
+//  }
+//}

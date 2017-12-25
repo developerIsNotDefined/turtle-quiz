@@ -1,0 +1,46 @@
+//.heading-primary{
+//  color: $color-white;
+//  text-transform: uppercase;
+//  backface-visibility: hidden;
+//  margin-bottom: 6rem;
+//
+//  &--main{
+//    display: block;
+//    font-size: 6rem;
+//    font-weight: 400;
+//    letter-spacing: 3.5rem;
+//    animation-name: moveInLeft;
+//    animation-duration: 1s;
+//    animation-timing-function: ease-out;
+//  }
+//
+//  &--sub{
+//    display: block;
+//    font-size: 2rem;
+//    font-weight: 700;
+//    letter-spacing: 1.75rem;
+//    animation: moveInRight 1s ease-out;
+//  }
+//}
+//
+.outline-text--white{
+  -webkit-text-stroke: 1px var(--color-white);
+  //text-shadow: -1px -1px 0 var(--color-white),
+  //1px -1px 0 var(--color-white),
+  //-1px 1px 0 var(--color-white),
+  //1px 1px 0 var(--color-white);
+}
+
+.gradient-text{
+  -webkit-background-clip: text;
+  color: transparent;
+
+  &--blue{
+    background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1));
+  }
+
+  &--red{
+    background-image: linear-gradient(to left, var(--color-red-light-1), var(--color-red-dark-1));
+  }
+}
+

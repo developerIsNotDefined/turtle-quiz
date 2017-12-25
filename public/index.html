@@ -8,8 +8,8 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"
-          rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"-->
+          <!--rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">-->
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
     <link rel="stylesheet" href="assets/stylesheets/authorization.css">
@@ -18,10 +18,6 @@
 <body>
 
 <div class="container">
-    <div class="page-header">
-        <img ng-src="assets/images/TurtleQuiz.png">
-    </div>
-
     <ui-view></ui-view>
 </div>
 
@@ -32,16 +28,24 @@
 <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
 <script src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
-<!--<script src="node_modules/angular-touch/angular-touch.js"></script>-->
+<script src="node_modules/angular-touch/angular-touch.js"></script>
 <!--third party libraries-->
 
 <script src="app/app.js"></script>
+
+<!--directives-->
+<script src="app/shared/directives/carousel.directive.js"></script>
+<!--directives-->
 
 <!--facts-->
 <script src="app/stateful-components/facts/facts.component.js"></script>
 <script src="app/stateful-components/facts/facts.service.js"></script>
 <script src="app/stateful-components/facts/facts.config.js"></script>
 <!--facts-->
+
+<!--facts carousel-->
+<script src="app/stateful-components/facts/carousel.turtles/carousel.turtles.component.js"></script>
+<!--facts carousel-->
 
 <!--authorization-->
 <script src="app/stateful-components/facts/authorization/authorization.component.js"></script>
@@ -75,7 +79,6 @@
 <!--shared configs-->
 
 <!--shared components-->
-<script src="app/shared/stateless-components/carousel-turtles/carousel-turtles.component.js"></script>
 <script src="app/shared/stateless-components/confirm.finalise/confirm.finalise.component.js"></script>
 <script src="app/shared/stateless-components/progress-button-toolbar/progress-button-toolbar.component.js"></script>
 <script src="app/shared/stateless-components/progress-ui-bar/progress-ui-bar.component.js"></script>

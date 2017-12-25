@@ -5,7 +5,6 @@
       this.factsService = factsService;
       this.toastr = toastr;
 
-      this.carouselVisible = false;
       this.search = "";
     }
 
@@ -26,15 +25,6 @@
 
     activateQuiz() {
       this.$state.go('quiz');
-    }
-
-    showCarousel() {
-      if(this.turtlesFacts){
-        this.carouselVisible = !this.carouselVisible;
-      }
-      else {
-        this.toastr.error('Turtles information hasn\'t been loaded!', {timeOut: 0});
-      }
     }
 
     turtleInfo(activeTurtle) {

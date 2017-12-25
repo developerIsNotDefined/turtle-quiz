@@ -5,6 +5,6 @@
       bindings: {
         turtlesFacts: '<'
       },
-      templateUrl: 'app/shared/stateless-components/carousel-turtles/carousel-turtles.html'
+      templateUrl: 'app/stateful-components/facts/carousel.turtles/carousel.turtles.html'
     });
 })();

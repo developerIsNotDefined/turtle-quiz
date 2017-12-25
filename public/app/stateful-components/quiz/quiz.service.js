@@ -15,7 +15,7 @@
         },
         button: 'Continue',
         progressButtonToolbar: {
-          icon: ['glyphicon glyphicon-pencil btn-info btn btn-lg', 'glyphicon glyphicon-question-sign btn-warning btn btn-lg']
+          icon: ['progress-btn-toolbar__button--answered', 'progress-btn-toolbar__button--unanswered']
         }
       };
     }
@@ -40,18 +40,13 @@
 
     getAnswerClass(index) {
       const question = this.quizQuestions[this.activeQuestion];
-      let answerClass = "";
       if(this.confirmedAnswer.questionNumber === this.activeQuestion){
         if (index === this.confirmedAnswer.chosenVariant){
-          answerClass = question.type === 'text' ? "answer-selected " : "image-selected ";
+          return question.type === 'text' ? "question-bar-card__answer--selected-text" : "question-bar-card__answer--selected-image";
         }
-        return question.type === 'text' ? answerClass + 'answer' : answerClass + 'image-answer';
-      } else {
-        if (index === question.selected){
-          answerClass = question.type === 'text' ? "answer-selected " : "image-selected ";
+      } else if (index === question.selected){
+          return question.type === 'text' ? "question-bar-card__answer--selected-text" : "question-bar-card__answer--selected-image";
         }
-        return question.type === 'text' ? answerClass + 'answer' : answerClass + 'image-answer';
-      }
     }
 
     getProgressClass(question) {

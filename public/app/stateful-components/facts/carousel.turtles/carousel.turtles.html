@@ -1,0 +1,15 @@
+<div carousel class="facts-carousel"
+     carousel-interval="3000"
+     carousel-items-num="{{::$ctrl.turtlesFacts.length}}"
+     ng-swipe-left="changeSlide(carouselCurrentSlide = carouselCurrentSlide + 1)"
+     ng-swipe-right="changeSlide(carouselCurrentSlide = carouselCurrentSlide - 1)">
+    <ul class="facts-carousel__list">
+        <li class="facts-carousel__item" ng-repeat="slide in ::$ctrl.turtlesFacts track by slide.id" index="slide.id">
+            <img ng-src="{{::slide.image_url}}" class="facts-carousel__image">
+        </li>
+    </ul>
+    <div class="facts-carousel__button facts-carousel__button--prev"
+         ng-click="changeSlide(carouselCurrentSlide = carouselCurrentSlide - 1)"> &lt; </div>
+    <div class="facts-carousel__button facts-carousel__button--next"
+         ng-click="changeSlide(carouselCurrentSlide = carouselCurrentSlide + 1)"> &gt; </div>
+</div>

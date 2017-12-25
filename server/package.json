@@ -1,12 +1,10 @@
 {
   "name": "turtle-quiz",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "quiz server",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "jsGitHubDeveloper",
+  "scripts": {},
+  "author": "developerIsNotDefined",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

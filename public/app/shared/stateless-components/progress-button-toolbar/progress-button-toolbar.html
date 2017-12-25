@@ -1,6 +1,7 @@
-<div class="btn-toolbar">
+<div class="progress-btn-toolbar row">
     <button ng-repeat="question in $ctrl.quizQuestions track by question.id"
             ng-class="$ctrl.getProgressClass(question)"
-            ng-click="$ctrl.setActiveQuestion(question.id)">
+            ng-click="$ctrl.setActiveQuestion(question.id)"
+            class="btn">
     </button>
 </div>
