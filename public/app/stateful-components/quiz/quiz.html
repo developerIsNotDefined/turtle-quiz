@@ -12,10 +12,10 @@
             get-progress-class="$ctrl.getProgressClass">
     </progress-button-toolbar>
 
-    <!--<confirm-finalise-->
-            <!--ng-if="$ctrl.askForConfirm"-->
-            <!--on-result="$ctrl.onConfirmFinalise($event);">-->
-    <!--</confirm-finalise>-->
+    <confirm-finalise
+            ng-if="$ctrl.askForConfirm"
+            on-result="$ctrl.onConfirmFinalise($event);">
+    </confirm-finalise>
 
     <question-bar
             proceed="$ctrl.proceed"

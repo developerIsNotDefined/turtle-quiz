@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('turtleApp', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'toastr', 'angular-jwt', 'ngTouch'])
+    .module('turtleApp', ['ui.router', 'ngAnimate', 'ngTouch', 'toastr', 'angular-jwt'])
     .config(['$urlRouterProvider', ($urlRouterProvider) => $urlRouterProvider.otherwise('/facts')])
     .run(['authManager', '$state', (authManager, $state) => {
       authManager.checkAuthOnRefresh();

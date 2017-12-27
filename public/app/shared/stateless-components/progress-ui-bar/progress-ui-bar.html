@@ -1,22 +1,15 @@
-<div class="row">
-    <div class="col-xs-4">
-        <h2>{{::$ctrl.cssOptions.message}}</h2>
-    </div>
-    <div class="col-xs-4">
-        <div class="row">
-            <div class="col-sm-6" ng-repeat="answerIcon in ::$ctrl.cssOptions.answerIcons">
-                <button class="btn {{answerIcon.color}}">
-                    <p>&nbsp;&nbsp;{{answerIcon.text}}&nbsp;&nbsp;</p>
-                    <span class="glyphicon {{answerIcon.icon}}"></span>
-                </button>
-            </div>
+<div class="progress-ui-bar row">
+    <div class="progress-ui-bar__hint col-12 row">
+        <div class="progress-ui-bar__hint-container col-md-6"
+             ng-repeat="hintIcon in ::$ctrl.cssOptions.hintIcons"
+             ng-class="::hintIcon.type">
+                <span>{{hintIcon.text}}</span>
+                <span class="glyphicon {{hintIcon.icon}}"></span>
         </div>
     </div>
-    <div class="col-xs-12 margin-top3">
-        <uib-progress>
-            <uib-bar ng-repeat="bar in $ctrl.cssOptions.values track by $index" value="bar.value" type="{{bar.type}}">
-                <span>{{bar.number}}({{bar.value}}%)</span>
-            </uib-bar>
-        </uib-progress>
+    <div class="progress-ui-bar__container col-12">
+        <div class="progress-ui-bar__outer" ng-class="::$ctrl.cssOptions.values[1].type">
+            <div class="progress-ui-bar__inner" ng-style="$ctrl.cssCompleted" ng-class="::$ctrl.cssOptions.values[0].type"></div>
+        </div>
     </div>
 </div>

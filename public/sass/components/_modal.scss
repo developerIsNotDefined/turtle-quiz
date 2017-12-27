@@ -1,0 +1,64 @@
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000;
+}
+
+.modal-container.ng-hide {
+  background-color: rgba( 0, 0, 0, 0 );
+}
+
+.modal-container.ng-hide-remove.ng-hide-remove-active {
+  transition: 1s ease-out all ;
+}
+
+.modal-container.ng-hide-add.ng-hide-add-active{
+  transition: 1s ease-out all ;
+}
+
+.modal {
+  background-color: #FAFAFA;
+}
+
+.modal.ng-enter{
+  animation: scaleOutside 1s ease-in;
+}
+
+.modal.ng-leave{
+  animation: scaleInside 1s ease-in;
+}
+
+@keyframes scaleOutside{
+  0%{
+    transform:scale(0);
+  }
+
+  80%{
+    transform:scale(1.2);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+@keyframes scaleInside{
+  0%{
+    transform:scale(1);
+  }
+
+  20%{
+    transform:scale(1.2);
+  }
+
+  100%{
+    transform:scale(0);
+  }
+}

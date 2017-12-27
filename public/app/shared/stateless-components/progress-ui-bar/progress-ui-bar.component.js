@@ -1,6 +1,8 @@
 (function(){
   const controller = class {
-    constructor() {}
+    constructor() {
+      // this.cssCompleted = {'width': 10 + '%'}
+    }
 
     $onChanges(changes) {
       if(typeof changes.numAnsweredQuestions !== 'undefined'){
@@ -22,11 +24,13 @@
         type: this.cssOptions.values[0].type,
         number: this.numAnsweredQuestions + '/' + this.quizLength
       },
-        {
-          value: (this.quizLength - this.numAnsweredQuestions) * this.quizLength,
-          type: this.cssOptions.values[1].type,
-          number: this.quizLength - this.numAnsweredQuestions + '/' + this.quizLength
-        }];
+      {
+        value: (this.quizLength - this.numAnsweredQuestions) * this.quizLength,
+        type: this.cssOptions.values[1].type,
+        number: this.quizLength - this.numAnsweredQuestions + '/' + this.quizLength
+      }];
+
+      this.cssCompleted = {'width': this.cssOptions.values[0].value + '%'}
     };
   };
 

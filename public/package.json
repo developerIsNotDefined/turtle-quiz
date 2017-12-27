@@ -11,8 +11,7 @@
     "angular-animate": "^1.6.6",
     "angular-jwt": "^0.1.9",
     "angular-toastr": "^2.1.1",
-    "angular-touch": "^1.6.8",
-    "angular-ui-bootstrap": "^2.5.0"
+    "angular-touch": "^1.6.8"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

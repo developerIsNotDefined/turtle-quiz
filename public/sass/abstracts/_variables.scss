@@ -20,6 +20,8 @@
   --color-white: #fff;
   --color-black: #000;
 
+  // SHADOWS
+
   --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
   --shadow-light: 0 2rem 5rem rgba(0,0,0,.05);
 
@@ -32,4 +34,45 @@
   // HEADER
 
   --header-height: 4rem;
+
+  // PROGRESS-UI-BAR
+
+  --pb-background-size: 5rem 100%, 100% 100%, 100% 100%;
+
+  --pb-background-image--answered:
+          -webkit-linear-gradient(-45deg,
+                  transparent 33%, rgba(0, 0, 0, .15) 33%,
+                  rgba(0,0, 0, .15) 66%, transparent 66%),
+          -webkit-linear-gradient(top,
+                  rgba(255, 255, 255, .25),
+                  rgba(0, 0, 0, .25)),
+          -webkit-linear-gradient(left, #2998ff, #2998ff);
+
+  --pb-background-image--correct:
+          -webkit-linear-gradient(-45deg,
+                  transparent 33%, rgba(0, 0, 0, .15) 33%,
+                  rgba(0,0, 0, .15) 66%, transparent 66%),
+          -webkit-linear-gradient(top,
+                  rgba(255, 255, 255, .25),
+                  rgba(0, 0, 0, .25)),
+          -webkit-linear-gradient(left, #7ed56f, #7ed56f);
+
+  --pb-background-image--unanswered:
+          -webkit-linear-gradient(45deg,
+                  transparent 33%, rgba(0, 0, 0, .15) 33%,
+                  rgba(0,0, 0, .15) 66%, transparent 66%),
+          -webkit-linear-gradient(top,
+                  rgba(255, 255, 255, .25),
+                  rgba(0, 0, 0, .25)),
+          -webkit-linear-gradient(left, #ffb900, #ffb900);
+
+  --pb-background-image--incorrect:
+          -webkit-linear-gradient(45deg,
+                  transparent 33%, rgba(0, 0, 0, .15) 33%,
+                  rgba(0,0, 0, .15) 66%, transparent 66%),
+          -webkit-linear-gradient(top,
+                  rgba(255, 255, 255, .25),
+                  rgba(0, 0, 0, .25)),
+          -webkit-linear-gradient(left, #BA265D, #BA265D);
+
 }

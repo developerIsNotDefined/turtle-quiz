@@ -5,12 +5,11 @@
       this.toastr = toastr;
       this.cssOptions = {
         progressBar : {
-          values: [{value: 0, type: 'info', number: 0 + '/' + '∞'},
-            {value: 100, type: 'warning', number: 0 + '/' + '∞'}],
-          message: 'Progress:',
-          answerIcons: [
-            {text: 'Answered', color: 'btn-info', icon: 'glyphicon-pencil'},
-            {text: 'Unanswered', color: 'btn-warning', icon: 'glyphicon-question-sign'}
+          values: [{value: 0, type: 'progress-ui-bar__inner--answered'},
+            {value: 100, type: 'progress-ui-bar__outer--unanswered'}],
+          hintIcons: [
+            {text: 'Answered', type: 'progress-ui-bar__hint-container--answered', icon: 'glyphicon-pencil'},
+            {text: 'Unanswered', type: 'progress-ui-bar__hint-container--unanswered', icon: 'glyphicon-question-sign'}
           ]
         },
         button: 'Continue',

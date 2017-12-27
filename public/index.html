@@ -8,8 +8,6 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous"-->
-          <!--rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">-->
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
     <link rel="stylesheet" href="assets/stylesheets/authorization.css">
@@ -17,24 +15,28 @@
 </head>
 <body>
 
-<div class="container">
-    <ui-view></ui-view>
-</div>
+    <div custom-modal class="modal-container" ng-show="modalShown">
+        <custom-modal ng-if="modalShown" class="modal"></custom-modal>
+    </div>
+
+    <div class="container">
+        <ui-view></ui-view>
+    </div>
 
 <!--third party libraries-->
 <script src="node_modules/angular/angular.js"></script>
 <script src="node_modules/angular-animate/angular-animate.js"></script>
+<script src="node_modules/angular-touch/angular-touch.js"></script>
 <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.js"></script>
-<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
 <script src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
-<script src="node_modules/angular-touch/angular-touch.js"></script>
 <!--third party libraries-->
 
 <script src="app/app.js"></script>
 
 <!--directives-->
 <script src="app/shared/directives/carousel.directive.js"></script>
+<script src="app/shared/directives/modal.directive.js"></script>
 <!--directives-->
 
 <!--facts-->
@@ -72,6 +74,7 @@
 
 <!--shared services-->
 <script src="app/shared/services/data-service.js"></script>
+<script src="app/shared/services/modal-service.js"></script>
 <!--shared services-->
 
 <!--shared configs-->
@@ -80,6 +83,7 @@
 
 <!--shared components-->
 <script src="app/shared/stateless-components/confirm.finalise/confirm.finalise.component.js"></script>
+<script src="app/shared/stateless-components/modal-component/custom-modal.component.js"></script>
 <script src="app/shared/stateless-components/progress-button-toolbar/progress-button-toolbar.component.js"></script>
 <script src="app/shared/stateless-components/progress-ui-bar/progress-ui-bar.component.js"></script>
 <script src="app/shared/stateless-components/question-bar/question-bar.component.js"></script>

@@ -1,8 +1,8 @@
 (function(){
   const controller = class {
-    constructor($uibModal, $state, $stateParams){
-      this.$uibModal = $uibModal;
+    constructor($state, $stateParams, modalService){
       this.$state = $state;
+      this.modalService = modalService;
 
       this.activeTurtle = $stateParams.activeTurtle;
     }
@@ -12,24 +12,18 @@
     }
 
     open(activeTurtle) {
-      this.$uibModal.open({
+      this.modalService.open({
         templateUrl: 'app/stateful-components/facts/modal.turtle-info/modal.turtle-info.html',
-        controller($uibModalInstance, activeTurtle){
-          this.activeTurtle = activeTurtle;
-          this.cancel = () => $uibModalInstance.dismiss('cancel');
-          this.ok = () => $uibModalInstance.close(this.activeTurtle);
-        },
-        controllerAs: '$ctrl',
-        resolve: {
-          activeTurtle: () => {
-            return activeTurtle;
-          }
+        data:{
+          activeTurtle: activeTurtle
         }
-      }).result.then(item => this.$state.go('facts'), () => this.$state.go('facts'));
+      })
+        .then(response => this.$state.go('facts'))
+        .catch(reason => this.$state.go('facts'));
     }
   };
 
-  controller.$inject = ['$uibModal', '$state', '$stateParams'];
+  controller.$inject = ['$state', '$stateParams', 'modalService'];
 
   angular
     .module('turtleApp')

@@ -15,7 +15,12 @@
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.05);
   --gutter-horizontal: 2rem;
   --gutter-vertical: 2rem;
-  --header-height: 4rem; }
+  --header-height: 4rem;
+  --pb-background-size: 5rem 100%, 100% 100%, 100% 100%;
+  --pb-background-image--answered: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(left, #2998ff, #2998ff);
+  --pb-background-image--correct: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(left, #7ed56f, #7ed56f);
+  --pb-background-image--unanswered: -webkit-linear-gradient(45deg, transparent 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(left, #ffb900, #ffb900);
+  --pb-background-image--incorrect: -webkit-linear-gradient(45deg, transparent 33%, rgba(0, 0, 0, 0.15) 33%, rgba(0, 0, 0, 0.15) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)), -webkit-linear-gradient(left, #BA265D, #BA265D); }
 
 @keyframes jumpScale {
   0% {
@@ -105,6 +110,7 @@ a {
       font-size: 1.4rem;
       font-weight: 600; }
   .facts-card__button {
+    background-color: transparent;
     border-radius: 100px;
     display: block;
     margin: 1rem auto 2rem auto;
@@ -171,6 +177,7 @@ a {
         background-color: var(--color-grey-light-1);
         border: 3px solid var(--color-red-dark-1); }
   .facts-search__button {
+    background-color: transparent;
     order: 1;
     padding: 0;
     border-bottom: 3px solid var(--color-orange-light-1);
@@ -256,6 +263,16 @@ a {
       background-color: var(--color-blue-dark-1); }
     .question-bar-card__answer--selected-image {
       border: 0.8rem solid var(--color-orange-dark-1); }
+    .question-bar-card__answer--correct-text {
+      color: var(--color-white);
+      background-color: var(--color-green-light-1); }
+    .question-bar-card__answer--correct-image {
+      border: 0.8rem solid var(--color-green-light-1); }
+    .question-bar-card__answer--incorrect-text {
+      color: var(--color-white);
+      background-color: var(--color-red-dark-1); }
+    .question-bar-card__answer--incorrect-image {
+      border: 0.8rem solid var(--color-red-dark-1); }
   .question-bar-card__button button {
     font-size: 2.2rem;
     font-weight: 300;
@@ -269,9 +286,12 @@ a {
       box-shadow: var(--shadow-light); }
 
 .progress-btn-toolbar {
+  justify-content: space-between;
+  align-items: center;
   background-color: var(--color-grey-light-1);
   border: 1px solid var(--color-grey-light-2);
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  padding: 1rem; }
   .progress-btn-toolbar__button--answered {
     background-color: var(--color-blue-light-1); }
   .progress-btn-toolbar__button--unanswered {
@@ -279,7 +299,131 @@ a {
   .progress-btn-toolbar__button--correct {
     background-color: var(--color-green-light-1); }
   .progress-btn-toolbar__button--incorrect {
-    background-color: var(--color-red-light-1); }
+    background-color: var(--color-red-dark-1); }
+
+.progress-ui-bar__hint {
+  justify-content: center;
+  align-items: center; }
+
+.progress-ui-bar__hint-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .progress-ui-bar__hint-container--answered {
+    color: var(--color-orange-light-1);
+    background-color: var(--color-blue-light-1); }
+  .progress-ui-bar__hint-container--unanswered {
+    color: var(--color-blue-light-1);
+    background-color: var(--color-orange-light-1); }
+  .progress-ui-bar__hint-container--correct {
+    color: var(--color-red-dark-1);
+    background-color: var(--color-green-light-1); }
+  .progress-ui-bar__hint-container--incorrect {
+    color: var(--color-green-light-1);
+    background-color: var(--color-red-dark-1); }
+
+.progress-ui-bar__hint-text {
+  text-transform: uppercase;
+  font-size: 2rem; }
+
+.progress-ui-bar__container {
+  border: 1px solid var(--color-grey-light-2);
+  height: 3rem; }
+
+.progress-ui-bar__outer {
+  display: inline-block;
+  height: 100%;
+  width: 100%; }
+  .progress-ui-bar__outer--unanswered {
+    background-image: var(--pb-background-image--unanswered);
+    background-size: var(--pb-background-size); }
+  .progress-ui-bar__outer--incorrect {
+    background-image: var(--pb-background-image--incorrect);
+    background-size: var(--pb-background-size); }
+
+.progress-ui-bar__inner {
+  display: inline-block;
+  height: 100%;
+  width: 0%;
+  transition: width 2s ease; }
+  .progress-ui-bar__inner--answered {
+    background-image: var(--pb-background-image--answered);
+    background-size: var(--pb-background-size); }
+  .progress-ui-bar__inner--correct {
+    background-image: var(--pb-background-image--correct);
+    background-size: var(--pb-background-size); }
+
+.facts-modal {
+  padding: 1rem;
+  max-width: 50vw;
+  min-width: 20vw;
+  max-height: 80vh;
+  overflow-y: auto; }
+  .facts-modal__header {
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    font-weight: 400; }
+  .facts-modal__image img {
+    height: 100%;
+    width: 100%; }
+  .facts-modal__info {
+    line-height: 1.4; }
+    .facts-modal__info p {
+      font-size: 1.2rem; }
+      .facts-modal__info p span {
+        font-size: 1.4rem; }
+  .facts-modal__footer button {
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1.4rem; }
+
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10000; }
+
+.modal-container.ng-hide {
+  background-color: transparent; }
+
+.modal-container.ng-hide-remove.ng-hide-remove-active {
+  transition: 1s ease-out all; }
+
+.modal-container.ng-hide-add.ng-hide-add-active {
+  transition: 1s ease-out all; }
+
+.modal {
+  background-color: #FAFAFA; }
+
+.modal.ng-enter {
+  animation: scaleOutside 1s ease-in; }
+
+.modal.ng-leave {
+  animation: scaleInside 1s ease-in; }
+
+@keyframes scaleOutside {
+  0% {
+    transform: scale(0); }
+  80% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes scaleInside {
+  0% {
+    transform: scale(1); }
+  20% {
+    transform: scale(1.2); }
+  100% {
+    transform: scale(0); } }
 
 .row {
   display: flex;

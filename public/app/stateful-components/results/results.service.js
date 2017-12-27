@@ -3,12 +3,11 @@
     constructor(){
       this.cssOptions = {
         progressBar : {
-          values: [{value: 0, type: 'success', number: 0 + '/' + '∞'},
-            {value: 100, type: 'danger', number: 0 + '/' + '∞'}],
-          message: 'Results:',
-          answerIcons: [
-            {text: 'Correct', color: 'btn-success', icon: 'glyphicon-ok'},
-            {text: 'Incorrect', color: 'btn-danger', icon: 'glyphicon-remove'}
+          values: [{value: 0, type: 'progress-ui-bar__inner--correct'},
+            {value: 100, type: 'progress-ui-bar__outer--incorrect'}],
+          hintIcons: [
+            {text: 'Correct', type: 'progress-ui-bar__hint-container--correct', icon: 'glyphicon-ok'},
+            {text: 'Incorrect', type: 'progress-ui-bar__hint-container--incorrect', icon: 'glyphicon-remove'}
           ]
         },
         button: 'Go Back To Facts',
@@ -21,9 +20,9 @@
     getAnswerClass(index) {
       const question = this.quizQuestions[this.activeQuestion];
       if (index === question.correct){
-        return "bg-success";
+        return question.type === 'text' ? "question-bar-card__answer--correct-text" : "question-bar-card__answer--correct-image";
       } else if (index === question.selected){
-        return "bg-danger";
+        return question.type === 'text' ? "question-bar-card__answer--incorrect-text" : "question-bar-card__answer--incorrect-image";
       }
     }
 

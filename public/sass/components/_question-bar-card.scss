@@ -59,6 +59,24 @@
     &--selected-image{
       border: .8rem solid var(--color-orange-dark-1);
     }
+
+    &--correct-text{
+      color: var(--color-white);
+      background-color: var(--color-green-light-1);
+    }
+
+    &--correct-image{
+      border: .8rem solid var(--color-green-light-1);
+    }
+
+    &--incorrect-text{
+      color: var(--color-white);
+      background-color: var(--color-red-dark-1);
+    }
+
+    &--incorrect-image{
+      border: .8rem solid var(--color-red-dark-1);
+    }
   }
 
   &__button{

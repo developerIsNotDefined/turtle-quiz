@@ -1,12 +1,29 @@
 (function(){
   angular
     .module('turtleApp')
-    .directive('carousel', function ($interval, $timeout) {
+    .directive('customCarousel', function ($interval, $timeout) {
 
-      const link = function (scope, element, attrs) {
+      const link = (scope, element, attrs) => {
+        const carouselScope = scope;
         scope.carouselInterval = parseInt(attrs.carouselInterval) || false;
         scope.carouselItemsNum = parseInt(attrs.carouselItemsNum) || 0;
+        scope.carouselControls = attrs.carouselControls || false;
         scope.carouselCurrentSlide = 0;
+
+        if (scope.carouselControls === 'true'){
+          element.on("click", (event) => {
+            const carouselControlsType = event.target.getAttribute('carousel-controls');
+
+            if (carouselControlsType === 'next'){
+              carouselScope.carouselCurrentSlide++;
+              carouselScope.changeSlide(carouselScope.carouselCurrentSlide);
+            } else if (carouselControlsType === 'prev'){
+              carouselScope.carouselCurrentSlide--;
+              carouselScope.changeSlide(carouselScope.carouselCurrentSlide);
+            }
+
+          });
+        }
 
         const slidesList = element[0].querySelector("ul");
         slidesList.style.width = (scope.carouselItemsNum * 100)+'%';
