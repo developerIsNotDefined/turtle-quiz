@@ -18,6 +18,8 @@
     }
   };
 
+  controller.$inject = ['$rootScope', 'modalService'];
+
   angular
     .module('turtleApp')
     .component('customModal', {

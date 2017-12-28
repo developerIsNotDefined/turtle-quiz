@@ -1,9 +1,9 @@
 <div custom-carousel
      carousel-interval="3000"
      carousel-items-num="{{::$ctrl.turtlesFacts.length}}"
+     carousel-inspector
      carousel-controls="true"
-     ng-swipe-left="changeSlide(carouselCurrentSlide = carouselCurrentSlide + 1)"
-     ng-swipe-right="changeSlide(carouselCurrentSlide = carouselCurrentSlide - 1)"
+     carousel-mobile="true"
      class="facts-carousel">
     <ul class="facts-carousel__list">
         <li class="facts-carousel__item" ng-repeat="slide in ::$ctrl.turtlesFacts track by slide.id" index="slide.id">
