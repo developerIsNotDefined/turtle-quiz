@@ -9,12 +9,12 @@
       this.modalData = this.modalService.modalConfig().data;
     }
 
-    ok(){
-      this.modalService.resolve();
+    ok(data){
+      this.modalService.resolve(data);
     }
 
-    cancel(){
-      this.modalService.reject();
+    cancel(reason){
+      this.modalService.reject(reason);
     }
   };
 

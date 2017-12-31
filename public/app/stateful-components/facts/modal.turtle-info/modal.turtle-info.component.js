@@ -15,7 +15,7 @@
       this.modalService.open({
         templateUrl: 'app/stateful-components/facts/modal.turtle-info/modal.turtle-info.html',
         data:{
-          activeTurtle: activeTurtle
+          activeTurtle
         }
       })
         .then(response => this.$state.go('facts'))

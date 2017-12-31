@@ -12,13 +12,17 @@
   }
 
   &:hover &__button{
-    animation: jumpScale 2s infinite;
+    animation: pulsate 4s cubic-bezier(.77,.09,1,.97) infinite .5s;
+
+    &:hover{
+      animation: none;
+    }
   }
 
   &__image{
     height: 20rem;
 
-    & img{
+    img{
       height: 100%;
       width: 100%;
     }
@@ -50,13 +54,12 @@
   }
 
   &__button{
+    display: block;
+    outline-offset: -.8rem;
     background-color: transparent;
     border-radius: 100px;
-    display: block;
-    margin: 1rem auto 2rem auto;
-    position: relative;
-    top: 1rem;
+    margin: 2rem auto 0 auto;
     font-size: 2rem;
-    border: 1px solid var(--color-black);
+    text-transform: uppercase;
   }
 }

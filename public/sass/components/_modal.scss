@@ -24,6 +24,7 @@
 }
 
 .modal {
+  box-shadow: var(--shadow-modal-default);
   background-color: #FAFAFA;
 }
 
@@ -33,32 +34,4 @@
 
 .modal.ng-leave{
   animation: scaleInside 1s ease-in;
-}
-
-@keyframes scaleOutside{
-  0%{
-    transform:scale(0);
-  }
-
-  80%{
-    transform:scale(1.2);
-  }
-
-  100%{
-    transform:scale(1);
-  }
-}
-
-@keyframes scaleInside{
-  0%{
-    transform:scale(1);
-  }
-
-  20%{
-    transform:scale(1.2);
-  }
-
-  100%{
-    transform:scale(0);
-  }
 }

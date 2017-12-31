@@ -1,0 +1,146 @@
+.auth{
+  position: relative;
+  min-width: 360px;
+  min-height: 550px;
+  display: flex;
+  justify-content: space-around;
+  align-content: space-around;
+  flex-flow: row wrap;
+  padding: 1rem;
+
+  &::before{
+    @include absoluteCover;
+    content: '';
+    z-index: 1;
+    display: block;
+    opacity: .7;
+    background-image: radial-gradient(farthest-corner at 0 50%, var(--color-blue-light-1) 70%, var(--color-blue-dark-1) 70%);
+  }
+
+  & > *{
+    position: relative;
+    z-index: 10;
+  }
+
+  &__menu-item--sign-in-out, &__menu-item--sign-up{
+    position: absolute;
+    top: 10000px;
+    left: 10000px;
+  }
+
+  &__menu-item--sign-up:checked ~ &__form &__form-side--sign-in-out{
+    transform: rotateY(-180deg);
+  }
+
+  &__menu-item--sign-up:checked ~ &__form &__form-side--sign-up{
+    transform: rotateY(0);
+  }
+
+  &__menu-item--sign-in-out:checked + label{
+    animation: jumpScale 4s infinite;
+  }
+
+  &__menu-item--sign-up:checked + label{
+    animation: jumpScale 4s infinite;
+  }
+
+  &__menu-label{
+    color: var(--color-white);
+    padding: .5rem;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  &__form{
+    border-top: 3px solid var(--color-orange-light-1);
+    margin-top: -.8rem;
+    min-height: 450px;
+    position: relative;
+    perspective: 10000px;
+    transform-style: preserve-3d;
+    width: 100%;
+  }
+
+  &__form-side--sign-in-out, &__form-side--sign-up{
+    transition: all 2s;
+    backface-visibility: hidden;
+  }
+
+  &__form-group{
+    padding: 2rem 0 1rem 0;
+    position: relative;
+
+    input{
+      font-size: 1.5rem;
+      height: 3rem;
+      width: 100%;
+      padding: .8rem 1.2rem;
+      border-bottom: 3px solid transparent;
+      border-radius: 3px;
+      background:rgba(255,255,255,.3);
+    }
+
+    input.ng-valid{
+      border-bottom: 3px solid var(--color-green-dark-1);
+    }
+
+    input.ng-invalid{
+      border-bottom: 3px solid var(--color-red-dark-1);
+    }
+
+    input.ng-valid ~ div.auth__form-input-helper{
+      position: absolute;
+    }
+
+    input:placeholder-shown + label{
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(3rem);
+      font-size: .1rem;
+    }
+
+    label{
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      font-size: 1rem;
+      transition: all 1s;
+      color: var(--color-white);
+      font-size: 1.3rem;
+    }
+  }
+
+  &__form-side{
+    &--sign-in-out, &--sign-up{
+      @include absoluteCover;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+    }
+
+    &--sign-up{
+      transform:rotateY(180deg);
+    }
+  }
+
+  &__form-input-helper{
+    margin-top: 1rem;
+    color: var(--color-red-dark-1);
+    font-size: 1.1rem;
+  }
+
+  &__form-button{
+    border-radius: .5rem;
+    transition: all .5s;
+    color: var(--color-white);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    background-color: var(--color-green-dark-1);
+  }
+
+  &__form-button[disabled="disabled"]{
+    background-color: var(--color-red-dark-1);
+  }
+}

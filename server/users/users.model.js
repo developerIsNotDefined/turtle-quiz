@@ -12,6 +12,7 @@ const userSchema = new Schema({
     required: true,
     trim: true,
     minlength: 6,
+    maxlength: 20,
     validate: {
       validator: value => validator.isAlphanumeric(value),
       message: '{VALUE} is not a valid name'
@@ -22,6 +23,7 @@ const userSchema = new Schema({
     required: true,
     trim: true,
     minlength: 1,
+    maxlength: 40,
     unique: true,
     validate: {
       validator: value => validator.isEmail(value),
@@ -31,7 +33,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6
+    minlength: 6,
+    maxlength: 20
   },
   tokens: [{
     access: {

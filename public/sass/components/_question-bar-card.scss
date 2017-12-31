@@ -7,11 +7,15 @@
   background-color: var(--color-white);
   padding: .8rem;
 
+  &:hover{
+    box-shadow: var(--shadow-dark);
+  }
+
   &__question{
     margin-bottom: 2rem;
 
     p{
-      text-shadow: -0.3rem 0.3rem .4rem var(--color-grey-light-2);
+      text-shadow: var(--text-shadow-question);
       text-align: center;
       font-size: 2.4rem;
       font-weight: 300;
@@ -32,10 +36,10 @@
       padding: .8rem 1.6rem;
       font-size: 1.7rem;
       background-color: var(--color-grey-light-1);
+      transition: all .2s;
 
       &:hover{
         background-color: var(--color-blue-light-1);
-        box-shadow: var(--shadow-light);
       }
     }
 
@@ -80,19 +84,17 @@
   }
 
   &__button{
-    button{
-      font-size: 2.2rem;
-      font-weight: 300;
-      width: 100%;
-      text-transform: uppercase;
-      background-color: var(--color-orange-light-1);
-      color: var(--color-blue-light-1);
+    font-size: 2.2rem;
+    font-weight: 300;
+    width: 100%;
+    text-transform: uppercase;
+    background-color: var(--color-orange-light-1);
+    color: var(--color-blue-light-1);
 
-      &:hover{
-        color: var(--color-blue-dark-1);
-        background-color: var(--color-orange-dark-1);
-        box-shadow: var(--shadow-light);
-      }
+    &:hover{
+      color: var(--color-blue-dark-1);
+      background-color: var(--color-orange-dark-1);
+      box-shadow: var(--shadow-light);
     }
   }
 }

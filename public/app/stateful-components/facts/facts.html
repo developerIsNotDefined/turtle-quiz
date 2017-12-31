@@ -1,29 +1,29 @@
 <ui-view></ui-view>
 <div>
 
-    <!--<header class="header-main row">-->
-        <!--<div class="header-main__logo">-->
-            <!--<img ng-src="assets/images/logo-transparent.png">-->
-        <!--</div>-->
+    <header class="header-main row">
+        <div class="header-main__logo">
+            <img ng-src="assets/images/logo-transparent.png">
+        </div>
 
-        <!--<div class="navigation">-->
-            <!--<nav class="navigation__nav">-->
-                <!--<ul class="navigation__list">-->
-                    <!--<li class="navigation__item"><a class="btn outline-text&#45;&#45;white" ng-click="$ctrl.activateQuiz()">Start Quiz</a></li>-->
-                    <!--<li class="navigation__item"><a class="btn outline-text&#45;&#45;white" ng-click="$ctrl.auth()">Auth</a></li>-->
-                <!--</ul>-->
-            <!--</nav>-->
-        <!--</div>-->
-    <!--</header>-->
+        <div class="navigation">
+            <nav class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a class="btn-link outline-text--white" ng-click="$ctrl.activateQuiz()">Start Quiz</a></li>
+                    <li class="navigation__item"><a class="btn-link outline-text--white" ng-click="$ctrl.auth()">Auth</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
     <section class="section-facts">
 
-        <carousel-turtles turtles-facts="$ctrl.turtlesFacts"></carousel-turtles>
+        <!--<carousel-turtles turtles-facts="$ctrl.turtlesFacts"></carousel-turtles>-->
 
         <div class="facts-search row">
-            <button class="facts-search__button btn btn--blue" ng-click="$ctrl.activateQuiz()">
-                <span class="gradient-text gradient-text--red">Start Quiz</span>
-            </button>
+            <a ui-sref="quiz" class="facts-search__button btn-link--blue">
+                <span class="gradient-text--red">Start Quiz</span>
+            </a>
             <div class="facts-search__search-box">
                 <input type="text" placeholder="Search..." ng-model="$ctrl.search" ng-model-options="{ debounce: 500 }">
                 <span>&times;</span>
@@ -36,13 +36,13 @@
                     <img ng-src="{{turtle.image_url}}">
                 </div>
                 <div class="facts-card__text-block col-12">
-                    <h4 class="facts-card__text-heading outline-text--white gradient-text gradient-text--blue ">{{turtle.type}}</h4>
+                    <h4 class="facts-card__text-heading outline-text--white gradient-text--blue">{{turtle.type}}</h4>
                     <p class="facts-card__text-item"><span>Locations: </span>{{turtle.locations}}</p>
                     <p class="facts-card__text-item"><span>Size: </span>{{turtle.size}}</p>
                     <p class="facts-card__text-item"><span>Avarage Lifespan: </span>{{turtle.lifespan}}</p>
                     <p class="facts-card__text-item"><span>Diet: </span>{{turtle.diet}}</p>
-                    <button class="btn btn--blue facts-card__button"
-                            ng-click="$ctrl.turtleInfo(turtle)"><span class="gradient-text gradient-text--blue">Learn more &rarr;</span>
+                    <button class="btn--blue facts-card__button"
+                            ng-click="$ctrl.turtleInfo(turtle)"><span class="gradient-text--blue">Learn more &rarr;</span>
                     </button>
                 </div>
             </article>

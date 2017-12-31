@@ -1,15 +1,55 @@
 .facts-search{
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1rem;
   margin: 2rem auto;
-  background-image: linear-gradient(to left, var(--color-green-light-1), var(--color-green-dark-1));
+  position: relative;
+  background-color: var(--color-grey-light-1);
+  transition: all .5s;
+
+  &:hover{
+    box-shadow: var(--shadow-facts-search);
+    margin: 4rem auto;
+
+    &::before, &::after{
+      height: 1rem;
+      left: -1rem;
+      right: -1rem;
+    }
+
+    &::before{
+      top: -2rem;
+    }
+
+    &::after{
+      bottom: -2rem;
+    }
+  }
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  &::before {
+    top: 0;
+    height: .5rem;
+    background-image: -webkit-linear-gradient(left, var(--color-green-dark-1), var(--color-green-light-1));
+    transition: all 1s;
+  }
+
+  &::after {
+    bottom: 0;
+    height: .5rem;
+    background-image: -webkit-linear-gradient(left, var(--color-green-dark-1), var(--color-green-light-1));
+    transition: all 1s;
+  }
 
   &__search-box{
-    height: 2.25rem;
+    padding: 1rem;
     flex: 0 0 70%;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,15 +60,25 @@
       width: 85%;
       border-radius: 100px;
       padding: .4rem .8rem;
-      background-color: var(--color-grey-light-2);
-      border: 3px solid var(--color-red-light-1);
-      transition: width 1s;
+      background-color: var(--color-black);
+      border: .5rem solid var(--color-red-dark-1);
+      transition: all 1s;
+
+      &::placeholder{
+        color: var(--color-red-dark-1);
+        opacity: 1;
+      }
 
       &:focus{
         outline: none;
         width: 100%;
-        background-color: var(--color-grey-light-1);
-        border: 3px solid var(--color-red-dark-1);
+        background-color: var(--color-white);
+        border: .5rem solid var(--color-red-light-1);
+      }
+
+      &:focus::placeholder{
+        color: var(--color-red-light-1);
+        opacity: 1;
       }
     }
   }
@@ -39,18 +89,13 @@
     padding: 0;
     border-bottom: 3px solid var(--color-orange-light-1);
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 500;
     transition: all 1s;
 
     &:hover{
       padding: 1rem;
       border: 3px solid var(--color-orange-light-1);
-    }
-
-    &:hover + div{
-      height: 2.7rem;
-      font-size: 1.8rem;
     }
   }
 }

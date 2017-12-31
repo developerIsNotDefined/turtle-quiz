@@ -1,0 +1,55 @@
+.btn{
+  display: inline-block;
+  padding: .8rem 1.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all .5s;
+
+  &:hover{
+    box-shadow: var(--shadow-btn-outer);
+  }
+
+  &:active{
+    position: relative;
+    top: .25rem;
+    box-shadow: var(--shadow-btn-inner);
+  }
+
+  &--blue{
+    @extend .btn;
+
+    &:hover{
+      background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1));
+
+      span{
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+.btn-link{
+  @extend .btn;
+
+  &:hover{
+    box-shadow: none;
+  }
+
+  &:active{
+    position: static;
+    box-shadow: none;
+  }
+
+  &--blue{
+    @extend .btn-link;
+
+    &:hover{
+      background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1));
+
+      span{
+        color: var(--color-white);
+      }
+    }
+  }
+}

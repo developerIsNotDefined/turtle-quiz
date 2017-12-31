@@ -1,11 +1,11 @@
 (function(){
   const controller = class {
-    constructor($uibModal, $state, authService, toastr, dataService){
-      this.$uibModal = $uibModal;
+    constructor($state, authService, toastr, dataService, modalService){
       this.$state = $state;
       this.authService = authService;
       this.toastr = toastr;
       this.dataService = dataService;
+      this.modalService = modalService;
     }
 
     $onInit() {
@@ -52,34 +52,18 @@
     }
 
     open(isAuthenticated) {
-      this.$uibModal.open({
+      this.modalService.open({
         templateUrl: 'app/stateful-components/facts/authorization/authorization.html',
-        controller($uibModalInstance, isAuthenticated){
-          this.isAuthenticated = isAuthenticated;
-          this.cancel = () => $uibModalInstance.dismiss();
-          this.ok = ({method}) => {
-            const user = {
-              name: this.name,
-              email: this.email,
-              password: this.password
-            }
-            $uibModalInstance.close({
-              method,
-              user
-            });
-          };
-        },
-        controllerAs: '$ctrl',
-        resolve: {
+        data:{
           isAuthenticated
         }
-      }).result
+      })
         .then(authData => this.delegate(authData))
         .catch(() => this.$state.go('facts'));
     }
   };
 
-  controller.$inject = ['$uibModal', '$state', 'authService', 'toastr', 'dataService'];
+  controller.$inject = ['$state', 'authService', 'toastr', 'dataService', 'modalService'];
 
   angular
     .module('turtleApp')

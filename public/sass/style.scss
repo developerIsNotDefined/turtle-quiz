@@ -1,11 +1,12 @@
-//@import "abstracts/mixins";
+@import "abstracts/mixins";
 @import "abstracts/variables";
 //
 @import "base/animations";
 @import "base/base";
 @import "base/typography";
 //
-@import "components/button";
+@import "components/btn";
+@import "components/auth";
 @import "components/facts-card";
 @import "components/facts-carousel";
 @import "components/facts-search";
