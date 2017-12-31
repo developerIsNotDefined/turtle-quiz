@@ -20,6 +20,7 @@
   --text-shadow-question: -0.3rem 0.3rem 0.4rem var(--color-grey-light-2);
   --shadow-btn-outer: 0 0 2rem rgba(0, 0, 0, 0.6);
   --shadow-btn-inner: inset 0 0 0.5rem rgba(0, 0, 0, 0.8);
+  --shadow-btn-accordion-inner: inset 0 0 0.36667rem rgba(0, 0, 0, 0.5), 0 2.75rem 1.75rem 0.25rem rgba(0, 0, 0, 0.5);
   --gutter-horizontal: 2rem;
   --gutter-vertical: 2rem;
   --header-height: 4rem;
@@ -139,6 +140,47 @@ a {
   background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1)); }
   .btn-link--blue:hover span {
     color: var(--color-white); }
+
+.btn-accordion {
+  outline: none;
+  border: none;
+  display: inline-block;
+  position: relative;
+  border-radius: .25rem;
+  padding: .5rem 1rem;
+  perspective: 10rem;
+  transition: box-shadow .4s, border-radius .4s, top .5s;
+  text-align: center;
+  cursor: pointer; }
+  .btn-accordion::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: attr(title);
+    display: block;
+    z-index: 1000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: .25em;
+    padding: .5rem;
+    transform-origin: 50% 100%;
+    transform-style: preserve-3d;
+    transition: transform .5s, box-shadow .4s;
+    background-color: var(--color-black);
+    color: var(--color-white); }
+  .btn-accordion:hover {
+    z-index: 1001;
+    border-radius: .25rem .25rem 0 0;
+    box-shadow: var(--shadow-btn-accordion-inner); }
+  .btn-accordion:hover::before {
+    border-radius: .25rem .25rem 0 0;
+    transform: rotateX(-120deg);
+    color: transparent; }
+  .btn-accordion:active {
+    top: .25rem; }
 
 .auth {
   position: relative;
@@ -501,14 +543,32 @@ a {
   transition: all .5s; }
   .progress-btn-toolbar:hover {
     box-shadow: var(--shadow-dark); }
-  .progress-btn-toolbar__button--answered {
+  .progress-btn-toolbar__button--answered::before {
     background-color: var(--color-blue-light-1); }
-  .progress-btn-toolbar__button--unanswered {
+  .progress-btn-toolbar__button--answered:hover::before {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 -1px 0 #2266dd, 0 -2px 0 -0.5px #2266dd, 0 -3px 0 -1px #2266dd, 0 -4px 0 -1.5px #2266dd, 0 -5px 0 -2.5px #2266dd, 0 -7px 0.2px -4px #2266dd; }
+  .progress-btn-toolbar__button--unanswered::before {
     background-color: var(--color-orange-light-1); }
-  .progress-btn-toolbar__button--correct {
+  .progress-btn-toolbar__button--unanswered:hover::before {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 -1px 0 #cc8800, 0 -2px 0 -0.5px #cc8800, 0 -3px 0 -1px #cc8800, 0 -4px 0 -1.5px #cc8800, 0 -5px 0 -2.5px #cc8800, 0 -7px 0.2px -4px #cc8800; }
+  .progress-btn-toolbar__button--correct::before {
     background-color: var(--color-green-light-1); }
-  .progress-btn-toolbar__button--incorrect {
+  .progress-btn-toolbar__button--correct:hover::before {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 -1px 0 #118833, 0 -2px 0 -0.5px #118833, 0 -3px 0 -1px #118833, 0 -4px 0 -1.5px #118833, 0 -5px 0 -2.5px #118833, 0 -7px 0.2px -4px #118833; }
+  .progress-btn-toolbar__button--incorrect::before {
     background-color: var(--color-red-dark-1); }
+  .progress-btn-toolbar__button--incorrect:hover::before {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 -1px 0 #cc2211, 0 -2px 0 -0.5px #cc2211, 0 -3px 0 -1px #cc2211, 0 -4px 0 -1.5px #cc2211, 0 -5px 0 -2.5px #cc2211, 0 -7px 0.2px -4px #cc2211; }
+  .progress-btn-toolbar__button--active:hover {
+    border-radius: .25rem !important;
+    box-shadow: none !important; }
+  .progress-btn-toolbar__button--active:hover::before {
+    border-radius: .25rem !important;
+    transform: rotateX(0) !important;
+    color: var(--color-white) !important;
+    box-shadow: none !important; }
+  .progress-btn-toolbar__button--active:active {
+    top: 0 !important; }
 
 .progress-ui-bar__hint {
   justify-content: center;

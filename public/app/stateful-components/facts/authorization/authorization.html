@@ -30,7 +30,7 @@
                     <div ng-message="maxlength">Password must have maximum 20 characters</div>
                 </div>
             </div>
-            <input type="button" class="btn auth__form-button" value="Sign In" ng-disabled="authForm.$invalid"
+            <input type="button" class="btn auth__form-button" value="Sign In"
                    ng-disabled="authForm.inputSignInEmail.$invalid || authForm.inputSignInPassword.$invalid"
                    ng-click="$ctrl.ok({user:$ctrl.user, method:'signIn'})">
         </div>

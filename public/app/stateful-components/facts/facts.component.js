@@ -19,14 +19,6 @@
         });
     }
 
-    auth() {
-      this.$state.go('facts.authorization');
-    }
-
-    activateQuiz() {
-      this.$state.go('quiz');
-    }
-
     turtleInfo(activeTurtle) {
       this.$state.go('facts.turtleInfo', {
         id: activeTurtle.id+1,

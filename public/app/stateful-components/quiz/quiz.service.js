@@ -49,8 +49,9 @@
     }
 
     getProgressClass(question) {
+      let btnCssClass = question.id === this.activeQuestion ? 'progress-btn-toolbar__button--active ' : '';
       const icon = this.progressToolbarOptions.icon;
-      return question.selected !== false ? icon[0] : icon[1];
+      return question.selected !== false ? btnCssClass+icon[0] : btnCssClass+icon[1];
     }
 
     proceed() {

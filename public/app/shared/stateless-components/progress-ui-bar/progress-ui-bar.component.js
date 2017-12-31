@@ -1,8 +1,6 @@
 (function(){
   const controller = class {
-    constructor() {
-      // this.cssCompleted = {'width': 10 + '%'}
-    }
+    constructor() {}
 
     $onChanges(changes) {
       if(typeof changes.numAnsweredQuestions !== 'undefined'){
