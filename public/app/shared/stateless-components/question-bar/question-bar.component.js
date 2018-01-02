@@ -29,7 +29,7 @@
         quizQuestions:'<',
         onChange: '&',
         proceed: '<',
-        buttonOptions: '@',
+        questionBarOptions: '<',
         getAnswerClass: '<'
       },
       templateUrl: 'app/shared/stateless-components/question-bar/question-bar.html',

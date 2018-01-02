@@ -26,7 +26,6 @@
     cursor: pointer;
     min-width: 20rem;
     overflow: hidden;
-    transition: all .5s;
 
     &--text{
       border: 1px solid var(--color-grey-light-2);
@@ -36,20 +35,18 @@
       padding: .8rem 1.6rem;
       font-size: 1.7rem;
       background-color: var(--color-grey-light-1);
-      transition: all .2s;
-
-      &:hover{
-        background-color: var(--color-blue-light-1);
-      }
+      transition: background-color .2s;
     }
 
     &--image{
+      transition: transform .4s;
       border: 1px solid var(--color-grey-light-2);
       border-radius: 10%;
       height: 100%;
       overflow: hidden;
 
       img{
+        transition: transform .4s;
         width: 100%;
         height: 100%;
       }
@@ -96,5 +93,17 @@
       background-color: var(--color-orange-dark-1);
       box-shadow: var(--shadow-light);
     }
+  }
+
+  &__answer-container-hover:hover &__answer &__answer--image:not(:hover){
+    transform: scale(.9);
+  }
+
+  &__answer-container-hover &__answer &__answer--text:hover{
+    background-color: var(--color-blue-light-1);
+  }
+
+  &__answer-container-hover &__answer &__answer--image img:hover{
+    transform: scale(1.1);
   }
 }

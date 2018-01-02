@@ -10,7 +10,10 @@
             {text: 'Incorrect', type: 'progress-ui-bar__hint-container--incorrect', icon: 'glyphicon-remove'}
           ]
         },
-        button: 'Go Back To Facts',
+        questionBarOptions: {
+          btn:'Go Back To Facts',
+          checkHover: ''
+        },
         progressButtonToolbar: {
           icon: ['progress-btn-toolbar__button--correct', 'progress-btn-toolbar__button--incorrect']
         }

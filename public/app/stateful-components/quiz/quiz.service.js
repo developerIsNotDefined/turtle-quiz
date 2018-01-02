@@ -12,7 +12,10 @@
             {text: 'Unanswered', type: 'progress-ui-bar__hint-container--unanswered', icon: 'glyphicon-question-sign'}
           ]
         },
-        button: 'Continue',
+        questionBarOptions: {
+          btn:'Continue',
+          checkHover: 'question-bar-card__answer-container-hover'
+        },
         progressButtonToolbar: {
           icon: ['progress-btn-toolbar__button--answered', 'progress-btn-toolbar__button--unanswered']
         }
