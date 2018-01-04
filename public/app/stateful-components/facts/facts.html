@@ -29,7 +29,10 @@
             </div>
         </div>
 
-        <div class="facts-turtles row">
+<button class="btn--blue" ng-click="$ctrl.stopSpinner()"></button>
+
+        <div class="facts-turtles row" custom-loading="{{$ctrl.loading.turtles}}" custom-loading-not-found="Turtles data was not downloaded">
+            <div style="width: 100px; height: 100px; background-color: black" ng-click="$ctrl.startSpinner()"></div>
             <article class="facts-card col-md-4" ng-repeat="turtle in $ctrl.turtlesFacts | filter:$ctrl.search track by turtle.id">
                 <div class="facts-card__image col-12">
                     <img ng-src="{{turtle.image_url}}">
@@ -46,5 +49,6 @@
                 </div>
             </article>
         </div>
+
     </section>
 </div>

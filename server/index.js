@@ -28,6 +28,14 @@ app.use((req, res, next) => {
   next();
 })
 
+// START response delay
+app.all('*', (req, res, next) => {
+  setTimeout(() => {
+    next();
+  }, 3000);
+});
+// END response delay
+
 apiTurtlesFacts(app);
 apiQuizQuestions(app);
 apiUsers(app);
