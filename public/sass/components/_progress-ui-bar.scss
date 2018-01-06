@@ -1,14 +1,29 @@
 .progress-ui-bar{
-
-  &__hint{
-    justify-content: center;
-    align-items: center;
-  }
+  margin-top: 2rem;
 
   &__hint-container{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+  }
+
+  &__hint-text{
+    margin-bottom: .5rem;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+
+  &__hint-icon{
+   height: 3rem;
+   width: 12rem;
+  }
+
+  &__hint{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: .5rem;
 
     &--answered{
       color: var(--color-orange-light-1);

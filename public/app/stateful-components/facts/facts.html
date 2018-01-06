@@ -8,8 +8,20 @@
         <div class="navigation">
             <nav class="navigation__nav">
                 <ul class="navigation__list">
-                    <li class="navigation__item"><a class="btn-link outline-text--white" ui-sref="quiz">Start Quiz</a></li>
-                    <li class="navigation__item"><a class="btn-link outline-text--white" ui-sref="facts.authorization">Auth</a></li>
+                    <li class="navigation__item">
+                        <a class="btn-link outline-text--white" ui-sref="quiz">Start Quiz
+                            <svg class="navigation__item-icon">
+                                <use xlink:href="assets/sprite.svg#icon-graduation-cap"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="navigation__item">
+                        <a class="btn-link outline-text--white" ui-sref="facts.authorization">Auth
+                            <svg class="navigation__item-icon">
+                                <use xlink:href="assets/sprite.svg#icon-user-tie"></use>
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -24,8 +36,8 @@
                 <span class="gradient-text--red">Start Quiz</span>
             </a>
             <div class="facts-search__search-box">
-                <input type="text" placeholder="Search..." ng-model="$ctrl.search" ng-model-options="{ debounce: 500 }">
-                <span>&times;</span>
+                <input class="facts-search__input" type="text" placeholder="Search..." ng-model="$ctrl.search" ng-model-options="{ debounce: 500 }">
+                <svg class="facts-search__icon"><use xlink:href="assets/sprite.svg#icon-search"></use></svg>
             </div>
         </div>
 
@@ -44,7 +56,12 @@
                     <p class="facts-card__text-item"><span>Avarage Lifespan: </span>{{turtle.lifespan}}</p>
                     <p class="facts-card__text-item"><span>Diet: </span>{{turtle.diet}}</p>
                     <button class="btn--blue facts-card__button"
-                            ng-click="$ctrl.turtleInfo(turtle)"><span class="gradient-text--blue">Learn more &rarr;</span>
+                            ng-click="$ctrl.turtleInfo(turtle)">
+                        <span class="gradient-text--blue">Learn more
+                            <svg class="facts-card__button-icon">
+                                <use xlink:href="assets/sprite.svg#icon-graduation-cap"></use>
+                            </svg>
+                        </span>
                     </button>
                 </div>
             </article>

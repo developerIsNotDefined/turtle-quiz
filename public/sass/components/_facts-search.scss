@@ -48,39 +48,56 @@
   }
 
   &__search-box{
+    position: relative;
     padding: 1rem;
     flex: 0 0 70%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
 
-    input{
-      font-size: 1.5rem;
-      height: 100%;
-      width: 85%;
-      border-radius: 100px;
-      padding: .4rem .8rem;
-      background-color: var(--color-black);
-      border: .5rem solid var(--color-red-dark-1);
-      transition: all 1s;
+  &__input{
+    font-size: 1.5rem;
+    height: 100%;
+    width: 84%;
+    border-radius: 100px;
+    padding: .4rem .8rem;
+    background-color: var(--color-black);
+    border: .5rem solid var(--color-red-dark-1);
+    transition: all 1s;
 
-      &::placeholder{
-        color: var(--color-red-dark-1);
-        opacity: 1;
-      }
-
-      &:focus{
-        outline: none;
-        width: 100%;
-        background-color: var(--color-white);
-        border: .5rem solid var(--color-red-light-1);
-      }
-
-      &:focus::placeholder{
-        color: var(--color-red-light-1);
-        opacity: 1;
-      }
+    &::placeholder{
+      color: var(--color-red-dark-1);
+      opacity: 1;
     }
+
+    &:focus{
+      outline: none;
+      width: 100%;
+      background-color: var(--color-white);
+      border: .5rem solid var(--color-red-light-1);
+    }
+
+    &:focus::placeholder{
+      color: var(--color-red-light-1);
+      opacity: 1;
+    }
+
+    &:focus + svg.facts-search__icon{
+      right: 4%;
+      fill: var(--color-black);
+    }
+  }
+
+  &__icon{
+    position: absolute;
+    right: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 35%;
+    width: 3rem;
+    fill: var(--color-white);
+    transition: fill 1s, right 1s;
   }
 
   &__button{
@@ -94,8 +111,13 @@
     transition: all 1s;
 
     &:hover{
+      margin-left: -1rem;
       padding: 1rem;
       border: 3px solid var(--color-orange-light-1);
+    }
+
+    &:hover + div.facts-search__search-box{
+      margin-left: -1rem;
     }
   }
 }

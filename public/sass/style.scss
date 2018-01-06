@@ -6,16 +6,17 @@
 @import "base/typography";
 //
 @import "components/btn";
+@import "components/modal";
+@import "components/loader";
 @import "components/auth";
 @import "components/facts-card";
 @import "components/facts-carousel";
+@import "components/facts-modal";
 @import "components/facts-search";
 @import "components/navigation";
-@import "components/question-bar-card";
 @import "components/progress-btn-toolbar";
 @import "components/progress-ui-bar";
-@import "components/facts-modal";
-@import "components/modal";
+@import "components/question-bar-card";
 //
 @import "layout/grid";
 //@import "layout/header";

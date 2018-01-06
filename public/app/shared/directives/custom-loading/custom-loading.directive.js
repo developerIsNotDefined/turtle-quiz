@@ -8,17 +8,18 @@
       $http.get('app/shared/directives/custom-loading/custom-loading.html', {cache: $templateCache})
         .then(response => loadingSpinner = response.data);
 
-      $scope.$watch(() => {
+      const customLoadingWatcher = $scope.$watch(() => {
         return $attrs.customLoading;
       }, (value) => {
+
+        if (transcludedScope){
+          transcludedScope.$destroy();
+          transcludedScope = null;
+        }
+
         switch (value) {
           case 'true':
             $element.html(loadingSpinner);
-            if (transcludedScope){
-              transcludedScope.$destroy();
-              transcludedScope = null;
-            }
-            // $element.append('<div>hello</div>');
             break;
           case 'false':
             $element.empty();
@@ -30,15 +31,15 @@
             })
             break;
           case 'notFound':
-            if (transcludedScope){
-              transcludedScope.$destroy();
-              transcludedScope = null;
-            }
             $element.html($attrs.customLoadingNotFound ? $attrs.customLoadingNotFound : "Not found.");
             break;
         }
       });
 
+      $scope.$on('$destroy', () => {
+        customLoadingWatcher();
+        $element.remove();
+      });
     };
 
     return{

@@ -8,8 +8,8 @@
           values: [{value: 0, type: 'progress-ui-bar__inner--answered'},
             {value: 100, type: 'progress-ui-bar__outer--unanswered'}],
           hintIcons: [
-            {text: 'Answered', type: 'progress-ui-bar__hint-container--answered', icon: 'glyphicon-pencil'},
-            {text: 'Unanswered', type: 'progress-ui-bar__hint-container--unanswered', icon: 'glyphicon-question-sign'}
+            {text: 'Answered', type: 'progress-ui-bar__hint--answered', icon: 'icon-edit'},
+            {text: 'Unanswered', type: 'progress-ui-bar__hint--unanswered', icon: 'icon-help'}
           ]
         },
         questionBarOptions: {

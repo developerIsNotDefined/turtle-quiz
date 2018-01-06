@@ -68,7 +68,7 @@
 
   &::before {
     @include absoluteCover;
-    content: attr(title);
+    content: '';
     display: block;
     z-index: 1000;
     overflow: hidden;

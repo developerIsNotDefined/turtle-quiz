@@ -140,6 +140,18 @@
     background-color: var(--color-green-dark-1);
   }
 
+  &__form-button-icon{
+    height: 1.4rem;
+    width: 1.8rem;
+    margin-left: .5rem;
+    fill: var(--color-white);
+  }
+
+  &__form-button[value="Sign Out"]{
+    margin: 60% auto;
+    display: flex;
+  }
+
   &__form-button[disabled="disabled"]{
     background-color: var(--color-red-dark-1);
   }

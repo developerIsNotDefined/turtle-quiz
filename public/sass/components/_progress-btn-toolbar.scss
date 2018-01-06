@@ -13,8 +13,15 @@
   }
 
   &__button{
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+    padding: 0;
+
     &--answered{
       &::before{
+        @include svgPseudoElements;
+        background-image: url("../SVG/edit.svg");
         background-color: var(--color-blue-light-1);
       }
 
@@ -31,6 +38,8 @@
 
     &--unanswered{
       &::before{
+        @include svgPseudoElements;
+        background-image: url("../SVG/help.svg");
         background-color: var(--color-orange-light-1);
       }
 
@@ -47,6 +56,8 @@
 
     &--correct{
       &::before{
+        @include svgPseudoElements;
+        background-image: url("../SVG/calendar-check-o.svg");
         background-color: var(--color-green-light-1);
       }
 
@@ -63,6 +74,8 @@
 
     &--incorrect{
       &::before{
+        @include svgPseudoElements;
+        background-image: url("../SVG/calendar-times-o.svg");
         background-color: var(--color-red-dark-1);
       }
 

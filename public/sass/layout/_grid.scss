@@ -37,16 +37,19 @@
 
 .col-lg-3{
   flex: 0 0 calc((100% - 3 * var(--gutter-horizontal)) / 4);
+  width: calc((100% - 3 * var(--gutter-horizontal)) / 4);
   max-width: calc((100% - 3 * var(--gutter-horizontal)) / 4);
 }
 
 .col-md-4{
   flex: 0 0 calc((100% - 2 * var(--gutter-horizontal)) / 3);
+  width: calc((100% - 2 * var(--gutter-horizontal)) / 3);
   max-width: calc((100% - 2 * var(--gutter-horizontal)) / 3);
 }
 
 .col-md-6{
   flex: 0 0 calc((100% - 1 * var(--gutter-horizontal)) / 2);
+  width: calc((100% - 1 * var(--gutter-horizontal)) / 2);
   max-width: calc((100% - 1 * var(--gutter-horizontal)) / 2);
 }
 

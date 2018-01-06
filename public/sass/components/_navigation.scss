@@ -40,4 +40,11 @@
       }
     }
   }
+
+  &__item-icon{
+    height: 2rem;
+    width: 2rem;
+    margin-left: .8rem;
+    fill: var(--color-white);
+  }
 }

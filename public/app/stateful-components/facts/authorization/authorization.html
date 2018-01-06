@@ -30,12 +30,18 @@
                     <div ng-message="maxlength">Password must have maximum 20 characters</div>
                 </div>
             </div>
-            <input type="button" class="btn auth__form-button" value="Sign In"
-                   ng-disabled="authForm.inputSignInEmail.$invalid || authForm.inputSignInPassword.$invalid"
-                   ng-click="$ctrl.ok({user:$ctrl.user, method:'signIn'})">
+            <button class="btn auth__form-button" ng-click="$ctrl.ok({user:$ctrl.user, method:'signIn'})"
+                    ng-disabled="authForm.inputSignInEmail.$invalid || authForm.inputSignInPassword.$invalid">
+                sign in
+            </button>
         </div>
         <div class="auth__form-side--sign-in-out" ng-if="$ctrl.modalData.isAuthenticated">
-            <input type="button" class="btn auth__form-button" value="Sign Out" ng-click="$ctrl.ok({method:'signOut'})">
+            <button class="btn auth__form-button" value="Sign Out" ng-click="$ctrl.ok({method:'signOut'})">
+                sign out
+                <svg class="auth__form-button-icon">
+                    <use xlink:href="assets/sprite.svg#icon-power-off"></use>
+                </svg>
+            </button>
         </div>
         <div class="auth__form-side--sign-up">
             <div class="auth__form-group">
@@ -75,9 +81,10 @@
                     <div ng-message="maxlength">Password must have maximum 20 characters</div>
                 </div>
             </div>
-            <input type="button" class="btn auth__form-button" value="Sign Up"
-                   ng-disabled="authForm.inputSignUpName.$invalid || authForm.inputSignUpEmail.$invalid || authForm.inputSignUpPassword.$invalid"
-                   ng-click="$ctrl.ok({user:$ctrl.user, method:'signUp'})">
+            <button class="btn auth__form-button" ng-click="$ctrl.ok({user:$ctrl.user, method:'signUp'})"
+                    ng-disabled="authForm.inputSignUpName.$invalid || authForm.inputSignUpEmail.$invalid || authForm.inputSignUpPassword.$invalid">
+                sign up
+            </button>
         </div>
     </form>
 </div>

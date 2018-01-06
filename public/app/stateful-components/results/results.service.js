@@ -6,8 +6,8 @@
           values: [{value: 0, type: 'progress-ui-bar__inner--correct'},
             {value: 100, type: 'progress-ui-bar__outer--incorrect'}],
           hintIcons: [
-            {text: 'Correct', type: 'progress-ui-bar__hint-container--correct', icon: 'glyphicon-ok'},
-            {text: 'Incorrect', type: 'progress-ui-bar__hint-container--incorrect', icon: 'glyphicon-remove'}
+            {text: 'Correct', type: 'progress-ui-bar__hint--correct', icon: 'icon-calendar-check-o'},
+            {text: 'Incorrect', type: 'progress-ui-bar__hint--incorrect', icon: 'icon-calendar-times-o'}
           ]
         },
         questionBarOptions: {
