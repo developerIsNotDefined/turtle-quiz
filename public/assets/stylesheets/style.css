@@ -1,3 +1,25 @@
+/*
+0 - 576px: portrait phones
+576 - 768px: landscape phones
+768 - 992px: tablets
+992 - 1200px: desktops
+1200px: large desktops
+
+$breakpoint argument choices:
+- xs => 576px
+- sm => 768px
+- md => 992px
+- lg => 1200px
+- xl => 1200px +++
+
+order is important. Desktop-first approach media queries should be applied from largest-device to smallest-device.
+Otherwise undesired css-rules conflicts would be inevitable.
+Use:
+is max-width < 1200
+is max-width < 992
+is max-width < 768
+is max-width < 576
+*/
 :root {
   --color-green-light-1: #7ed56f;
   --color-green-dark-1: #28b485;
@@ -399,6 +421,30 @@ a {
   .auth__form-button[disabled="disabled"] {
     background-color: var(--color-red-dark-1); }
 
+.button-home {
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-light-2);
+  transition: background-color .5s; }
+  .button-home:hover {
+    background-color: var(--color-black); }
+  .button-home:hover .button-home__icon {
+    fill: var(--color-white); }
+  .button-home__icon {
+    height: 3rem;
+    width: 3rem;
+    fill: var(--color-black);
+    transition: fill .5s; }
+
 .facts-card {
   display: flex;
   flex-wrap: wrap;
@@ -624,6 +670,114 @@ a {
   margin-left: .8rem;
   fill: var(--color-white); }
 
+.navigation-mobile__checkbox {
+  display: none; }
+
+.navigation-mobile__button {
+  background-color: var(--color-white);
+  height: 5rem;
+  width: 5rem;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 50%;
+  z-index: 2000;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid var(--color-grey-light-2); }
+
+.navigation-mobile__background {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 2.5rem;
+  right: 2.5rem;
+  background-image: radial-gradient(farthest-corner at 100% 0, var(--color-blue-light-1) 50%, var(--color-blue-dark-1) 70%);
+  z-index: 1000;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); }
+
+.navigation-mobile__nav {
+  height: 80vh;
+  position: fixed;
+  z-index: 1500;
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center; }
+
+.navigation-mobile__list {
+  text-align: center;
+  width: 100%; }
+
+.navigation-mobile__item {
+  visibility: hidden;
+  opacity: 0;
+  margin: .5rem; }
+
+.navigation-mobile__link:link, .navigation-mobile__link:visited {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: var(--color-white);
+  text-transform: uppercase;
+  background-image: linear-gradient(120deg, transparent 0%, var(--color-green-light-1) 80%, var(--color-green-dark-1));
+  background-size: 800%;
+  transition: all .6s; }
+
+.navigation-mobile__link:hover, .navigation-mobile__link:active {
+  background-position: 100%;
+  color: var(--color-red-dark-1);
+  transform: translateX(1rem); }
+
+.navigation-mobile__checkbox:checked ~ .navigation-mobile__background {
+  transform: scale(80); }
+
+.navigation-mobile__checkbox:checked ~ .navigation-mobile__nav {
+  opacity: 1;
+  width: 100%; }
+
+.navigation-mobile__icon {
+  position: relative;
+  margin-top: 50%; }
+  .navigation-mobile__icon, .navigation-mobile__icon::before, .navigation-mobile__icon::after {
+    width: 2.1rem;
+    height: 2px;
+    background-color: var(--color-black);
+    display: inline-block; }
+  .navigation-mobile__icon::before, .navigation-mobile__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .2s; }
+  .navigation-mobile__icon::before {
+    top: -.7rem; }
+  .navigation-mobile__icon::after {
+    top: .7rem; }
+
+.navigation-mobile__button:hover .navigation-mobile__icon::before {
+  top: -.8rem; }
+
+.navigation-mobile__button:hover .navigation-mobile__icon::after {
+  top: .8rem; }
+
+.navigation-mobile__checkbox:checked + .navigation-mobile__button .navigation-mobile__icon {
+  background-color: transparent; }
+
+.navigation-mobile__checkbox:checked ~ .navigation-mobile__nav .navigation-mobile__list .navigation-mobile__item {
+  visibility: visible;
+  opacity: 1; }
+
+.navigation-mobile__checkbox:checked + .navigation-mobile__button .navigation-mobile__icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.navigation-mobile__checkbox:checked + .navigation-mobile__button .navigation-mobile__icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
+
 .progress-btn-toolbar {
   justify-content: space-between;
   align-items: center;
@@ -819,6 +973,11 @@ a {
   .question-bar-card__answer-container-hover .question-bar-card__answer .question-bar-card__answer--image img:hover {
     transform: scale(1.1); }
 
+.container {
+  padding: 0 1rem;
+  max-width: 1400px;
+  margin: 0 auto; }
+
 .row {
   display: flex;
   flex-wrap: wrap; }
@@ -849,11 +1008,6 @@ a {
 .col-12 {
   flex: 0 0 100%;
   max-width: 100%; }
-
-.container {
-  padding: 0 1rem;
-  max-width: 1400px;
-  margin: 0 auto; }
 
 .section-facts {
   margin-top: calc(var(--header-height) + .5rem); }

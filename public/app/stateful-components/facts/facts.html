@@ -1,31 +1,43 @@
 <ui-view></ui-view>
-<div>
+<div class="container">
 
     <header class="header-main row">
         <div class="header-main__logo">
             <img ng-src="assets/images/logo-transparent.png">
         </div>
-        <div class="navigation">
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item">
-                        <a class="btn-link outline-text--white" ui-sref="quiz">Start Quiz
-                            <svg class="navigation__item-icon">
-                                <use xlink:href="assets/sprite.svg#icon-graduation-cap"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="navigation__item">
-                        <a class="btn-link outline-text--white" ui-sref="facts.authorization">Auth
-                            <svg class="navigation__item-icon">
-                                <use xlink:href="assets/sprite.svg#icon-user-tie"></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="navigation">
+            <ul class="navigation__list">
+                <li class="navigation__item">
+                    <a class="btn-link outline-text--white" ui-sref="quiz">Quiz
+                        <svg class="navigation__item-icon">
+                            <use xlink:href="assets/sprite.svg#icon-graduation-cap"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a class="btn-link outline-text--white" ui-sref="facts.authorization">Auth
+                        <svg class="navigation__item-icon">
+                            <use xlink:href="assets/sprite.svg#icon-user-tie"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
+
+    <!--<header class="navigation-mobile">-->
+        <!--<input type="checkbox" class="navigation-mobile__checkbox" id="navigation-mobile-toggle">-->
+        <!--<label for="navigation-mobile-toggle" class="navigation-mobile__button">-->
+            <!--<span class="navigation-mobile__icon">&nbsp;</span>-->
+        <!--</label>-->
+        <!--<div class="navigation-mobile__background">&nbsp;</div>-->
+        <!--<nav class="navigation-mobile__nav">-->
+            <!--<ul class="navigation-mobile__list">-->
+                <!--<li class="navigation-mobile__item"><a ui-sref="quiz" class="navigation-mobile__link">Start Quiz</a></li>-->
+                <!--<li class="navigation-mobile__item"><a ui-sref="facts.authorization" class="navigation-mobile__link">Authorization</a></li>-->
+            <!--</ul>-->
+        <!--</nav>-->
+    <!--</header>-->
 
     <section class="section-facts">
 
