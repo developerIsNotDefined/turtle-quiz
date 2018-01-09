@@ -6,6 +6,13 @@
   }
 }
 
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @mixin absoluteCover{
   position: absolute;
   top: 0;
@@ -19,6 +26,18 @@
   background-repeat: no-repeat;
   background-origin: content-box;
   background-size: 80%;
+
+  @include respond(xl){
+    background-size: 50%;
+  }
+
+  @include respond(sm){
+    background-size: 60%;
+  }
+
+  @include respond(xs){
+    background-size: 80%;
+  }
 }
 
 //MEDIA QUERY MANAGER
@@ -44,6 +63,7 @@ is max-width < 992
 is max-width < 768
 is max-width < 576
 */
+
 @mixin respond($breakpoint){
   // less than 576px
   @if $breakpoint == xs{

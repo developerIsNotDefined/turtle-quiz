@@ -1,12 +1,17 @@
 .auth{
   position: relative;
-  min-width: 360px;
-  min-height: 550px;
+  width: 50vw;
+  max-width: 45rem;
+  min-height: 90vh;
   display: flex;
   justify-content: space-around;
   align-content: space-around;
   flex-flow: row wrap;
   padding: 1rem;
+
+  @include respond(md){
+    width: 60vw;
+  }
 
   &::before{
     @include absoluteCover;
@@ -45,16 +50,21 @@
   }
 
   &__menu-label{
+    font-size: 2rem;
     color: var(--color-white);
-    padding: .5rem;
+    padding: .8rem 1rem .5rem 1rem;
     display: inline-block;
     cursor: pointer;
+
+    @include respond(xl){
+      font-size: 2.4rem;
+    }
   }
 
   &__form{
     border-top: 3px solid var(--color-orange-light-1);
-    margin-top: -.8rem;
-    min-height: 450px;
+    margin-top: 1rem;
+    min-height: 80vh;
     position: relative;
     perspective: 10000px;
     transform-style: preserve-3d;
@@ -62,6 +72,10 @@
   }
 
   &__form-side--sign-in-out, &__form-side--sign-up{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
     transition: all 2s;
     backface-visibility: hidden;
   }
@@ -71,13 +85,17 @@
     position: relative;
 
     input{
-      font-size: 1.5rem;
-      height: 3rem;
+      font-size: 1.75rem;
       width: 100%;
       padding: .8rem 1.2rem;
       border-bottom: 3px solid transparent;
       border-radius: 3px;
       background:rgba(255,255,255,.3);
+
+      @include respond(xl){
+        font-size: 2rem;
+        padding: 1rem 1.5rem;
+      }
     }
 
     input.ng-valid{
@@ -95,18 +113,27 @@
     input:placeholder-shown + label{
       opacity: 0;
       visibility: hidden;
-      transform: translateY(3rem);
+      transform: translateY(3.5rem);
       font-size: .1rem;
+
+      @include respond(xl){
+        transform: translateY(4.5rem);
+      }
     }
 
     label{
       position: absolute;
-      top: 0;
+      top: -.3rem;
       left: 1rem;
-      font-size: 1rem;
       transition: all 1s;
       color: var(--color-white);
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+
+      @include respond(xl){
+        top: -.7rem;
+        left: 1.4rem;
+        font-size: 1.75rem;
+      }
     }
   }
 
@@ -127,7 +154,11 @@
   &__form-input-helper{
     margin-top: 1rem;
     color: var(--color-red-dark-1);
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+
+    @include respond(xl){
+      font-size: 1.5rem;
+    }
   }
 
   &__form-button{
@@ -136,20 +167,22 @@
     color: var(--color-white);
     margin-top: 1rem;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 2rem;
     background-color: var(--color-green-dark-1);
   }
 
   &__form-button-icon{
-    height: 1.4rem;
-    width: 1.8rem;
-    margin-left: .5rem;
+    height: 1.8rem;
+    width: 1.5rem;
+    margin-left: 1rem;
     fill: var(--color-white);
   }
 
   &__form-button[value="Sign Out"]{
-    margin: 60% auto;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
+    align-items: center;
   }
 
   &__form-button[disabled="disabled"]{

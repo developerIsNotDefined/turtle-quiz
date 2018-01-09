@@ -18,14 +18,25 @@
       text-shadow: var(--text-shadow-question);
       text-align: center;
       font-size: 2.4rem;
-      font-weight: 300;
+      font-weight: 600;
+
+      @include respond(xl){
+        font-size: 3rem;
+      }
     }
   }
 
   &__answer{
+    margin-left: auto;
+    margin-right: auto;
+    flex: 0 0 47%;
     cursor: pointer;
-    min-width: 20rem;
     overflow: hidden;
+
+    @include respond(sm){
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
 
     &--text{
       border: 1px solid var(--color-grey-light-2);
@@ -39,11 +50,22 @@
     }
 
     &--image{
+      margin-left: auto;
+      margin-right: auto;
       transition: transform .4s;
       border: 1px solid var(--color-grey-light-2);
       border-radius: 10%;
       height: 100%;
       overflow: hidden;
+
+      @include respond(sm){
+        height: 20rem;
+      }
+
+      @include respond(xs){
+        height: 18rem;
+        max-width: 25rem;
+      }
 
       img{
         transition: transform .4s;
@@ -82,7 +104,7 @@
 
   &__button{
     font-size: 2.2rem;
-    font-weight: 300;
+    font-weight: 600;
     width: 100%;
     text-transform: uppercase;
     background-color: var(--color-orange-light-1);

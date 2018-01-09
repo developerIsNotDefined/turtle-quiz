@@ -3,7 +3,7 @@
         <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
     </div>
     <div class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
-        <div class="col-md-6 question-bar-card__answer"
+        <div class="col-sm-12 col-md-6 question-bar-card__answer"
              ng-click="$ctrl.selectAnswer(answer.id)"
              ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
             <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"

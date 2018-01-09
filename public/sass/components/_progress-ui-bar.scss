@@ -10,12 +10,22 @@
   &__hint-text{
     margin-bottom: .5rem;
     text-transform: uppercase;
-    font-size: 1.5rem;
+    font-size: 2rem;
+
+    @include respond(sm){
+      font-size: 1.4rem;
+      margin-bottom: 0;
+    }
   }
 
   &__hint-icon{
    height: 3rem;
    width: 12rem;
+
+    @include respond(sm){
+      height: 2.5rem;
+      width: 10rem;
+    }
   }
 
   &__hint{
@@ -46,11 +56,6 @@
     }
   }
 
-  &__hint-text{
-    text-transform: uppercase;
-    font-size: 2rem;
-  }
-
   &__container{
     border: 1px solid var(--color-grey-light-2);
     height: 3rem;
@@ -62,13 +67,27 @@
     width: 100%;
 
     &--unanswered{
-      background-image: var(--pb-background-image--unanswered);
       background-size: var(--pb-background-size);
+      background-image:
+              -webkit-linear-gradient(45deg,
+                      transparent 33%, rgba(0, 0, 0, .15) 33%,
+                      rgba(0,0, 0, .15) 66%, transparent 66%),
+              -webkit-linear-gradient(top,
+                      rgba(255, 255, 255, .25),
+                      rgba(0, 0, 0, .25)),
+              -webkit-linear-gradient(left, #ffb900, #ffb900);
     }
 
     &--incorrect{
-      background-image: var(--pb-background-image--incorrect);
       background-size: var(--pb-background-size);
+      background-image:
+              -webkit-linear-gradient(45deg,
+                      transparent 33%, rgba(0, 0, 0, .15) 33%,
+                      rgba(0,0, 0, .15) 66%, transparent 66%),
+              -webkit-linear-gradient(top,
+                      rgba(255, 255, 255, .25),
+                      rgba(0, 0, 0, .25)),
+              -webkit-linear-gradient(left, #BA265D, #BA265D);
     }
   }
 
@@ -79,13 +98,27 @@
     transition: width 2s ease;
 
     &--answered{
-      background-image: var(--pb-background-image--answered);
       background-size: var(--pb-background-size);
+      background-image:
+              -webkit-linear-gradient(-45deg,
+                      transparent 33%, rgba(0, 0, 0, .15) 33%,
+                      rgba(0,0, 0, .15) 66%, transparent 66%),
+              -webkit-linear-gradient(top,
+                      rgba(255, 255, 255, .25),
+                      rgba(0, 0, 0, .25)),
+              -webkit-linear-gradient(left, #2998ff, #2998ff);
     }
 
     &--correct{
-      background-image: var(--pb-background-image--correct);
       background-size: var(--pb-background-size);
+      background-image:
+              -webkit-linear-gradient(-45deg,
+                      transparent 33%, rgba(0, 0, 0, .15) 33%,
+                      rgba(0,0, 0, .15) 66%, transparent 66%),
+              -webkit-linear-gradient(top,
+                      rgba(255, 255, 255, .25),
+                      rgba(0, 0, 0, .25)),
+              -webkit-linear-gradient(left, #7ed56f, #7ed56f);
     }
   }
 }

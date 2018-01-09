@@ -1,3 +1,9 @@
+body{
+  font-family: "Josefin Slab", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 .outline-text{
   &--white{
     -webkit-text-stroke: 1px var(--color-white);
@@ -9,7 +15,7 @@
 }
 
 .gradient-text{
-  &--blue, &--red{
+  &--blue, &--red, &--orange{
     -webkit-background-clip: text;
     color: transparent;
   }
@@ -20,6 +26,10 @@
 
   &--red{
     background-image: linear-gradient(to left, var(--color-red-light-1), var(--color-red-dark-1));
+  }
+
+  &--orange{
+    background-image: linear-gradient(to left, var(--color-orange-light-1), var(--color-orange-dark-1));
   }
 }
 
