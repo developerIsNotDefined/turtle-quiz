@@ -1,0 +1,5 @@
+.mb-medium-sm-dev{
+  @include respond(sm){
+    margin-bottom: 1rem !important;
+  }
+}

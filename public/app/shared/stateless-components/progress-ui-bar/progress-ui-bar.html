@@ -1,15 +1,15 @@
-<div class="progress-ui-bar row">
-    <div class="progress-ui-bar__hint-container col-12">
+<article class="progress-ui-bar row">
+    <section class="progress-ui-bar__hint-container col-12 mb-medium-sm-dev">
         <div class="progress-ui-bar__hint"
              ng-repeat="hintIcon in ::$ctrl.cssOptions.hintIcons"
              ng-class="::hintIcon.type">
                 <span class="progress-ui-bar__hint-text">{{hintIcon.text}}</span>
                 <svg class="progress-ui-bar__hint-icon"><use xlink:href="" ng-attr-xlink:href="{{'assets/sprite.svg#' + hintIcon.icon}}"></use></svg>
         </div>
-    </div>
-    <div class="progress-ui-bar__container col-12">
+    </section>
+    <section class="progress-ui-bar__container col-12 mb-medium-sm-dev">
         <div class="progress-ui-bar__outer" ng-class="::$ctrl.cssOptions.values[1].type">
             <div class="progress-ui-bar__inner" ng-style="$ctrl.cssCompleted" ng-class="::$ctrl.cssOptions.values[0].type"></div>
         </div>
-    </div>
-</div>
+    </section>
+</article>

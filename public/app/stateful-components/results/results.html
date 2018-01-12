@@ -1,35 +1,37 @@
-<div class="container">
-    <a class="button-home" ui-sref="facts">
-        <svg class="button-home__icon">
-            <use xlink:href="assets/sprite.svg#icon-home"></use>
-        </svg>
-    </a>
+<section class="section-results">
+    <div class="container">
+        <a class="btn-home" ui-sref="facts">
+            <svg class="btn-home__icon">
+                <use xlink:href="assets/sprite.svg#icon-home"></use>
+            </svg>
+        </a>
 
-    <progress-ui-bar
-            css-options="$ctrl.cssOptions.progressBar"
-            num-answered-questions="$ctrl.numCorrectAnswers"
-            quiz-length="$ctrl.quizQuestions.length">
-    </progress-ui-bar>
+        <progress-ui-bar
+                css-options="$ctrl.cssOptions.progressBar"
+                num-answered-questions="$ctrl.numCorrectAnswers"
+                quiz-length="$ctrl.quizQuestions.length">
+        </progress-ui-bar>
 
-    <progress-button-toolbar
-            progress-toolbar-options="$ctrl.cssOptions.progressButtonToolbar"
-            on-change="$ctrl.onUpdateProgressButtonToolbar($event);"
-            quiz-questions="$ctrl.quizQuestions"
-            get-progress-class="$ctrl.getProgressClass"
-            active-question="$ctrl.activeQuestion">
-    </progress-button-toolbar>
+        <progress-button-toolbar
+                progress-toolbar-options="$ctrl.cssOptions.progressButtonToolbar"
+                on-change="$ctrl.onUpdateProgressButtonToolbar($event);"
+                quiz-questions="$ctrl.quizQuestions"
+                get-progress-class="$ctrl.getProgressClass"
+                active-question="$ctrl.activeQuestion">
+        </progress-button-toolbar>
 
-    <confirm-finalise
-            ng-if="$ctrl.askForConfirm"
-            on-result="$ctrl.onConfirmFinalise($event);">
-    </confirm-finalise>
+        <confirm-finalise
+                ng-if="$ctrl.askForConfirm"
+                on-result="$ctrl.onConfirmFinalise($event);">
+        </confirm-finalise>
 
-    <question-bar
-            proceed="$ctrl.proceed"
-            on-change="$ctrl.onUpdateQuestionBar($event);"
-            active-question="$ctrl.activeQuestion"
-            quiz-questions="$ctrl.quizQuestions"
-            question-bar-options="$ctrl.cssOptions.questionBarOptions"
-            get-answer-class="$ctrl.getAnswerClass">
-    </question-bar>
-</div>
+        <question-bar
+                proceed="$ctrl.proceed"
+                on-change="$ctrl.onUpdateQuestionBar($event);"
+                active-question="$ctrl.activeQuestion"
+                quiz-questions="$ctrl.quizQuestions"
+                question-bar-options="$ctrl.cssOptions.questionBarOptions"
+                get-answer-class="$ctrl.getAnswerClass">
+        </question-bar>
+    </div>
+</section>

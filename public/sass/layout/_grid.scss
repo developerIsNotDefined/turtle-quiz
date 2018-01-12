@@ -94,18 +94,6 @@
       max-width: 100%;
     }
   }
-
-  @include respond(xs){
-    [class*="col-sm-12"]{
-      margin-right: 0;
-    }
-
-    .col-sm-12{
-      flex: 0 0 100%;
-      width: 100%;
-      max-width: 100%;
-    }
-  }
 }
 
 .col-12{

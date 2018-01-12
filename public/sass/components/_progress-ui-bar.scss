@@ -1,6 +1,4 @@
 .progress-ui-bar{
-  margin-top: 2rem;
-
   &__hint-container{
     display: flex;
     justify-content: space-around;
@@ -13,7 +11,7 @@
     font-size: 2rem;
 
     @include respond(sm){
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 0;
     }
   }
@@ -29,6 +27,7 @@
   }
 
   &__hint{
+    max-width: 50vw;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
@@ -59,6 +58,10 @@
   &__container{
     border: 1px solid var(--color-grey-light-2);
     height: 3rem;
+
+    @include respond(sm){
+      height: 2rem;
+    }
   }
 
   &__outer{
@@ -69,25 +72,25 @@
     &--unanswered{
       background-size: var(--pb-background-size);
       background-image:
-              -webkit-linear-gradient(45deg,
+              linear-gradient(45deg,
                       transparent 33%, rgba(0, 0, 0, .15) 33%,
                       rgba(0,0, 0, .15) 66%, transparent 66%),
-              -webkit-linear-gradient(top,
+              linear-gradient(to top,
                       rgba(255, 255, 255, .25),
                       rgba(0, 0, 0, .25)),
-              -webkit-linear-gradient(left, #ffb900, #ffb900);
+              linear-gradient(to left, #ffb900, #ffb900);
     }
 
     &--incorrect{
       background-size: var(--pb-background-size);
       background-image:
-              -webkit-linear-gradient(45deg,
+              linear-gradient(45deg,
                       transparent 33%, rgba(0, 0, 0, .15) 33%,
                       rgba(0,0, 0, .15) 66%, transparent 66%),
-              -webkit-linear-gradient(top,
+              linear-gradient(to top,
                       rgba(255, 255, 255, .25),
                       rgba(0, 0, 0, .25)),
-              -webkit-linear-gradient(left, #BA265D, #BA265D);
+              linear-gradient(to left, #BA265D, #BA265D);
     }
   }
 
@@ -100,25 +103,25 @@
     &--answered{
       background-size: var(--pb-background-size);
       background-image:
-              -webkit-linear-gradient(-45deg,
+              linear-gradient(-45deg,
                       transparent 33%, rgba(0, 0, 0, .15) 33%,
                       rgba(0,0, 0, .15) 66%, transparent 66%),
-              -webkit-linear-gradient(top,
+              linear-gradient(to top,
                       rgba(255, 255, 255, .25),
                       rgba(0, 0, 0, .25)),
-              -webkit-linear-gradient(left, #2998ff, #2998ff);
+              linear-gradient(to left, #2998ff, #2998ff);
     }
 
     &--correct{
       background-size: var(--pb-background-size);
       background-image:
-              -webkit-linear-gradient(-45deg,
+              linear-gradient(-45deg,
                       transparent 33%, rgba(0, 0, 0, .15) 33%,
                       rgba(0,0, 0, .15) 66%, transparent 66%),
-              -webkit-linear-gradient(top,
+              linear-gradient(to top,
                       rgba(255, 255, 255, .25),
                       rgba(0, 0, 0, .25)),
-              -webkit-linear-gradient(left, #7ed56f, #7ed56f);
+              linear-gradient(to left, #7ed56f, #7ed56f);
     }
   }
 }

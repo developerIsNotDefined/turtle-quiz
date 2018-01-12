@@ -6,7 +6,7 @@
   margin-bottom: 2rem;
   padding: 2rem 1rem;
   box-shadow: var(--shadow-light);
-  transition: all .5s;
+  transition: box-shadow .5s;
 
   @include respond(xl){
     padding: 2rem;
@@ -42,93 +42,94 @@
       }
     }
 
-    &--answered{
-      &::before{
-        @include svgPseudoElements;
-        background-image: url("../SVG/edit.svg");
-        background-color: var(--color-blue-light-1);
+    &--answered::before, &--unanswered::before, &--correct::before, &--incorrect::before{
+      background-position: center;
+      background-repeat: no-repeat;
+      background-origin: content-box;
+      background-size: 80%;
+
+      @include respond(xl){
+        background-size: 50%;
       }
 
-      &:hover::before{
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                    0 -1px 0 #2266dd,
-                    0 -2px 0 -0.5px #2266dd,
-                    0 -3px 0 -1px #2266dd,
-                    0 -4px 0 -1.5px #2266dd,
-                    0 -5px 0 -2.5px #2266dd,
-                    0 -7px 0.2px -4px #2266dd;
-      }
-    }
-
-    &--unanswered{
-      &::before{
-        @include svgPseudoElements;
-        background-image: url("../SVG/help.svg");
-        background-color: var(--color-orange-light-1);
+      @include respond(sm){
+        background-size: 60%;
       }
 
-      &:hover::before{
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                    0 -1px 0 #cc8800,
-                    0 -2px 0 -0.5px #cc8800,
-                    0 -3px 0 -1px #cc8800,
-                    0 -4px 0 -1.5px #cc8800,
-                    0 -5px 0 -2.5px #cc8800,
-                    0 -7px 0.2px -4px #cc8800;
+      @include respond(xs){
+        background-size: 80%;
       }
     }
 
-    &--correct{
-      &::before{
-        @include svgPseudoElements;
-        background-image: url("../SVG/calendar-check-o.svg");
-        background-color: var(--color-green-light-1);
-      }
-
-      &:hover::before{
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                    0 -1px 0 #118833,
-                    0 -2px 0 -0.5px #118833,
-                    0 -3px 0 -1px #118833,
-                    0 -4px 0 -1.5px #118833,
-                    0 -5px 0 -2.5px #118833,
-                    0 -7px 0.2px -4px #118833;
-      }
+    &--answered::before{
+      background-image: url("../SVG/edit.svg");
+      background-color: var(--color-blue-light-1);
     }
 
-    &--incorrect{
-      &::before{
-        @include svgPseudoElements;
+    &--answered:hover::before, &--answered.progress-btn-toolbar__button--active::before{
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                  0 -1px 0 #2266dd,
+                  0 -2px 0 -0.5px #2266dd,
+                  0 -3px 0 -1px #2266dd,
+                  0 -4px 0 -1.5px #2266dd,
+                  0 -5px 0 -2.5px #2266dd,
+                  0 -7px 0.2px -4px #2266dd;
+    }
+
+    &--unanswered::before{
+      background-image: url("../SVG/help.svg");
+      background-color: var(--color-orange-light-1);
+    }
+
+    &--unanswered:hover::before, &--unanswered.progress-btn-toolbar__button--active::before{
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                  0 -1px 0 #cc8800,
+                  0 -2px 0 -0.5px #cc8800,
+                  0 -3px 0 -1px #cc8800,
+                  0 -4px 0 -1.5px #cc8800,
+                  0 -5px 0 -2.5px #cc8800,
+                  0 -7px 0.2px -4px #cc8800;
+    }
+
+    &--correct::before{
+      background-image: url("../SVG/calendar-check-o.svg");
+      background-color: var(--color-green-light-1);
+    }
+
+    &--correct:hover::before, &--correct.progress-btn-toolbar__button--active::before{
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                  0 -1px 0 #118833,
+                  0 -2px 0 -0.5px #118833,
+                  0 -3px 0 -1px #118833,
+                  0 -4px 0 -1.5px #118833,
+                  0 -5px 0 -2.5px #118833,
+                  0 -7px 0.2px -4px #118833;
+    }
+
+    &--incorrect::before{
         background-image: url("../SVG/calendar-times-o.svg");
         background-color: var(--color-red-dark-1);
-      }
+    }
 
-      &:hover::before{
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                    0 -1px 0 #cc2211,
-                    0 -2px 0 -0.5px #cc2211,
-                    0 -3px 0 -1px #cc2211,
-                    0 -4px 0 -1.5px #cc2211,
-                    0 -5px 0 -2.5px #cc2211,
-                    0 -7px 0.2px -4px #cc2211;
-      }
+    &--incorrect:hover::before, &--incorrect.progress-btn-toolbar__button--active::before{
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                  0 -1px 0 #cc2211,
+                  0 -2px 0 -0.5px #cc2211,
+                  0 -3px 0 -1px #cc2211,
+                  0 -4px 0 -1.5px #cc2211,
+                  0 -5px 0 -2.5px #cc2211,
+                  0 -7px 0.2px -4px #cc2211;
     }
 
     &--active{
-      &:hover{
-        border-radius: .25rem !important;
-        box-shadow: none !important;
-      }
+      z-index: 1000;
+      border-radius: .25rem .25rem 0 0;
+      box-shadow: var( --shadow-btn-accordion-inner);
 
-      &:hover::before {
-        border-radius: .25rem !important;
-        transform: rotateX(0) !important;
-        color: var(--color-white) !important;
-        box-shadow: none !important;
-      }
-
-      &:active{
-        top: 0 !important;
+      &::before{
+        border-radius: .25rem .25rem 0 0;
+        transform: rotateX(-120deg);
+        color: transparent;
       }
     }
   }

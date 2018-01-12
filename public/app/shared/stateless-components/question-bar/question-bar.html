@@ -1,9 +1,9 @@
 <article class="question-bar-card">
-    <div class="question-bar-card__question col-12 ">
+    <header class="question-bar-card__question col-12 ">
         <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
-    </div>
-    <div class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
-        <div class="col-sm-12 col-md-6 question-bar-card__answer"
+    </header>
+    <section class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
+        <article class="col-sm-12 col-md-6 question-bar-card__answer"
              ng-click="$ctrl.selectAnswer(answer.id)"
              ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
             <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"
@@ -16,9 +16,9 @@
                  ng-class="$ctrl.getAnswerClass(answer.id)">
                 <img ng-src="{{answer.answer}}">
             </div>
-        </div>
-    </div>
-    <div class="col-12">
+        </article>
+    </section>
+    <footer class="col-12">
         <button class="btn question-bar-card__button" ng-click="$ctrl.proceed()">{{::$ctrl.questionBarOptions.btn}}</button>
-    </div>
+    </footer>
 </article>

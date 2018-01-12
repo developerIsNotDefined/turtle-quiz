@@ -1,35 +1,35 @@
-<div class="auth">
+<section class="auth">
     <input id="menu-tab-sign-in-out" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-in-out" checked>
     <label for="menu-tab-sign-in-out" class="auth__menu-label">SIGN IN/OUT</label>
     <input id="menu-tab-sign-up" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-up">
     <label for="menu-tab-sign-up" class="auth__menu-label">SIGN UP</label>
     <form class="auth__form col-12" name="authForm">
         <div class="auth__form-side--sign-in-out" ng-if="!$ctrl.modalData.isAuthenticated">
-            <div class="auth__form-group">
+            <article class="auth__form-group">
                 <input id="input-sign-in-email" name="inputSignInEmail" ng-model="$ctrl.user.email"
                        type="email" ng-maxlength="40" required placeholder="Email"
                        ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
                 <label for="input-sign-in-email">Email</label>
-                <div class="auth__form-input-helper"
+                <footer class="auth__form-input-helper"
                      ng-messages="authForm.inputSignInEmail.$error"
                      ng-if='authForm.inputSignInEmail.$dirty' ng-cloak>
                     <div ng-message="required">Email is required</div>
                     <div ng-message="pattern">Email is invalid. Example: email@gmail.com</div>
                     <div ng-message="maxlength">Username must have maximum 40 characters</div>
-                </div>
-            </div>
-            <div class="auth__form-group">
+                </footer>
+            </article>
+            <article class="auth__form-group">
                 <input id="input-sign-in-password" name="inputSignInPassword" ng-model="$ctrl.user.password" type="password"
                        ng-minlength="6" ng-maxlength="20" required placeholder="Password">
                 <label for="input-sign-in-password">Password</label>
-                <div class="auth__form-input-helper"
+                <footer class="auth__form-input-helper"
                      ng-messages="authForm.inputSignInPassword.$error"
                      ng-if='authForm.inputSignInPassword.$dirty' ng-cloak>
                     <div ng-message="required">Password is required</div>
                     <div ng-message="minlength">Password must have minimum 6 characters</div>
                     <div ng-message="maxlength">Password must have maximum 20 characters</div>
-                </div>
-            </div>
+                </footer>
+            </article>
             <button class="btn auth__form-button" ng-click="$ctrl.ok({user:$ctrl.user, method:'signIn'})"
                     ng-disabled="authForm.inputSignInEmail.$invalid || authForm.inputSignInPassword.$invalid">
                 sign in
@@ -44,47 +44,47 @@
             </button>
         </div>
         <div class="auth__form-side--sign-up">
-            <div class="auth__form-group">
+            <article class="auth__form-group">
                 <input id="input-sign-up-name" name="inputSignUpName" ng-model="$ctrl.user.name" type="text"
                        ng-minlength="6" ng-maxlength="20" required placeholder="Username">
                 <label for="input-sign-up-name">Username</label>
-                <div class="auth__form-input-helper"
+                <footer class="auth__form-input-helper"
                      ng-messages="authForm.inputSignUpName.$error"
                      ng-if='authForm.inputSignUpName.$dirty' ng-cloak>
                     <div ng-message="required">Username is required</div>
                     <div ng-message="minlength">Username must have minimum 6 characters</div>
                     <div ng-message="maxlength">Username must have maximum 20 characters</div>
-                </div>
-            </div>
-            <div class="auth__form-group">
+                </footer>
+            </article>
+            <article class="auth__form-group">
                 <input id="input-sign-up-email" name="inputSignUpEmail" ng-model="$ctrl.user.email"
                        type="email" ng-maxlength="40" required placeholder="Email"
                        ng-pattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
                 <label for="input-sign-up-email">Email</label>
-                <div class="auth__form-input-helper"
+                <footer class="auth__form-input-helper"
                      ng-messages="authForm.inputSignUpEmail.$error"
                      ng-if='authForm.inputSignUpEmail.$dirty' ng-cloak>
                     <div ng-message="required">Email is required</div>
                     <div ng-message="pattern">Email is invalid. Example: email@gmail.com</div>
                     <div ng-message="maxlength">Username must have maximum 40 characters</div>
-                </div>
-            </div>
-            <div class="auth__form-group">
+                </footer>
+            </article>
+            <article class="auth__form-group">
                 <input id="input-sign-up-password" name="inputSignUpPassword" ng-model="$ctrl.user.password"
                        type="password" ng-minlength="6" ng-maxlength="20" required placeholder="Password">
                 <label for="input-sign-up-password">Password</label>
-                <div class="auth__form-input-helper"
+                <footer class="auth__form-input-helper"
                      ng-messages="authForm.inputSignUpPassword.$error"
                      ng-if='authForm.inputSignUpPassword.$dirty' ng-cloak>
                     <div ng-message="required">Password is required</div>
                     <div ng-message="minlength">Password must have minimum 6 characters</div>
                     <div ng-message="maxlength">Password must have maximum 20 characters</div>
-                </div>
-            </div>
+                </footer>
+            </article>
             <button class="btn auth__form-button" ng-click="$ctrl.ok({user:$ctrl.user, method:'signUp'})"
                     ng-disabled="authForm.inputSignUpName.$invalid || authForm.inputSignUpEmail.$invalid || authForm.inputSignUpPassword.$invalid">
                 sign up
             </button>
         </div>
     </form>
-</div>
+</section>
