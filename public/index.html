@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="keywords" content="Turtles, quiz, green turtle, loggerhead turtle, leatherback turtle, hawksbill sea turtle, alligator snapping turtle, olive ridley turtle, kemp's ridley sea turtle, eastern snake necked turtle">
+    <meta name="description" content="Turtle quiz. Information about turtles. We give away knowledge, let's learn and become clever together.">
 
     <title>Turtle Quiz</title>
 
@@ -14,8 +17,8 @@
 </head>
 <body>
 
-    <div custom-modal class="modal-container" ng-show="modalShown">
-        <custom-modal ng-if="modalShown" class="modal"></custom-modal>
+    <div custom-modal class="modal-container" ng-show="__modalShown__">
+        <custom-modal ng-if="__modalShown__" class="modal"></custom-modal>
     </div>
 
     <ui-view></ui-view>
@@ -33,9 +36,7 @@
 <script src="app/app.js"></script>
 
 <!--directives-->
-<script src="app/shared/directives/custom-carousel/carousel.directive.js"></script>
-<script src="app/shared/directives/custom-carousel/carousel-inspector.directive.js"></script>
-<script src="app/shared/directives/custom-loading/custom-loading.directive.js"></script>
+<script src="app/shared/directives/custom-carousel.directive.js"></script>
 <script src="app/shared/directives/custom-modal.directive.js"></script>
 <!--directives-->
 
@@ -90,7 +91,8 @@
 
 <!--shared components-->
 <script src="app/shared/stateless-components/confirm.finalise/confirm.finalise.component.js"></script>
-<script src="app/shared/stateless-components/modal-component/custom-modal.component.js"></script>
+<script src="app/shared/stateless-components/custom-loading/custom-loading.component.js"></script>
+<script src="app/shared/stateless-components/custom-modal/custom-modal.component.js"></script>
 <script src="app/shared/stateless-components/progress-button-toolbar/progress-button-toolbar.component.js"></script>
 <script src="app/shared/stateless-components/progress-ui-bar/progress-ui-bar.component.js"></script>
 <script src="app/shared/stateless-components/question-bar/question-bar.component.js"></script>

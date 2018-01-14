@@ -1,21 +1,44 @@
 .facts-carousel{
-  display: block;
   position: relative;
   z-index: 10;
-  max-width: 1000px;
-  min-width: 400px;
-  height: calc(100vh - var(--header-height));
+  max-width: 47rem;
+  max-height: 40.5rem;
+  min-width: 20rem;
+  min-height: 20rem;
+  height: 75vh;
+  width: 65vw;
   overflow: hidden;
   margin: 0 auto;
+  box-shadow: var(--shadow-facts-carousel);
+
+  @include respond(xl){
+    max-height: 1000px;
+    height: calc(100vh - var(--header-height) - 4rem);
+    max-width: 1000px;
+  }
+
+  @include respond(md){
+    max-height: 29rem;
+    width: 100%;
+  }
+
+  @include respond(sm){
+    height: 90vh;
+  }
+
+  @include respond(xs){
+    height: auto;
+  }
 
   &__list{
+    height: 100%;
     position: absolute;
     transition: all 1s;
   }
 
   &__item{
     display: inline-block;
-    height: calc(100vh - var(--header-height));
+    height: 100%;
   }
 
   &__image{
@@ -23,19 +46,32 @@
     height: 100%;
   }
 
-  &__button{
+  &__button-prev, &__button-next{
+    cursor: pointer;
     position: absolute;
-    font-size: 3rem;
-    color: #fff;
+    font-size: 4rem;
+    color: var(--color-white);
     top: 50%;
     transform: translateY(-50%);
 
-    &--prev{
-      left: 1rem;
+    @include respond(xl){
+      font-size: 5rem;
     }
 
-    &--next{
-      right: 1rem;
+    @include respond(sm){
+      font-size: 3rem;
     }
+
+    @include respond(xs){
+      font-size: 2.5rem;
+    }
+  }
+
+  &__button-prev{
+    left: 1rem;
+  }
+
+  &__button-next{
+    right: 1rem;
   }
 }

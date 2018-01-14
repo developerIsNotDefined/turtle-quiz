@@ -1,24 +1,27 @@
-<article class="question-bar-card">
-    <header class="question-bar-card__question col-12 ">
-        <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
-    </header>
-    <section class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
-        <article class="col-sm-12 col-md-6 question-bar-card__answer"
-             ng-click="$ctrl.selectAnswer(answer.id)"
-             ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
+<section ng-switch="$ctrl.loading">
+    <article class="question-bar-card" ng-switch-default>
+        <header class="question-bar-card__question col-12 ">
+            <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
+        </header>
+        <section class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
+            <article class="col-sm-12 col-md-6 question-bar-card__answer"
+                     ng-click="$ctrl.selectAnswer(answer.id)"
+                     ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
             <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"
                   class="question-bar-card__answer--text"
                   ng-class="$ctrl.getAnswerClass(answer.id)">
                 {{answer.answer}}
             </span>
-            <div ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'"
-                 class="question-bar-card__answer--image"
-                 ng-class="$ctrl.getAnswerClass(answer.id)">
-                <img ng-src="{{answer.answer}}">
-            </div>
-        </article>
-    </section>
-    <footer class="col-12">
-        <button class="btn question-bar-card__button" ng-click="$ctrl.proceed()">{{::$ctrl.questionBarOptions.btn}}</button>
-    </footer>
-</article>
+                <div ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'"
+                     class="question-bar-card__answer--image"
+                     ng-class="$ctrl.getAnswerClass(answer.id)">
+                    <img ng-src="{{answer.answer}}">
+                </div>
+            </article>
+        </section>
+        <footer class="col-12">
+            <button class="btn question-bar-card__button" ng-click="$ctrl.proceed()">{{::$ctrl.questionBarOptions.btn}}</button>
+        </footer>
+    </article>
+    <custom-loading-component ng-switch-when="true"></custom-loading-component>
+</section>

@@ -1,17 +1,16 @@
 <article custom-carousel
      carousel-interval="3000"
      carousel-items-num="{{::$ctrl.turtlesFacts.length}}"
-     carousel-inspector
-     carousel-controls="true"
-     carousel-mobile="true"
+     ng-swipe-left="nextSlide()"
+     ng-swipe-right="prevSlide()"
      class="facts-carousel">
     <ul class="facts-carousel__list">
-        <li class="facts-carousel__item" ng-repeat="slide in ::$ctrl.turtlesFacts track by slide.id" index="slide.id">
+        <li class="facts-carousel__item" ng-repeat="slide in ::$ctrl.turtlesFacts track by slide.id">
             <img ng-src="{{::slide.image_url}}" class="facts-carousel__image">
         </li>
     </ul>
-    <div class="facts-carousel__button facts-carousel__button--prev"
-         carousel-controls="prev"> &#8678; </div>
-    <div class="facts-carousel__button facts-carousel__button--next"
-         carousel-controls="next"> &#8680; </div>
+    <div class="facts-carousel__button-prev"
+         ng-click="prevSlide()"> &#8678; </div>
+    <div class="facts-carousel__button-next"
+         ng-click="nextSlide()"> &#8680; </div>
 </article>

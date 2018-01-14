@@ -41,11 +41,21 @@
 <section class="section-facts">
     <div class="container">
 
-        <!--<carousel-turtles turtles-facts="$ctrl.turtlesFacts"></carousel-turtles>-->
+        <div class="section-facts__bg-video-container">
+            <video class="section-facts__bg-video" autoplay muted loop>
+                <source src="assets/images/coast.mp4" type="video/mp4">
+                <source src="assets/images/coast.webm" type="video/webm">
+            </video>
+            <article ng-switch="$ctrl.loading.turtlesFacts">
+                <carousel-turtles turtles-facts="$ctrl.turtlesFacts" ng-switch-default></carousel-turtles>
+                <custom-loading-component ng-switch-when="true"></custom-loading-component>
+            </article>
+        </div>
 
         <article class="facts-search row">
             <div class="facts-search__search-box">
-                <input class="facts-search__input" type="text" placeholder="Search..." ng-model="$ctrl.search" ng-model-options="{ debounce: 500 }">
+                <input class="facts-search__input" type="text" placeholder="Search..." ng-model="$ctrl.search"
+                       ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 }}">
                 <svg class="facts-search__icon"><use xlink:href="assets/sprite.svg#icon-search"></use></svg>
             </div>
             <a ui-sref="quiz" class="facts-search__button btn-link--blue">
@@ -53,30 +63,68 @@
             </a>
         </article>
 
-        <button class="btn--blue" ng-click="$ctrl.stopSpinner()"></button>
-
-        <div class="facts-turtles row" custom-loading="{{$ctrl.loading.turtles}}" custom-loading-not-found="Turtles data was not downloaded">
-            <!--<div style="width: 100px; height: 100px; background-color: black" ng-click="$ctrl.startSpinner()"></div>-->
-            <article class="facts-card col-sm-12 col-md-6 col-lg-4 col-xl-3" ng-repeat="turtle in $ctrl.turtlesFacts | filter:$ctrl.search track by turtle.id">
-                <div class="facts-card__image col-12">
-                    <img ng-src="{{turtle.image_url}}">
-                </div>
-                <div class="col-12">
-                    <h4 class="facts-card__text-heading outline-text--white gradient-text--blue">{{turtle.type}}</h4>
-                    <p class="facts-card__text-item"><span>Locations: </span>{{turtle.locations}}</p>
-                    <p class="facts-card__text-item"><span>Size: </span>{{turtle.size}}</p>
-                    <p class="facts-card__text-item"><span>Avarage Lifespan: </span>{{turtle.lifespan}}</p>
-                    <p class="facts-card__text-item"><span>Diet: </span>{{turtle.diet}}</p>
-                    <button class="btn--blue facts-card__button"
-                            ng-click="$ctrl.turtleInfo(turtle)">
+        <section ng-switch="$ctrl.loading.turtlesFacts">
+            <div class="facts-turtles row" ng-switch-default>
+                <article class="facts-card col-sm-12 col-md-6 col-lg-4 col-xl-3" ng-repeat="turtle in $ctrl.turtlesFacts | filter:$ctrl.search track by turtle.id">
+                    <div class="facts-card__image col-12">
+                        <img ng-src="{{turtle.image_url}}">
+                    </div>
+                    <div class="col-12">
+                        <h4 class="facts-card__text-heading outline-text--white gradient-text--blue">{{turtle.type}}</h4>
+                        <p class="facts-card__text-item"><span>Locations: </span>{{turtle.locations}}</p>
+                        <p class="facts-card__text-item"><span>Size: </span>{{turtle.size}}</p>
+                        <p class="facts-card__text-item"><span>Avarage Lifespan: </span>{{turtle.lifespan}}</p>
+                        <p class="facts-card__text-item"><span>Diet: </span>{{turtle.diet}}</p>
+                        <button class="btn--blue facts-card__button"
+                                ng-click="$ctrl.turtleInfo(turtle)">
                         <span class="gradient-text--blue">Learn more
                             <svg class="facts-card__button-icon">
                                 <use xlink:href="assets/sprite.svg#icon-graduation-cap"></use>
                             </svg>
                         </span>
-                    </button>
-                </div>
-            </article>
-        </div>
+                        </button>
+                    </div>
+                </article>
+            </div>
+            <custom-loading-component ng-switch-when="true"></custom-loading-component>
+        </section>
+
     </div>
 </section>
+
+<footer class="footer-main row">
+    <div class="footer-main__logo col-xs-12">
+        <img ng-src="assets/images/logo-transparent.png">
+    </div>
+    <ul class="row col-xs-12 footer-main__social-list">
+        <li class="footer-main__social-item">
+            <a href="#" class="footer-main__social-link">
+                <svg class="footer-main__social-icon">
+                    <use xlink:href="assets/sprite.svg#icon-facebook2"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="footer-main__social-item">
+            <a href="#" class="footer-main__social-link">
+                <svg class="footer-main__social-icon">
+                    <use xlink:href="assets/sprite.svg#icon-twitter"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="footer-main__social-item">
+            <a href="#" class="footer-main__social-link">
+                <svg class="footer-main__social-icon">
+                    <use xlink:href="assets/sprite.svg#icon-youtube"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="footer-main__social-item">
+            <a href="#" class="footer-main__social-link">
+                <svg class="footer-main__social-icon">
+                    <use xlink:href="assets/sprite.svg#icon-instagram"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+    <p class="footer-main__copyright">Copyright &copy; 2018 by Turtle Quiz. All rights reserved.</p>
+</footer>

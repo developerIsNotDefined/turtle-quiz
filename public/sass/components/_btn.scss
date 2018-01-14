@@ -115,6 +115,23 @@
   border: 1px solid var(--color-grey-light-2);
   transition: background-color .5s;
 
+  @include respond(xl){
+    height: 5rem;
+    width: 5rem;
+  }
+
+  @include respond(sm){
+    top: 1rem;
+    right: 1rem;
+    height: 3.5rem;
+    width: 3.5rem;
+  }
+
+  @include respond(xs){
+    height: 3rem;
+    width: 3rem;
+  }
+
   &:hover{
     background-color: var(--color-black);
   }
@@ -128,5 +145,15 @@
     width: 3rem;
     fill: var(--color-black);
     transition: fill .5s;
+
+    @include respond(xl){
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+
+    @include respond(xs){
+      height: 2.5rem;
+      width: 2.5rem;
+    }
   }
 }

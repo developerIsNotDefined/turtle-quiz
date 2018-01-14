@@ -6,6 +6,7 @@
       this.quizService = quizService;
       this.toastr = toastr;
 
+      this.loading = {quizQuestions: 'true'};
       this.numAnsweredQuestions = 0;
       this.askForConfirm = false;
       this.activeQuestion = 0;
@@ -16,14 +17,16 @@
     }
 
     $onInit() {
+      this.loading.quizQuestions = 'true';
       this.quizService.getQuizQuestions()
-        .then(quizQuestions => {
-          this.toastr.success('Questions for quiz have been successfully loaded!');
-          this.quizQuestions = quizQuestions.sort((a, b) => a.id - b.id);
+        .then(response => {
+          if(!response.cashed){
+            this.toastr.success('Questions for quiz have been successfully loaded!');
+          }
+          this.quizQuestions = response.data.sort((a, b) => a.id - b.id);
         })
-        .catch(error => {
-          this.toastr.error('Questions for quiz haven\'t been loaded!', {timeOut: 0});
-        });
+        .catch(error => this.toastr.error('Questions for quiz haven\'t been loaded!', {timeOut: 0}))
+        .finally(() => this.loading.quizQuestions = 'false');
     }
 
     onUpdateQuestionBar(event) {

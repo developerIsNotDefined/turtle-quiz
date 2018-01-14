@@ -1,0 +1,11 @@
+.section-results{
+  margin-top: 2rem;
+
+  @include respond(sm){
+    margin-top: 1rem;
+  }
+
+  @include respond(xs){
+    margin-top: 0;
+  }
+}

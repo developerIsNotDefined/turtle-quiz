@@ -6,9 +6,21 @@ $loader-animation-delay-step: .1s;
 
 .loader{
   margin: 10vh auto;
-  width: 3vw;
-  height: 10vh;
+  width: 4vw;
+  min-width: 1rem;
+  height: 15vh;
+  min-height: 4rem;
   position: relative;
+
+  @include respond(xl){
+    height: 20vh;
+    width: 5vw;
+  }
+
+  @include respond(sm){
+    height: 6rem;
+    width: 3rem;
+  }
 
   &__item {
     width: 100%;

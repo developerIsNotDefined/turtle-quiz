@@ -30,7 +30,8 @@
         onChange: '&',
         proceed: '<',
         questionBarOptions: '<',
-        getAnswerClass: '<'
+        getAnswerClass: '<',
+        loading: '<'
       },
       templateUrl: 'app/shared/stateless-components/question-bar/question-bar.html',
       controller

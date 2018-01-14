@@ -1,15 +1,20 @@
 (function(){
   const service = class{
-    constructor($http, toastr){
+    constructor($http, toastr, $q){
       this.$http = $http;
       this.toastr = toastr;
+      this.$q = $q;
     }
 
     getTurtlesData(){
-      return new Promise((resolve, reject) => {
+      return this.$q((resolve, reject) => {
         let turtlesFacts = sessionStorage.getItem('turtlesFacts');
         if (turtlesFacts !== null){
-          return resolve(JSON.parse(turtlesFacts));
+          const response = {
+            data: JSON.parse(turtlesFacts),
+            cashed: true
+          }
+          return resolve(response);
         }
         this.toastr.info('Turtles information is being loaded!');
         this.$http({
@@ -19,16 +24,14 @@
         })
           .then(response => {
             sessionStorage.setItem('turtlesFacts', JSON.stringify(response.data));
-            resolve(response.data);
+            resolve(response);
           })
-          .catch(error => {
-            reject(error);
-          });
+          .catch(error => reject(error));
       });
     }
   };
 
-  service.$inject = ['$http', 'toastr'];
+  service.$inject = ['$http', 'toastr', '$q'];
 
   angular
     .module('turtleApp')

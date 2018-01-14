@@ -1,7 +1,7 @@
 (function(){
   const directive = ($rootScope, modalService) => {
     const link = ($scope, $element, $attrs) => {
-      $scope.modalShown = false;
+      $scope.__modalShown__ = false;
 
       const modalContainerClickListener = $element.on("click", $event => {
         if ($element[0] !== $event.target){
@@ -10,9 +10,9 @@
         $scope.$apply(modalService.reject());
       });
 
-      const modalOpenListener = $rootScope.$on("modal.open", $event => $scope.modalShown = true);
+      const modalOpenListener = $rootScope.$on("modal.open", $event => $scope.__modalShown__ = true);
 
-      const modalCloseListener = $rootScope.$on("modal.close", $event => $scope.modalShown = false);
+      const modalCloseListener = $rootScope.$on("modal.close", $event => $scope.__modalShown__ = false);
 
       $scope.$on('$destroy', () => {
         modalContainerClickListener();
@@ -24,7 +24,6 @@
 
     return{
       restrict: "A",
-      scope: true,
       link
     }
 

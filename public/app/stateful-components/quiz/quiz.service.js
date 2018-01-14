@@ -1,8 +1,10 @@
 (function(){
   const service = class {
-    constructor($http, toastr){
+    constructor($http, toastr, $q){
       this.$http = $http;
       this.toastr = toastr;
+      this.$q = $q;
+
       this.cssOptions = {
         progressBar : {
           values: [{value: 0, type: 'progress-ui-bar__inner--answered'},
@@ -23,20 +25,25 @@
     }
 
     getQuizQuestions(){
-      return new Promise((resolve, reject) => {
+      return this.$q((resolve, reject) => {
         let quizQuestions = sessionStorage.getItem('quizQuestions');
         if (quizQuestions !== null){
-          return resolve(JSON.parse(quizQuestions));
+          const response = {
+            data: JSON.parse(quizQuestions),
+            cashed: true
+          }
+          return resolve(response);
         }
         this.toastr.info('Questions for quiz are being loaded!');
-        this.$http.get('http://localhost:3003/api/quizQuestions')
+        this.$http({
+          url: 'http://localhost:3003/api/quizQuestions',
+          method: 'GET'
+        })
           .then(response => {
             sessionStorage.setItem('quizQuestions', JSON.stringify(response.data));
-            resolve(response.data);
+            resolve(response);
           })
-          .catch(error => {
-            reject(error);
-          });
+          .catch(error => reject(error));
       });
     }
 
@@ -93,7 +100,7 @@
     }
   };
 
-  service.$inject = ['$http', 'toastr'];
+  service.$inject = ['$http', 'toastr', '$q'];
 
   angular
     .module('turtleApp')

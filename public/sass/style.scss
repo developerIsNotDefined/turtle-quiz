@@ -3,6 +3,7 @@
 //
 @import "layout/grid";
 @import "layout/header";
+@import "layout/footer";
 //
 @import "base/animations";
 @import "base/base";
@@ -21,7 +22,7 @@
 @import "components/progress-ui-bar";
 @import "components/question-bar-card";
 //
-@import "pages/facts";
 @import "pages/page-error";
-@import "pages/quiz";
-@import "pages/results";
+@import "pages/page-facts";
+@import "pages/page-quiz";
+@import "pages/page-results";

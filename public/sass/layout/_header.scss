@@ -4,6 +4,11 @@
   top: 0;
   left: 0;
   z-index: 100;
+  transition: box-shadow .4s;
+
+  &:hover{
+    box-shadow: var(--shadow-header);
+  }
 
   @include respond(md){
     display: none;
@@ -81,11 +86,11 @@
 
   &__button{
     background-color: var(--color-white);
-    height: 5rem;
-    width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
     position: fixed;
-    top: 2rem;
-    right: 2rem;
+    top: 1.5rem;
+    right: 1.5rem;
     border-radius: 50%;
     z-index: 2000;
     text-align: center;
@@ -93,20 +98,27 @@
     border: 1px solid var(--color-grey-light-2);
 
     @include respond(sm){
-      height: 4rem;
-      width: 4rem;
+      height: 3.75rem;
+      width: 3.75rem;
       top: 1rem;
       right: 1rem;
+    }
+
+    @include respond(xs){
+      height: 3.25rem;
+      width: 3.25rem;
+      top: .75rem;
+      right: .75rem;
     }
   }
 
   &__background{
-    height: 4rem;
-    width: 4rem;
+    height: 3.5rem;
+    width: 3.5rem;
     border-radius: 50%;
     position: fixed;
-    top: 2.5rem;
-    right: 2.5rem;
+    top: 2rem;
+    right: 2rem;
     background-image: radial-gradient(farthest-corner at 100% 0, var(--color-blue-light-1) 50%, var(--color-blue-dark-1) 70%);
     z-index: 1000;
     transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -116,6 +128,13 @@
       width: 3rem;
       top: 1.5rem;
       right: 1.5rem;
+    }
+
+    @include respond(xs){
+      height: 2.5rem;
+      width: 2.5rem;
+      top: 1rem;
+      right: 1rem;
     }
   }
 
@@ -178,13 +197,17 @@
     margin-top: 50%;
 
     &, &::before, &::after{
-      width: 2.1rem;
+      width: 2rem;
       height: 2px;
       background-color: var(--color-black);
       display: inline-block;
 
       @include respond(sm){
-        width: 1.8rem;
+        width: 1.65rem;
+      }
+
+      @include respond(xs){
+        width: 1.5rem;
       }
     }
 
@@ -199,7 +222,11 @@
       top: -.7rem;
 
       @include respond(sm){
-        top: -.6rem;
+        top: -.55rem;
+      }
+
+      @include respond(xs){
+        top: -.5rem;
       }
     }
 
@@ -207,7 +234,11 @@
       top: .7rem;
 
       @include respond(sm){
-        top: .6rem;
+        top: .55rem;
+      }
+
+      @include respond(xs){
+        top: .5rem;
       }
     }
   }
@@ -216,7 +247,11 @@
     top: -.8rem;
 
     @include respond(sm){
-      top: -.7rem;
+      top: -.65rem;
+    }
+
+    @include respond(xs){
+      top: -.6rem;
     }
   }
 
@@ -224,7 +259,11 @@
     top: .8rem;
 
     @include respond(sm){
-      top: .7rem;
+      top: .65rem;
+    }
+
+    @include respond(xs){
+      top: .6rem;
     }
   }
 

@@ -25,7 +25,37 @@
   display: flex;
   flex-wrap: wrap;
 
-  [class*="col-l"], [class*="col-m"], [class*="col-s"], [class*="col-12"]{
+  @include respond(xl){
+    [class*="col-xl"]{
+      margin-bottom: var(--gutter-vertical);
+    }
+  }
+
+  @include respond(lg){
+    [class*="col-lg"]{
+      margin-bottom: var(--gutter-vertical);
+    }
+  }
+
+  @include respond(md){
+    [class*="col-md"]{
+      margin-bottom: var(--gutter-vertical);
+    }
+  }
+
+  @include respond(sm){
+    [class*="col-sm"]{
+      margin-bottom: var(--gutter-vertical);
+    }
+  }
+
+  @include respond(xs){
+    [class*="col-xs"]{
+      margin-bottom: var(--gutter-vertical);
+    }
+  }
+
+  [class*="col-12"]{
     margin-bottom: var(--gutter-vertical);
   }
 
@@ -89,6 +119,18 @@
     }
 
     .col-sm-12{
+      flex: 0 0 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  @include respond(xs){
+    [class*="col-xs-12"]{
+      margin-right: 0;
+    }
+
+    .col-xs-12{
       flex: 0 0 100%;
       width: 100%;
       max-width: 100%;

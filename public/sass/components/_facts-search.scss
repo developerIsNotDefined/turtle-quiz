@@ -2,10 +2,14 @@
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  margin: 2rem auto;
+  margin: 0 auto 2rem auto;
   position: relative;
   background-color: var(--color-grey-light-1);
   transition: all .5s;
+
+  @include respond(sm){
+    margin-bottom: 1rem;
+  }
 
   @include respond(xs){
     padding: 1rem 0;
@@ -13,7 +17,7 @@
 
   &:hover{
     box-shadow: var(--shadow-facts-search);
-    margin: 4rem auto;
+    margin: 2rem auto;
 
     &::before, &::after{
       height: 1rem;

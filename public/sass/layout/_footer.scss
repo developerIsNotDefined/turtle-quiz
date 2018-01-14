@@ -1,0 +1,59 @@
+.footer-main{
+  padding: 1rem 0;
+  background-image: linear-gradient(to right, var(--color-blue-light-1), var(--color-green-dark-1));
+  transition: box-shadow .4s;
+
+  &:hover{
+    box-shadow: var(--shadow-footer);
+  }
+
+  &__logo{
+    text-align: center;
+    width: 50%;
+
+    img{
+      width: 8rem;
+      height: 5rem;
+    }
+  }
+
+  &__social-list{
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__social-item{
+    margin: 0 1rem;
+
+    @include respond(sm){
+      margin: 0 .5rem;
+    }
+  }
+
+  &__social-icon{
+    height: 2rem;
+    width: 2rem;
+    transition: fill .4s;
+
+    @include respond(xl){
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    &:hover{
+      fill: var(--color-white);
+    }
+  }
+
+  &__copyright{
+    text-align: center;
+    margin: 1rem auto 0 auto;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    @include respond(xs){
+      margin: 0 auto;
+    }
+  }
+}

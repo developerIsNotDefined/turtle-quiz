@@ -5,22 +5,21 @@
       this.factsService = factsService;
       this.toastr = toastr;
 
-      this.loading = {};
+      this.loading = {turtlesFacts: 'true'};
       this.search = "";
     }
 
     $onInit() {
-      this.loading.turtles = 'true';
+      this.loading.turtlesFacts = 'true';
       this.factsService.getTurtlesData()
-        .then(turtlesFacts => {
-          this.toastr.success('Turtles information has been successfully loaded!');
-          this.turtlesFacts = turtlesFacts;
-          this.loading.turtles = 'false';
+        .then(response => {
+          if(!response.cashed){
+            this.toastr.success('Turtles information has been successfully loaded!');
+          }
+          this.turtlesFacts = response.data;
         })
-        .catch(error => {
-          this.toastr.error('Turtles information hasn\'t been loaded!', {timeOut: 0});
-          this.loading.turtles = 'notFound';
-        });
+        .catch(error => this.toastr.error('Turtles information hasn\'t been loaded!', {timeOut: 0}))
+        .finally(() => this.loading.turtlesFacts = 'false');
     }
 
     turtleInfo(activeTurtle) {
@@ -28,16 +27,6 @@
         id: activeTurtle.id+1,
         activeTurtle: activeTurtle
       });
-    }
-
-    startSpinner(){
-      this.loading.turtles = 'true';
-      console.log('starting spinner...');
-    }
-
-    stopSpinner(){
-      this.loading.turtles = 'false';
-      console.log('ending spinner...');
     }
   };
 
