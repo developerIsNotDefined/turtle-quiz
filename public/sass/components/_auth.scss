@@ -15,7 +15,7 @@
 
   @include respond(sm){
     width: 75vw;
-    padding: 1rem 0 0 0;
+    padding: 0;
   }
 
   @include respond(xs){
@@ -220,5 +220,20 @@
 
   &__form-button[disabled="disabled"]{
     background-color: var(--color-red-dark-1);
+  }
+
+  &__modal-button-close{
+    display: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 1.25rem;
+    color: var(--color-green-dark-1);
+    background-color: var(--color-orange-light-1);
+    height: 2.5rem;
+
+    @include respond(sm){
+      display: flex;
+    }
   }
 }

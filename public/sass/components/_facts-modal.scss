@@ -2,7 +2,7 @@
   padding: 1rem;
   width: 50vw;
   max-height: 80vh;
-  overflow-y: auto;
+  overflow-y: scroll;
 
   @include respond(xl){
     padding: 1rem 2rem;
@@ -52,23 +52,23 @@
 
   &__info{
     margin-top: -1rem;
+  }
 
-    p{
-      color: var(--color-green-dark-1);
-      font-size: 1.5rem;
+  &__info-item{
+    color: var(--color-green-dark-1);
+    font-size: 1.5rem;
+
+    @include respond(xl){
+      font-size: 1.8rem;
+    }
+
+    span{
+      color: var(--color-red-dark-1);
+      font-size: 1.8rem;
+      font-weight: 700;
 
       @include respond(xl){
-        font-size: 1.8rem;
-      }
-
-      span{
-        color: var(--color-red-dark-1);
-        font-size: 1.8rem;
-        font-weight: 700;
-
-        @include respond(xl){
-          font-size: 2.2rem;
-        }
+        font-size: 2.2rem;
       }
     }
   }

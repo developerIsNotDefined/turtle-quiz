@@ -20,11 +20,6 @@
                 active-question="$ctrl.activeQuestion">
         </progress-button-toolbar>
 
-        <confirm-finalise
-                ng-if="$ctrl.askForConfirm"
-                on-result="$ctrl.onConfirmFinalise($event);">
-        </confirm-finalise>
-
         <question-bar
                 proceed="$ctrl.proceed"
                 on-change="$ctrl.onUpdateQuestionBar($event);"

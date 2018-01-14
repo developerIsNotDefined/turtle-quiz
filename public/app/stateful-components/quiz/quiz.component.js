@@ -1,14 +1,14 @@
 (function(){
   const controller = class {
-    constructor(dataService, $state, quizService, toastr){
+    constructor(dataService, $state, quizService, toastr, modalService){
       this.dataService = dataService;
       this.$state = $state;
       this.quizService = quizService;
       this.toastr = toastr;
+      this.modalService = modalService;
 
       this.loading = {quizQuestions: 'true'};
       this.numAnsweredQuestions = 0;
-      this.askForConfirm = false;
       this.activeQuestion = 0;
       this.cssOptions = quizService.cssOptions;
       this.getAnswerClass = quizService.getAnswerClass;
@@ -38,8 +38,8 @@
         this.activeQuestion = event.activeQuestion;
       }
 
-      if(typeof event.askForConfirm !== 'undefined'){
-        this.askForConfirm = event.askForConfirm;
+      if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
+        this.confirm();
       }
     }
 
@@ -49,21 +49,24 @@
       }
     }
 
-    onConfirmFinalise(event) {
-      if(event.confirmed === true){
-        this.dataService.markQuiz(this.quizQuestions);
-        this.$state.go('results',{
-          quizQuestions: this.quizQuestions
-        });
-      }
-
-      if(event.confirmed === false){
-        this.askForConfirm = false;
-      }
+    confirm(){
+      this.modalService.open({
+        templateUrl: 'app/shared/templates/confirm.tpl.html',
+        data:{
+          message: 'You won\'t be able to change your answers. Quiz will be completed in case you agree.'
+        }
+      })
+        .then(() => {
+          this.dataService.markQuiz(this.quizQuestions);
+          this.$state.go('results',{
+            quizQuestions: this.quizQuestions
+          });
+        })
+        .catch(() => {});
     }
   };
 
-  controller.$inject = ['dataService', '$state', 'quizService', 'toastr'];
+  controller.$inject = ['dataService', '$state', 'quizService', 'toastr', 'modalService'];
 
   angular
     .module('turtleApp')

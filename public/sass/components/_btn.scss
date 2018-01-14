@@ -157,3 +157,63 @@
     }
   }
 }
+
+.btn-modal-close{
+  cursor: pointer;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  border: 3px solid var(--color-green-light-1);
+  transition: border-color .4s;
+
+  @include respond(sm){
+    top: .5rem;
+    right: .5rem;
+    transform: translate(0,0);
+  }
+
+  &:hover{
+    border-color: var(--color-green-dark-1);
+  }
+
+  &:hover &__icon::before{
+    background-color: var(--color-red-dark-1);
+  }
+
+  &:hover &__icon::after{
+    background-color: var(--color-red-dark-1);
+  }
+
+  &__icon, &__icon::before, &__icon::after{
+    position: absolute;
+    top: 50%;
+  }
+
+  &__icon{
+    height: 0;
+    left: 0;
+  }
+
+  &__icon::before, &__icon::after{
+    width: 2rem;
+    height: 4px;
+    background-color: var(--color-orange-dark-1);
+    display: inline-block;
+    content: "";
+    left: 55%;
+    transition: background-color .4s;
+  }
+
+  &__icon::before{
+    transform: rotate(135deg) translateX(-2px);
+  }
+
+  &__icon::after{
+    transform: rotate(-135deg) translateY(2px);
+  }
+}

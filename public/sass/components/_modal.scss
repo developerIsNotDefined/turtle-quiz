@@ -1,18 +1,19 @@
-.modal-container {
+.modal-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0,0,0,.8);
   @include absoluteCover;
   position: fixed;
+  border-radius: 2%;
   z-index: 10000;
 }
 
-.modal-container.ng-hide {
-  background-color: rgba( 0, 0, 0, 0 );
+.modal-container.ng-hide{
+  background-color: rgba(0,0,0,0);
 }
 
-.modal-container.ng-hide-remove.ng-hide-remove-active {
+.modal-container.ng-hide-remove.ng-hide-remove-active{
   transition: 1s ease-out all ;
 }
 
@@ -20,7 +21,8 @@
   transition: 1s ease-out all ;
 }
 
-.modal {
+.modal{
+  position: relative;
   box-shadow: var(--shadow-modal-default);
   background-color: #FAFAFA;
 }

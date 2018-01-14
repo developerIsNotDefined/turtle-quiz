@@ -6,30 +6,53 @@ body{
 
 .outline-text{
   &--white{
-    -webkit-text-stroke: 1px var(--color-white);
-    //text-shadow: -1px -1px 0 var(--color-white),
-    //1px -1px 0 var(--color-white),
-    //-1px 1px 0 var(--color-white),
-    //1px 1px 0 var(--color-white);
+    text-shadow: -1px -1px 0 var(--color-white),
+                 1px -1px 0 var(--color-white),
+                 -1px 1px 0 var(--color-white),
+                 1px 1px 0 var(--color-white);
+    
+    @supports (-webkit-text-stroke: 1px var(--color-white)){
+      text-shadow: none;
+      -webkit-text-stroke: 1px var(--color-white);
+    }
   }
 }
 
 .gradient-text{
-  &--blue, &--red, &--orange{
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
   &--blue{
-    background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1));
+    color: var(--color-blue-dark-1);
+    @supports (-webkit-background-clip: text){
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to left, var(--color-blue-light-1), var(--color-blue-dark-1));
+    }
   }
 
   &--red{
-    background-image: linear-gradient(to left, var(--color-red-light-1), var(--color-red-dark-1));
+    color: var(--color-red-dark-1);
+    @supports (-webkit-background-clip: text){
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to left, var(--color-red-light-1), var(--color-red-dark-1));
+    }
   }
 
   &--orange{
-    background-image: linear-gradient(to left, var(--color-orange-light-1), var(--color-orange-dark-1));
+    color: var(--color-orange-dark-1);
+    @supports (-webkit-background-clip: text){
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to left, var(--color-orange-light-1), var(--color-orange-dark-1));
+    }
+  }
+
+  &--green{
+    color: var(--color-green-dark-1);
+    @supports (-webkit-background-clip: text){
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to left, var(--color-green-light-1), var(--color-green-dark-1));
+    }
   }
 }
 

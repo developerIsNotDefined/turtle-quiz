@@ -1,17 +1,17 @@
 <section ng-switch="$ctrl.loading">
-    <article class="question-bar-card" ng-switch-default>
-        <header class="question-bar-card__question col-12 ">
-            <p>{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</p>
+    <article class="question-bar-card row" ng-switch-default>
+        <header class="col-12">
+            <h3 class="question-bar-card__question">{{$ctrl.activeQuestion + 1 + ". " + $ctrl.quizQuestions[$ctrl.activeQuestion].text}}</h3>
         </header>
-        <section class="row col-12" ng-class="::$ctrl.questionBarOptions.checkHover">
-            <article class="col-sm-12 col-md-6 question-bar-card__answer"
+        <section class="row col-12 mb-zero" ng-class="::$ctrl.questionBarOptions.checkHover">
+            <article class="col-sm-12 question-bar-card__answer"
                      ng-click="$ctrl.selectAnswer(answer.id)"
                      ng-repeat="answer in $ctrl.quizQuestions[$ctrl.activeQuestion].possibilities track by answer.id">
-            <span ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"
+            <h4 ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'text'"
                   class="question-bar-card__answer--text"
                   ng-class="$ctrl.getAnswerClass(answer.id)">
                 {{answer.answer}}
-            </span>
+            </h4>
                 <div ng-if="$ctrl.quizQuestions[$ctrl.activeQuestion].type === 'image'"
                      class="question-bar-card__answer--image"
                      ng-class="$ctrl.getAnswerClass(answer.id)">
@@ -19,7 +19,7 @@
                 </div>
             </article>
         </section>
-        <footer class="col-12">
+        <footer class="col-12 mb-zero">
             <button class="btn question-bar-card__button" ng-click="$ctrl.proceed()">{{::$ctrl.questionBarOptions.btn}}</button>
         </footer>
     </article>

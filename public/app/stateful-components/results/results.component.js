@@ -1,12 +1,12 @@
 (function(){
   const controller = class{
-    constructor(dataService, $state, resultsService, toastr){
+    constructor(dataService, $state, resultsService, toastr, modalService){
       this.$state = $state;
       this.dataService = dataService;
       this.toastr = toastr;
+      this.modalService = modalService;
 
       this.numCorrectAnswers = dataService.numCorrect;
-      this.askForConfirm = false;
       this.activeQuestion = 0;
       this.quizQuestions = dataService.quizQuestions;
       this.cssOptions = resultsService.cssOptions;
@@ -20,8 +20,8 @@
     }
 
     onUpdateQuestionBar(event) {
-      if(typeof event.askForConfirm !== 'undefined'){
-        this.askForConfirm = event.askForConfirm;
+      if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
+        this.confirm();
       }
     }
 
@@ -31,19 +31,22 @@
       }
     }
 
-    onConfirmFinalise(event) {
-      if(typeof event.confirmed !== 'undefined'){
-        if(event.confirmed === true){
+    confirm(){
+      this.modalService.open({
+        templateUrl: 'app/shared/templates/confirm.tpl.html',
+        data:{
+          message: 'You won\'t be able to see your results in case you agree.'
+        }
+      })
+        .then(() => {
           this.dataService.resetQuiz();
           this.$state.go('facts');
-        } else {
-          this.askForConfirm = false;
-        }
-      }
+        })
+        .catch(() => {});
     }
   };
 
-  controller.$inject = ['dataService', '$state', 'resultsService', 'toastr'];
+  controller.$inject = ['dataService', '$state', 'resultsService', 'toastr', 'modalService'];
 
   angular
     .module('turtleApp')

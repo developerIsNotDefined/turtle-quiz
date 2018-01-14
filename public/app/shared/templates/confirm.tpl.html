@@ -1,0 +1,13 @@
+<div class="btn-modal-close" ng-click="$ctrl.cancel()"><span class="btn-modal-close__icon">&nbsp;</span></div>
+<article class="confirm">
+    <header class="confirm__header">
+        <p class="gradient-text--red">Are you sure?</p>
+    </header>
+    <div class="confirm__body">
+        <h4 class="gradient-text--blue">{{$ctrl.modalData.message}}</h4>
+    </div>
+    <footer class="confirm__footer">
+        <button class="btn confirm__footer-button--ok" ng-click="$ctrl.ok()">Yes</button>
+        <button class="btn confirm__footer-button--cancel" ng-click="$ctrl.cancel()">No</button>
+    </footer>
+</article>
