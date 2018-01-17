@@ -1,34 +1,31 @@
-(function(){
-  const controller = class {
-    constructor($rootScope, modalService) {
-      this.$rootScope = $rootScope;
-      this.modalService = modalService;
-    }
+const controller = class {
+  constructor($rootScope, modalService) {
+    this.$rootScope = $rootScope;
+    this.modalService = modalService;
+  }
 
-    $onInit(){
-      this.templateUrl = this.modalService.modalConfig().templateUrl;
-      this.modalData = this.modalService.modalConfig().data;
-    }
+  $onInit(){
+    this.templateUrl = this.modalService.modalConfig().templateUrl;
+    this.modalData = this.modalService.modalConfig().data;
+  }
 
-    ok(data){
-      this.modalService.resolve(data);
-    }
+  ok(data){
+    this.modalService.resolve(data);
+  }
 
-    cancel(reason){
-      this.modalService.reject(reason);
-    }
-  };
+  cancel(reason){
+    this.modalService.reject(reason);
+  }
+};
 
-  controller.$inject = ['$rootScope', 'modalService'];
+controller.$inject = ['$rootScope', 'modalService'];
 
-  angular
-    .module('turtleApp')
-    .component('customModal', {
-      bindings:{},
-      controller,
-      template: '<ng-include src="$ctrl.templateUrl"></ng-include>'
-    });
-})();
+export default {
+  bindings:{},
+  controller,
+  template: '<ng-include src="$ctrl.templateUrl"></ng-include>'
+}
+
 // (function(){
 //   const controller = class {
 //     constructor($rootScope, modalService) {

@@ -1,5 +1,4 @@
-(function(){
-  const config = ($httpProvider, jwtOptionsProvider, $stateProvider) => {
+const config = ($httpProvider, jwtOptionsProvider, $stateProvider) => {
     $stateProvider
       .state('facts.authorization', {
         url: '/authorization',
@@ -16,10 +15,6 @@
     $httpProvider.interceptors.push('jwtInterceptor');
   };
 
-  config.$inject = ['$httpProvider', 'jwtOptionsProvider', '$stateProvider'];
+config.$inject = ['$httpProvider', 'jwtOptionsProvider', '$stateProvider'];
 
-  angular
-    .module('turtleApp')
-    .config(config);
-})();
-
+export default config

@@ -48,7 +48,7 @@
             </video>
             <article ng-switch="$ctrl.loading.turtlesFacts">
                 <carousel-turtles turtles-facts="$ctrl.turtlesFacts" ng-switch-default></carousel-turtles>
-                <custom-loading-component ng-switch-when="true"></custom-loading-component>
+                <custom-loading ng-switch-when="true"></custom-loading>
             </article>
         </div>
 
@@ -86,7 +86,7 @@
                     </div>
                 </article>
             </div>
-            <custom-loading-component ng-switch-when="true"></custom-loading-component>
+            <custom-loading ng-switch-when="true"></custom-loading>
         </section>
 
     </div>

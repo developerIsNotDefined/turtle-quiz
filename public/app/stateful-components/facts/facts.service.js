@@ -1,39 +1,35 @@
-(function(){
-  const service = class{
-    constructor($http, toastr, $q){
-      this.$http = $http;
-      this.toastr = toastr;
-      this.$q = $q;
-    }
+const service = class factsService{
+  constructor($http, toastr, $q){
+    this.$http = $http;
+    this.toastr = toastr;
+    this.$q = $q;
+  }
 
-    getTurtlesData(){
-      return this.$q((resolve, reject) => {
-        let turtlesFacts = sessionStorage.getItem('turtlesFacts');
-        if (turtlesFacts !== null){
-          const response = {
-            data: JSON.parse(turtlesFacts),
-            cashed: true
-          }
-          return resolve(response);
+  getTurtlesData(){
+    return this.$q((resolve, reject) => {
+      let turtlesFacts = sessionStorage.getItem('turtlesFacts');
+      if (turtlesFacts !== null){
+        const response = {
+          data: JSON.parse(turtlesFacts),
+          cashed: true
         }
-        this.toastr.info('Turtles information is being loaded!');
-        this.$http({
-          url: 'http://localhost:3003/api/turtlesFacts',
-          skipAuthorization: true,
-          method: 'GET'
+        return resolve(response);
+      }
+      this.toastr.info('Turtles information is being loaded!');
+      this.$http({
+        url: 'http://localhost:3003/api/turtlesFacts',
+        skipAuthorization: true,
+        method: 'GET'
+      })
+        .then(response => {
+          sessionStorage.setItem('turtlesFacts', JSON.stringify(response.data));
+          resolve(response);
         })
-          .then(response => {
-            sessionStorage.setItem('turtlesFacts', JSON.stringify(response.data));
-            resolve(response);
-          })
-          .catch(error => reject(error));
-      });
-    }
-  };
+        .catch(error => reject(error));
+    });
+  }
+};
 
-  service.$inject = ['$http', 'toastr', '$q'];
+service.$inject = ['$http', 'toastr', '$q'];
 
-  angular
-    .module('turtleApp')
-    .service("factsService", service);
-})();
+export default service

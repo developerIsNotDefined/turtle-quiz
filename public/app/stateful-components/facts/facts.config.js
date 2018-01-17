@@ -1,15 +1,11 @@
-(function(){
-  const config = $stateProvider => {
-    $stateProvider
-      .state('facts', {
-        url: '/facts',
-        component: 'factsComponent'
-      });
-  };
+const config = $stateProvider => {
+  $stateProvider
+    .state('facts', {
+      url: '/facts',
+      component: 'factsComponent'
+    });
+};
 
-  config.$inject = ['$stateProvider'];
+config.$inject = ['$stateProvider'];
 
-  angular
-    .module('turtleApp')
-    .config(config);
-})();
+export default config

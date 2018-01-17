@@ -1,5 +1,4 @@
-(function(){
-  const config = $stateProvider => {
+const config = $stateProvider => {
     $stateProvider
       .state('facts.turtleInfo', {
         url: '/:id',
@@ -8,11 +7,8 @@
           activeTurtle: null
         }
       });
-  };
+};
 
-  config.$inject = ['$stateProvider'];
+config.$inject = ['$stateProvider'];
 
-  angular
-    .module('turtleApp')
-    .config(config);
-})();
+export default config

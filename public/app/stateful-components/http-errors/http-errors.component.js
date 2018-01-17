@@ -1,17 +1,12 @@
-(function(){
-  const controller = class {
-    constructor($state){
-      this.$state = $state;
-    }
-  };
+const controller = class {
+  constructor($state){
+    this.$state = $state;
+  }
+};
 
-  controller.$inject = ['$state'];
+controller.$inject = ['$state'];
 
-  angular
-    .module('turtleApp')
-    .component('httpErrorsComponent', {
-      controller,
-      templateUrl: ($element, $attrs, httpResponseErrorService) => httpResponseErrorService.errorTemplateUrl()
-    });
-})();
-
+export default {
+  controller,
+  templateUrl: ($element, $attrs, httpResponseErrorService) => httpResponseErrorService.errorTemplateUrl()
+}

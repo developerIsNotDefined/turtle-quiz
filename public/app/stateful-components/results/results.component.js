@@ -1,57 +1,53 @@
-(function(){
-  const controller = class{
-    constructor(dataService, $state, resultsService, toastr, modalService){
-      this.$state = $state;
-      this.dataService = dataService;
-      this.toastr = toastr;
-      this.modalService = modalService;
+const controller = class{
+  constructor(dataService, $state, resultsService, toastr, modalService){
+    this.$state = $state;
+    this.dataService = dataService;
+    this.toastr = toastr;
+    this.modalService = modalService;
 
-      this.numCorrectAnswers = dataService.numCorrect;
-      this.activeQuestion = 0;
-      this.quizQuestions = dataService.quizQuestions;
-      this.cssOptions = resultsService.cssOptions;
-      this.getAnswerClass = resultsService.getAnswerClass;
-      this.getProgressClass = resultsService.getProgressClass;
-      this.proceed = resultsService.proceed;
+    this.numCorrectAnswers = dataService.numCorrect;
+    this.activeQuestion = 0;
+    this.quizQuestions = dataService.quizQuestions;
+    this.cssOptions = resultsService.cssOptions;
+    this.getAnswerClass = resultsService.getAnswerClass;
+    this.getProgressClass = resultsService.getProgressClass;
+    this.proceed = resultsService.proceed;
+  }
+
+  $onInit() {
+    this.toastr.success('Congratulations! Now you can check your quiz results');
+  }
+
+  onUpdateQuestionBar(event) {
+    if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
+      this.confirm();
     }
+  }
 
-    $onInit() {
-      this.toastr.success('Congratulations! Now you can check your quiz results');
+  onUpdateProgressButtonToolbar(event) {
+    if(typeof event.activeQuestion !== 'undefined'){
+      this.activeQuestion = event.activeQuestion;
     }
+  }
 
-    onUpdateQuestionBar(event) {
-      if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
-        this.confirm();
+  confirm(){
+    this.modalService.open({
+      templateUrl: 'app/shared/templates/confirm.tpl.html',
+      data:{
+        message: 'You won\'t be able to see your results in case you agree.'
       }
-    }
-
-    onUpdateProgressButtonToolbar(event) {
-      if(typeof event.activeQuestion !== 'undefined'){
-        this.activeQuestion = event.activeQuestion;
-      }
-    }
-
-    confirm(){
-      this.modalService.open({
-        templateUrl: 'app/shared/templates/confirm.tpl.html',
-        data:{
-          message: 'You won\'t be able to see your results in case you agree.'
-        }
+    })
+      .then(() => {
+        this.dataService.resetQuiz();
+        this.$state.go('facts');
       })
-        .then(() => {
-          this.dataService.resetQuiz();
-          this.$state.go('facts');
-        })
-        .catch(() => {});
-    }
-  };
+      .catch(() => {});
+  }
+};
 
-  controller.$inject = ['dataService', '$state', 'resultsService', 'toastr', 'modalService'];
+controller.$inject = ['dataService', '$state', 'resultsService', 'toastr', 'modalService'];
 
-  angular
-    .module('turtleApp')
-    .component('resultsComponent', {
-      templateUrl: 'app/stateful-components/results/results.html',
-      controller
-    });
-})();
+export default {
+  templateUrl: 'app/stateful-components/results/results.html',
+  controller
+}

@@ -1,31 +1,27 @@
-(function(){
-  class HttpInterceptor {
-    constructor() {
-      ['request', 'requestError', 'response', 'responseError']
-        .forEach((method) => {
-          if(this[method]) {
-            this[method] = this[method].bind(this);
-          }
-        });
-    }
+class HttpInterceptor {
+  constructor() {
+    ['request', 'requestError', 'response', 'responseError']
+      .forEach((method) => {
+        if(this[method]) {
+          this[method] = this[method].bind(this);
+        }
+      });
+  }
+}
+
+const service = class extends HttpInterceptor{
+  constructor($q, httpResponseErrorService){
+    super();
+    this.$q = $q;
+    this.httpResponseErrorService = httpResponseErrorService;
   }
 
-  const service = class extends HttpInterceptor{
-    constructor($q, httpResponseErrorService){
-      super();
-      this.$q = $q;
-      this.httpResponseErrorService = httpResponseErrorService;
-    }
+  responseError(rejection) {
+    this.httpResponseErrorService.errorTemplateUrl(rejection.status);
+    return this.$q.reject(rejection);
+  }
+};
 
-    responseError(rejection) {
-      this.httpResponseErrorService.errorTemplateUrl(rejection.status);
-      return this.$q.reject(rejection);
-    }
-  };
+service.$inject = ['$q', 'httpResponseErrorService'];
 
-  service.$inject = ['$q', 'httpResponseErrorService'];
-
-  angular
-    .module('turtleApp')
-    .service("httpResponseErrorInterceptor", service);
-})();
+export default service
