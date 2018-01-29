@@ -1,18 +1,21 @@
-const directive = ($interval, $timeout) => {
+const directive = ($interval) => {
   const link = ($scope, $element, $attrs) => {
-    const dataCarouselInterval = parseInt($attrs.carouselInterval) || false;
-    const dataCarouselItemsNum = parseInt($attrs.carouselItemsNum) || 0;
+    let dataCarouselInterval = parseInt($attrs.carouselInterval) || false;
+    let dataCarouselItemsNum = parseInt($attrs.carouselItemsNum) || 0;
     let carouselInterval = null;
     let carouselCurrentSlide = 0;
 
     const slidesList = $element[0].querySelector("ul");
     slidesList.style.width = (dataCarouselItemsNum * 100)+'%';
 
-    $timeout(() => {
+    const carouselLiElementsReady = $scope.$watch(() => {
+      return slidesList.children.length === dataCarouselItemsNum;
+    },() => {
       const slides = slidesList.querySelectorAll("li");
       slides.forEach(li => li.style.width = (100 / dataCarouselItemsNum) + '%');
       if (dataCarouselInterval){carouselInterval = $interval(()=> changeSlide(++carouselCurrentSlide), dataCarouselInterval)}
-    }, 0);
+      carouselLiElementsReady();
+    });
 
     const changeSlide = (index) => {
       carouselCurrentSlide = index;
@@ -48,6 +51,6 @@ const directive = ($interval, $timeout) => {
 
 };
 
-directive.$inject = ['$interval', '$timeout'];
+directive.$inject = ['$interval'];
 
 export default directive

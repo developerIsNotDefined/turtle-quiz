@@ -3,8 +3,10 @@
         <div class="progress-ui-bar__hint"
              ng-repeat="hintIcon in ::$ctrl.cssOptions.hintIcons"
              ng-class="::hintIcon.type">
-                <span class="progress-ui-bar__hint-text">{{hintIcon.text}}</span>
-                <svg class="progress-ui-bar__hint-icon"><use xlink:href="" ng-attr-xlink:href="{{'assets/sprite.svg#' + hintIcon.icon}}"></use></svg>
+                <span class="progress-ui-bar__hint-text">{{::hintIcon.text}}</span>
+                <svg class="progress-ui-bar__hint-icon">
+                    <use xlink:href="" ng-attr-xlink:href="{{::'assets/sprite.svg#' + hintIcon.icon}}"></use>
+                </svg>
         </div>
     </section>
     <section class="progress-ui-bar__container col-12 mb-medium-sm-dev">

@@ -34,7 +34,7 @@ const service = class {
 
     this.$rootScope.$emit("modal.close");
   }
-}
+};
 
 service.$inject = ['$rootScope', '$q'];
 

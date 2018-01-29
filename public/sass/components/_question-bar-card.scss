@@ -23,11 +23,17 @@
   &__answer{
     margin: 0 auto var(--gutter-vertical) auto;
     flex: 0 0 47%;
+    width: 47%;
+    max-width: 47%;
     overflow: hidden;
 
     @include respond(sm){
       padding-left: 2rem;
       padding-right: 2rem;
+    }
+
+    @include respond(xs){
+      padding: 0;
     }
 
     &--text.ng-enter, &--image.ng-enter{
@@ -49,6 +55,12 @@
       text-align: center;
       background-color: var(--color-grey-light-1);
       transition: background-color .2s;
+
+      @include respond(md){
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
 
     &--image{
@@ -80,6 +92,11 @@
     &--selected-text{
       color: var(--color-white);
       background-color: var(--color-blue-dark-1);
+
+      @include respond(md){
+        white-space: normal;
+        overflow: visible;
+      }
     }
 
     &--selected-image{

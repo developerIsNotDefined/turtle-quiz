@@ -67,15 +67,15 @@
             <div class="facts-turtles row" ng-switch-default>
                 <article class="facts-card col-sm-12 col-md-6 col-lg-4 col-xl-3" ng-repeat="turtle in $ctrl.turtlesFacts | filter:$ctrl.search track by turtle.id">
                     <div class="facts-card__image col-12">
-                        <img ng-src="{{turtle.image_url}}">
+                        <img ng-src="{{::turtle.image_url}}">
                     </div>
                     <div class="col-12">
-                        <h1 class="facts-card__text-heading outline-text--white gradient-text--blue">{{turtle.type}}</h1>
-                        <h2 class="facts-card__text-item"><span>Locations: </span>{{turtle.locations}}</h2>
-                        <h2 class="facts-card__text-item"><span>Size: </span>{{turtle.size}}</h2>
-                        <h2 class="facts-card__text-item"><span>Avarage Lifespan: </span>{{turtle.lifespan}}</h2>
-                        <h2 class="facts-card__text-item"><span>Diet: </span>{{turtle.diet}}</h2>
-                        <button class="btn--blue facts-card__button"
+                        <h1 class="facts-card__text-heading outline-text--white gradient-text--blue">{{::turtle.type}}</h1>
+                        <h2 class="facts-card__text-item"><span>Locations: </span>{{::turtle.locations}}</h2>
+                        <h2 class="facts-card__text-item"><span>Size: </span>{{::turtle.size}}</h2>
+                        <h2 class="facts-card__text-item"><span>Avarage Lifespan: </span>{{::turtle.lifespan}}</h2>
+                        <h2 class="facts-card__text-item"><span>Diet: </span>{{::turtle.diet}}</h2>
+                        <button type="button" class="btn--blue facts-card__button"
                                 ng-click="$ctrl.turtleInfo(turtle)">
                         <span class="gradient-text--blue">Learn more
                             <svg class="facts-card__button-icon">
@@ -97,31 +97,10 @@
         <img ng-src="assets/images/logo-transparent.png">
     </div>
     <ul class="row col-xs-12 footer-main__social-list">
-        <li class="footer-main__social-item">
+        <li class="footer-main__social-item" ng-repeat="socialLink in ::$ctrl.socialLinks">
             <a href="#" class="footer-main__social-link">
                 <svg class="footer-main__social-icon">
-                    <use xlink:href="assets/sprite.svg#icon-facebook2"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="footer-main__social-item">
-            <a href="#" class="footer-main__social-link">
-                <svg class="footer-main__social-icon">
-                    <use xlink:href="assets/sprite.svg#icon-twitter"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="footer-main__social-item">
-            <a href="#" class="footer-main__social-link">
-                <svg class="footer-main__social-icon">
-                    <use xlink:href="assets/sprite.svg#icon-youtube"></use>
-                </svg>
-            </a>
-        </li>
-        <li class="footer-main__social-item">
-            <a href="#" class="footer-main__social-link">
-                <svg class="footer-main__social-icon">
-                    <use xlink:href="assets/sprite.svg#icon-instagram"></use>
+                    <use xlink:href="" ng-attr-xlink:href="{{::'assets/sprite.svg#' + socialLink}}"></use>
                 </svg>
             </a>
         </li>

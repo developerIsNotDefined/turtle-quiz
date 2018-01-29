@@ -1,8 +1,9 @@
 <article class="progress-btn-toolbar row">
-    <button ng-repeat="question in $ctrl.quizQuestions track by question.id"
+    <button ng-repeat="question in ::$ctrl.quizQuestions track by question.id"
             ng-class="$ctrl.getProgressClass(question)"
             ng-click="$ctrl.setActiveQuestion(question.id)"
-            class="btn-accordion progress-btn-toolbar__button">
+            class="btn-accordion progress-btn-toolbar__button"
+            type="button">
         {{::question.id+1}}
     </button>
 </article>

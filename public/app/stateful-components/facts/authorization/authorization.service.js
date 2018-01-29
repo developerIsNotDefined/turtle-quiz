@@ -1,12 +1,13 @@
-const service = class{
-  constructor($http, toastr){
+const service = class {
+  constructor($http, toastr, $q){
     this.$http = $http;
     this.toastr = toastr;
+    this.$q = $q;
   }
 
   signUp(authData){
     this.toastr.info('Data submited, it is being checked!');
-    return new Promise((resolve, reject) => {
+    return this.$q((resolve, reject) => {
       this.$http({
         url: 'http://localhost:3003/sign-up',
         data: authData,
@@ -20,15 +21,15 @@ const service = class{
         })
         .catch(error => {
           if (typeof error.data.errors !== 'undefined'){
-            const errors = error.data.errors;
+            let errors = error.data.errors;
             let errorMessage = '';
             for (let prop in errors) {
               errorMessage += errors[prop].message + ' ';
             }
             errorMessage = errorMessage.replace(/Path/g, 'Field');
-            reject(errorMessage + 'Please try again!');
-          } else if ((typeof error.data.code !== 'undefined') && (error.data.code === 11000)) {
-            reject('What a disaster! desired email is already taken... Please take other one!');
+            reject(errorMessage);
+          } else if ((typeof error.data !== 'undefined') && (error.data.code === 11000)) {
+            reject('Desired email is already taken... Please take other one!');
           } else {
             reject('Oops, something went wrong, please try again later!');
           }
@@ -38,7 +39,7 @@ const service = class{
 
   signIn(authData){
     this.toastr.info('Data submited, it is being checked!');
-    return new Promise((resolve, reject) => {
+    return this.$q((resolve, reject) => {
       this.$http({
         url: 'http://localhost:3003/sign-in',
         data: authData,
@@ -56,7 +57,7 @@ const service = class{
 
   signOut(){
     this.toastr.info('Submited!');
-    return new Promise((resolve, reject) => {
+    return this.$q((resolve, reject) => {
       this.$http.delete('http://localhost:3003/sign-out')
         .then(() => {
           const user = JSON.parse(localStorage.getItem('user'));
@@ -71,6 +72,6 @@ const service = class{
   }
 };
 
-service.$inject = ['$http', 'toastr'];
+service.$inject = ['$http', 'toastr', '$q'];
 
 export default service

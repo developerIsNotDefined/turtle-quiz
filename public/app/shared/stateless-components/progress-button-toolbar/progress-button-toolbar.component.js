@@ -10,7 +10,7 @@ const controller = class {
   }
 };
 
-export default {
+const component = {
   bindings:{
     progressToolbarOptions: '<',
     onChange: '&',
@@ -20,4 +20,6 @@ export default {
   },
   templateUrl: 'app/shared/stateless-components/progress-button-toolbar/progress-button-toolbar.html',
   controller
-}
+};
+
+export default component

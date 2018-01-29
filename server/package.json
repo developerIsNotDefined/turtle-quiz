@@ -1,9 +1,11 @@
 {
   "name": "turtle-quiz",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "quiz server",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "server": "node index.js"
+  },
   "author": "developerIsNotDefined",
   "license": "ISC",
   "dependencies": {

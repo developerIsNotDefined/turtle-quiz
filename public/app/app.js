@@ -56,7 +56,7 @@ import toastrConfig from './shared/configs/toastr.config';
 
 /* shared directives */
 import customCarouselDirective from './shared/directives/custom-carousel.directive';
-import customModalDirective from './shared/directives/custom-modal.directive';
+import customLoadingDirective from './shared/directives/custom-loading.directive';
 /* !shared directives */
 
 /* shared services */
@@ -97,7 +97,7 @@ import questionBarComponent from './shared/stateless-components/question-bar/que
     .config(appConfig)
     .config(toastrConfig)
     .directive('customCarousel', customCarouselDirective)
-    .directive('customModal', customModalDirective)
+    .directive('customLoading', customLoadingDirective)
     .service('dataService', dataService)
     .service('modalService', modalService)
     .component('customLoading', customLoadingComponent)
@@ -105,22 +105,3 @@ import questionBarComponent from './shared/stateless-components/question-bar/que
     .component('progressButtonToolbar', progressButtonToolbarComponent)
     .component('progressUiBar', progressUiBarComponent)
     .component('questionBar', questionBarComponent);
-
-//127.0.0.1:8080/#!/facts
-
-// node index.js
-// json-server -w db.json -d 2000
-
-// getQuizQuestions() {
-//   // return this.$http.get('http://localhost:3000/quizQuestions'); for json-server
-// }
-
-// getQuizQuestions() {
-//   return this.$http({
-//     method: 'GET',
-//     url: 'http://localhost:3003/api/quizQuestions'
-//     // headers: {
-//     //   'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OWNkMjI1OTdkNDQ0NjNmYmNmZTQwYTIiLCJhY2Nlc3MiOiJhdXRoIiwiaWF0IjoxNTA2NjE1ODk4fQ.V8PRg2yr5r_jXHsva47Rhb69h5HTXPtxYWx8vNQH9A4'
-//     // }
-//   });
-// }

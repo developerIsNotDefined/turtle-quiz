@@ -19,7 +19,7 @@
   }
 }
 
-@keyframes scaleOutside{
+@keyframes scaleModalEnter{
   0%{
     box-shadow: var(--shadow-modal-light);
     transform: scale(0);
@@ -36,20 +36,13 @@
   }
 }
 
-@keyframes scaleInside{
+@keyframes overlayModalEnter{
   0%{
-    box-shadow: var(--shadow-modal-default);
-    transform: scale(1);
-  }
-
-  20%{
-    box-shadow: var(--shadow-modal-dark);
-    transform: scale(1.2);
+    background-color: rgba(0,0,0,0);
   }
 
   100%{
-    box-shadow: var(--shadow-modal-light);
-    transform: scale(0);
+    background-color: rgba(0,0,0,.8);
   }
 }
 

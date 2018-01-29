@@ -31,7 +31,7 @@ const controller = class {
   };
 };
 
-export default {
+const component = {
   bindings: {
     numAnsweredQuestions: '<',
     quizLength: '<',
@@ -39,4 +39,6 @@ export default {
   },
   templateUrl: 'app/shared/stateless-components/progress-ui-bar/progress-ui-bar.html',
   controller
-}
+};
+
+export default component

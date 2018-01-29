@@ -14,13 +14,14 @@ module.exports = {
     path: path.resolve(__dirname, 'app')
   },
   module: {
-    rules: [
+    loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [
-          'babel-loader'
-        ]
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        }
       },
     ]
   }

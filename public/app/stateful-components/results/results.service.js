@@ -20,7 +20,7 @@ const service = class {
   }
 
   getAnswerClass(index) {
-    const question = this.quizQuestions[this.activeQuestion];
+    let question = this.quizQuestions[this.activeQuestion];
     if (index === question.correct){
       return question.type === 'text' ? "question-bar-card__answer--correct-text" : "question-bar-card__answer--correct-image";
     } else if (index === question.selected){
@@ -30,7 +30,7 @@ const service = class {
 
   getProgressClass(question) {
     let btnCssClass = question.id === this.activeQuestion ? 'progress-btn-toolbar__button--active ' : '';
-    const icon = this.progressToolbarOptions.icon;
+    let icon = this.progressToolbarOptions.icon;
     return question.selected === question.correct ? btnCssClass+icon[0] : btnCssClass+icon[1];
   }
 

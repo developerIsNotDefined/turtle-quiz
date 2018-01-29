@@ -5,20 +5,11 @@
   background-color: rgba(0,0,0,.8);
   @include absoluteCover;
   position: fixed;
-  border-radius: 2%;
   z-index: 10000;
 }
 
-.modal-container.ng-hide{
-  background-color: rgba(0,0,0,0);
-}
-
-.modal-container.ng-hide-remove.ng-hide-remove-active{
-  transition: 1s ease-out all ;
-}
-
-.modal-container.ng-hide-add.ng-hide-add-active{
-  transition: 1s ease-out all ;
+.modal-container.ng-enter{
+  animation: overlayModalEnter 1s ease-in;
 }
 
 .modal{
@@ -27,10 +18,6 @@
   background-color: #FAFAFA;
 }
 
-.modal.ng-enter{
-  animation: scaleOutside 1s ease-in;
-}
-
-.modal.ng-leave{
-  animation: scaleInside 1s ease-in;
+.modal-container.ng-enter .modal{
+  animation: scaleModalEnter 1s ease-in;
 }

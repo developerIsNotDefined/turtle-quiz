@@ -25,7 +25,7 @@ const service = class {
 
   getQuizQuestions(){
     return this.$q((resolve, reject) => {
-      let quizQuestions = sessionStorage.getItem('quizQuestions');
+      const quizQuestions = sessionStorage.getItem('quizQuestions');
       if (quizQuestions !== null){
         const response = {
           data: JSON.parse(quizQuestions),
@@ -47,7 +47,7 @@ const service = class {
   }
 
   getAnswerClass(index) {
-    const question = this.quizQuestions[this.activeQuestion];
+    let question = this.quizQuestions[this.activeQuestion];
     if(this.confirmedAnswer.questionNumber === this.activeQuestion){
       if (index === this.confirmedAnswer.chosenVariant){
         return question.type === 'text' ? "question-bar-card__answer--selected-text" : "question-bar-card__answer--selected-image";
@@ -59,7 +59,7 @@ const service = class {
 
   getProgressClass(question) {
     let btnCssClass = question.id === this.activeQuestion ? 'progress-btn-toolbar__button--active ' : '';
-    const icon = this.progressToolbarOptions.icon;
+    let icon = this.progressToolbarOptions.icon;
     return question.selected !== false ? btnCssClass+icon[0] : btnCssClass+icon[1];
   }
 

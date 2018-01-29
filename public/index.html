@@ -10,16 +10,12 @@
     <title>Turtle Quiz</title>
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-
-    <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="assets/stylesheets/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700">
+    <link rel="stylesheet" href="assets/stylesheets/style.min.css">
 </head>
 <body>
 
-    <div custom-modal class="modal-container" ng-show="__modalShown__">
-        <custom-modal ng-if="__modalShown__" class="modal"></custom-modal>
-    </div>
+    <custom-modal ng-if="__modalShown__" class="modal-container"></custom-modal>
 
     <ui-view></ui-view>
 

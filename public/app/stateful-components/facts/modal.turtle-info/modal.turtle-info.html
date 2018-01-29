@@ -1,21 +1,21 @@
 <div class="btn-modal-close" ng-click="$ctrl.cancel()"><span class="btn-modal-close__icon">&nbsp;</span></div>
 <article class="facts-modal">
     <header class="facts-modal__header gradient-text--orange">
-        <h2>{{$ctrl.modalData.activeTurtle.type}}</h2>
+        <h2>{{::$ctrl.modalData.activeTurtle.type}}</h2>
     </header>
     <div class="facts-modal__body row">
         <div class="col-12 facts-modal__image">
-            <img ng-src="{{$ctrl.modalData.activeTurtle.image_url}}">
+            <img ng-src="{{::$ctrl.modalData.activeTurtle.image_url}}">
         </div>
         <div class="col-12 facts-modal__info">
-            <h3 class="facts-modal__info-item"><span>Locations: </span>{{$ctrl.modalData.activeTurtle.locations}}</h3>
-            <h3 class="facts-modal__info-item"><span>Size: </span>{{$ctrl.modalData.activeTurtle.size}}</h3>
-            <h3 class="facts-modal__info-item"><span>Average Lifespan: </span>{{$ctrl.modalData.activeTurtle.lifespan}}</h3>
-            <h3 class="facts-modal__info-item"><span>Diet: </span>{{$ctrl.modalData.activeTurtle.diet}}</h3>
-            <h4 class="facts-modal__info-item"><span>Description: </span>{{$ctrl.modalData.activeTurtle.description}}</h4>
+            <h3 class="facts-modal__info-item"><span>Locations: </span>{{::$ctrl.modalData.activeTurtle.locations}}</h3>
+            <h3 class="facts-modal__info-item"><span>Size: </span>{{::$ctrl.modalData.activeTurtle.size}}</h3>
+            <h3 class="facts-modal__info-item"><span>Average Lifespan: </span>{{::$ctrl.modalData.activeTurtle.lifespan}}</h3>
+            <h3 class="facts-modal__info-item"><span>Diet: </span>{{::$ctrl.modalData.activeTurtle.diet}}</h3>
+            <h4 class="facts-modal__info-item"><span>Description: </span>{{::$ctrl.modalData.activeTurtle.description}}</h4>
         </div>
     </div>
     <footer class="col-12 facts-modal__footer">
-        <button class="btn outline-text--white" ng-click="$ctrl.ok()">Close</button>
+        <button type="button" class="btn outline-text--white" ng-click="$ctrl.ok()">Close</button>
     </footer>
 </article>

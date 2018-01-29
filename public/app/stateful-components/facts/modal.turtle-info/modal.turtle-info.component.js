@@ -24,7 +24,8 @@ const controller = class {
 
 controller.$inject = ['$state', '$stateParams', 'modalService'];
 
-export default {
-  bindings: {},
+const component = {
   controller
-}
+};
+
+export default component

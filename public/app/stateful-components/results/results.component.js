@@ -47,7 +47,9 @@ const controller = class{
 
 controller.$inject = ['dataService', '$state', 'resultsService', 'toastr', 'modalService'];
 
-export default {
+const component = {
   templateUrl: 'app/stateful-components/results/results.html',
   controller
 }
+
+export default component

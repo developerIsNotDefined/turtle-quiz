@@ -1,9 +1,8 @@
 const config = ($httpProvider, jwtOptionsProvider, $stateProvider) => {
-    $stateProvider
-      .state('facts.authorization', {
-        url: '/authorization',
-        component: 'authorizationComponent'
-      });
+    $stateProvider.state('facts.authorization', {
+      url: '/authorization',
+      component: 'authorizationComponent'
+    });
 
     jwtOptionsProvider.config({
       authPrefix: '',
@@ -13,7 +12,7 @@ const config = ($httpProvider, jwtOptionsProvider, $stateProvider) => {
     });
 
     $httpProvider.interceptors.push('jwtInterceptor');
-  };
+};
 
 config.$inject = ['$httpProvider', 'jwtOptionsProvider', '$stateProvider'];
 

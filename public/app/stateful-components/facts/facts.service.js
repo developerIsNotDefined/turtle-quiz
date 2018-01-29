@@ -1,4 +1,4 @@
-const service = class factsService{
+const service = class {
   constructor($http, toastr, $q){
     this.$http = $http;
     this.toastr = toastr;
@@ -7,7 +7,7 @@ const service = class factsService{
 
   getTurtlesData(){
     return this.$q((resolve, reject) => {
-      let turtlesFacts = sessionStorage.getItem('turtlesFacts');
+      const turtlesFacts = sessionStorage.getItem('turtlesFacts');
       if (turtlesFacts !== null){
         const response = {
           data: JSON.parse(turtlesFacts),

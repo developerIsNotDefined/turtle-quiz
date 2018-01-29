@@ -10,7 +10,7 @@ const controller = class {
   }
 
   selectAnswer(index) {
-    const activeQuestion = this.activeQuestion;
+    let activeQuestion = this.activeQuestion;
     this.confirmedAnswer = {
       questionNumber: activeQuestion,
       chosenVariant: index
@@ -20,7 +20,7 @@ const controller = class {
 
 controller.$inject = ['toastr'];
 
-export default {
+const component = {
   bindings: {
     activeQuestion: '<',
     quizQuestions:'<',
@@ -32,4 +32,6 @@ export default {
   },
   templateUrl: 'app/shared/stateless-components/question-bar/question-bar.html',
   controller
-}
+};
+
+export default component

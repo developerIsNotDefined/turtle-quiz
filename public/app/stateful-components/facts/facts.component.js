@@ -6,6 +6,12 @@ const controller = class{
 
     this.loading = {turtlesFacts: 'true'};
     this.search = "";
+    this.socialLinks = [
+      'icon-facebook2',
+      'icon-twitter',
+      'icon-youtube',
+      'icon-instagram'
+    ];
   }
 
   $onInit() {
@@ -31,7 +37,9 @@ const controller = class{
 
 controller.$inject = ['$state', 'factsService', 'toastr'];
 
-export default {
+const component = {
   templateUrl: 'app/stateful-components/facts/facts.html',
   controller
-}
+};
+
+export default component

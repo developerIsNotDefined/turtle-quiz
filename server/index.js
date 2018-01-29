@@ -6,17 +6,14 @@ const apiTurtlesFacts = require('./turtles-facts/api-turtles-facts.controller');
 const apiQuizQuestions = require('./quiz-questions/api-quiz-questions.controller');
 const apiUsers = require('./users/api-users.controller');
 
-// userName: "admin"
-// password: "admin"
-// mongodb://<dbuser>:<dbpassword>@ds137054.mlab.com:37054/turtle-quiz
-
 const app = express();
 
-const port = process.env.PORT || 3003;
+process.env.PORT = 3003;
 process.env.JWT_SECRET_KEY = 'my_jwt_secret_key';
-const dbConnectUrl = "mongodb://admin:admin@ds137054.mlab.com:37054/turtle-quiz";
 
-connectDb(mongoose, dbConnectUrl);
+const DB_COONECT_URL = "mongodb://admin:admin@ds137054.mlab.com:37054/turtle-quiz";
+
+connectDb(mongoose, DB_COONECT_URL);
 
 app.use(bodyParser.json());
 
@@ -40,4 +37,4 @@ apiTurtlesFacts(app);
 apiQuizQuestions(app);
 apiUsers(app);
 
-app.listen(port);
+app.listen(process.env.PORT);

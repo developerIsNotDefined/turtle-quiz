@@ -4,9 +4,15 @@ const controller = class {
   }
 };
 
+let templateUrl = ($element, $attrs, httpResponseErrorService) => httpResponseErrorService.errorTemplateUrl();
+
 controller.$inject = ['$state'];
 
-export default {
+templateUrl.$inject = ['$element', '$attrs', 'httpResponseErrorService'];
+
+const component = {
   controller,
-  templateUrl: ($element, $attrs, httpResponseErrorService) => httpResponseErrorService.errorTemplateUrl()
+  templateUrl
 }
+
+export default component
