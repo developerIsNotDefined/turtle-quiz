@@ -1,11 +1,11 @@
 const service = class {
-  constructor($http, toastr, $q){
+  constructor($http, toastr, $q) {
     this.$http = $http;
     this.toastr = toastr;
     this.$q = $q;
   }
 
-  signUp(authData){
+  signUp(authData) {
     this.toastr.info('Data submited, it is being checked!');
     return this.$q((resolve, reject) => {
       this.$http({
@@ -20,16 +20,10 @@ const service = class {
           resolve(response.data.name);
         })
         .catch(error => {
-          if (typeof error.data.errors !== 'undefined'){
-            let errors = error.data.errors;
-            let errorMessage = '';
-            for (let prop in errors) {
-              errorMessage += errors[prop].message + ' ';
-            }
-            errorMessage = errorMessage.replace(/Path/g, 'Field');
+          if (typeof error.data.errors !== 'undefined') {
+            let errors = error.data.errors, errorMessage = '';
+            errors.forEach(err => errorMessage += err.message + ' ');
             reject(errorMessage);
-          } else if ((typeof error.data !== 'undefined') && (error.data.code === 11000)) {
-            reject('Desired email is already taken... Please take other one!');
           } else {
             reject('Oops, something went wrong, please try again later!');
           }
@@ -37,7 +31,7 @@ const service = class {
     });
   }
 
-  signIn(authData){
+  signIn(authData) {
     this.toastr.info('Data submited, it is being checked!');
     return this.$q((resolve, reject) => {
       this.$http({
@@ -51,11 +45,19 @@ const service = class {
           localStorage.setItem('user', JSON.stringify(response.data));
           resolve(response.data.name);
         })
-        .catch(error => reject(error));
+        .catch(error => {
+          if (typeof error.data.errors !== 'undefined') {
+            let errors = error.data.errors, errorMessage = '';
+            errors.forEach(err => errorMessage += err.message + ' ');
+            reject(errorMessage);
+          } else {
+            reject('Oops, something went wrong, please try again later!');
+          }
+        });
     });
   }
 
-  signOut(){
+  signOut() {
     this.toastr.info('Submited!');
     return this.$q((resolve, reject) => {
       this.$http.delete('http://localhost:3003/sign-out')
@@ -74,4 +76,4 @@ const service = class {
 
 service.$inject = ['$http', 'toastr', '$q'];
 
-export default service
+export default service;

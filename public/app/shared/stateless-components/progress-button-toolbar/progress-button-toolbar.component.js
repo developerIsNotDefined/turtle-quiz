@@ -11,7 +11,7 @@ const controller = class {
 };
 
 const component = {
-  bindings:{
+  bindings: {
     progressToolbarOptions: '<',
     onChange: '&',
     quizQuestions: '<',
@@ -22,4 +22,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

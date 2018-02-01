@@ -16,4 +16,4 @@ const config = ($httpProvider, jwtOptionsProvider, $stateProvider) => {
 
 config.$inject = ['$httpProvider', 'jwtOptionsProvider', '$stateProvider'];
 
-export default config
+export default config;

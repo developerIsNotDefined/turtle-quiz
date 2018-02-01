@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 const config = toastrConfig => {
   angular.extend(toastrConfig, {
     closeButton: true,
@@ -23,4 +25,4 @@ const config = toastrConfig => {
 
 config.$inject = ['toastrConfig'];
 
-export default config
+export default config;

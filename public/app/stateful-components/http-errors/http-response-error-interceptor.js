@@ -2,15 +2,15 @@ class HttpInterceptor {
   constructor() {
     ['request', 'requestError', 'response', 'responseError']
       .forEach((method) => {
-        if(this[method]) {
+        if (this[method]) {
           this[method] = this[method].bind(this);
         }
       });
   }
 }
 
-const service = class extends HttpInterceptor{
-  constructor($q, httpResponseErrorService){
+const service = class extends HttpInterceptor {
+  constructor($q, httpResponseErrorService) {
     super();
     this.$q = $q;
     this.httpResponseErrorService = httpResponseErrorService;
@@ -24,4 +24,4 @@ const service = class extends HttpInterceptor{
 
 service.$inject = ['$q', 'httpResponseErrorService'];
 
-export default service
+export default service;

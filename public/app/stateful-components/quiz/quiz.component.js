@@ -1,5 +1,5 @@
 const controller = class {
-  constructor(dataService, $state, quizService, toastr, modalService){
+  constructor(dataService, $state, quizService, toastr, modalService) {
     this.dataService = dataService;
     this.$state = $state;
     this.quizService = quizService;
@@ -19,7 +19,7 @@ const controller = class {
     this.loading.quizQuestions = 'true';
     this.quizService.getQuizQuestions()
       .then(response => {
-        if(!response.cashed){
+        if (!response.cashed) {
           this.toastr.success('Questions for quiz have been successfully loaded!');
         }
         this.quizQuestions = response.data.sort((a, b) => a.id - b.id);
@@ -29,35 +29,35 @@ const controller = class {
   }
 
   onUpdateQuestionBar(event) {
-    if(typeof event.numAnsweredQuestions !== 'undefined'){
+    if (typeof event.numAnsweredQuestions !== 'undefined') {
       this.numAnsweredQuestions = event.numAnsweredQuestions;
     }
 
-    if(typeof event.activeQuestion !== 'undefined'){
+    if (typeof event.activeQuestion !== 'undefined') {
       this.activeQuestion = event.activeQuestion;
     }
 
-    if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
+    if ((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)) {
       this.confirm();
     }
   }
 
   onUpdateProgressButtonToolbar(event) {
-    if(typeof event.activeQuestion !== 'undefined'){
+    if (typeof event.activeQuestion !== 'undefined') {
       this.activeQuestion = event.activeQuestion;
     }
   }
 
-  confirm(){
+  confirm() {
     this.modalService.open({
       templateUrl: 'app/shared/templates/confirm.tpl.html',
-      data:{
+      data: {
         message: 'You won\'t be able to change your answers. Quiz will be completed in case you agree.'
       }
     })
       .then(() => {
         this.dataService.markQuiz(this.quizQuestions);
-        this.$state.go('results',{
+        this.$state.go('results', {
           quizQuestions: this.quizQuestions
         });
       })
@@ -70,6 +70,6 @@ controller.$inject = ['dataService', '$state', 'quizService', 'toastr', 'modalSe
 const component = {
   templateUrl: 'app/stateful-components/quiz/quiz.html',
   controller
-}
+};
 
-export default component
+export default component;

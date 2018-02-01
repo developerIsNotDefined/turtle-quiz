@@ -1,5 +1,5 @@
 const controller = class {
-  constructor($state, $stateParams, modalService){
+  constructor($state, $stateParams, modalService) {
     this.$state = $state;
     this.modalService = modalService;
 
@@ -13,7 +13,7 @@ const controller = class {
   open(activeTurtle) {
     this.modalService.open({
       templateUrl: 'app/stateful-components/facts/modal.turtle-info/modal.turtle-info.html',
-      data:{
+      data: {
         activeTurtle
       }
     })
@@ -28,4 +28,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

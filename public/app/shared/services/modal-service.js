@@ -1,5 +1,5 @@
 const service = class {
-  constructor($rootScope, $q){
+  constructor($rootScope, $q) {
     this.$rootScope = $rootScope;
     this.$q = $q;
     this.modal = {
@@ -8,34 +8,34 @@ const service = class {
     };
   }
 
-  open(config){
+  open(config) {
     this.modal.deferred = this.$q.defer();
     this.modal.config = config;
 
-    this.$rootScope.$emit("modal.open");
+    this.$rootScope.$emit('modal.open');
 
-    return(this.modal.deferred.promise);
+    return (this.modal.deferred.promise);
   }
 
-  modalConfig(){
-    return(this.modal.config || {});
+  modalConfig() {
+    return (this.modal.config || {});
   }
 
-  reject(reason){
+  reject(reason) {
     this.modal.deferred.reject(reason);
     this.modal.deferred = this.modal.config = null;
 
-    this.$rootScope.$emit("modal.close");
+    this.$rootScope.$emit('modal.close');
   }
 
-  resolve(response){
+  resolve(response) {
     this.modal.deferred.resolve(response);
     this.modal.deferred = this.modal.config = null;
 
-    this.$rootScope.$emit("modal.close");
+    this.$rootScope.$emit('modal.close');
   }
 };
 
 service.$inject = ['$rootScope', '$q'];
 
-export default service
+export default service;

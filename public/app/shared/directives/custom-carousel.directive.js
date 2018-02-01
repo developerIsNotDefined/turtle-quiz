@@ -1,4 +1,4 @@
-const directive = ($interval) => {
+const directive = $interval => {
   const link = ($scope, $element, $attrs) => {
     let dataCarouselInterval = parseInt($attrs.carouselInterval) || false;
     let dataCarouselItemsNum = parseInt($attrs.carouselItemsNum) || 0;
@@ -10,28 +10,30 @@ const directive = ($interval) => {
 
     const carouselLiElementsReady = $scope.$watch(() => {
       return slidesList.children.length === dataCarouselItemsNum;
-    },() => {
+    }, () => {
       const slides = slidesList.querySelectorAll("li");
       slides.forEach(li => li.style.width = (100 / dataCarouselItemsNum) + '%');
-      if (dataCarouselInterval){carouselInterval = $interval(()=> changeSlide(++carouselCurrentSlide), dataCarouselInterval)}
+      if (dataCarouselInterval) {
+        carouselInterval = $interval(()=> changeSlide(++carouselCurrentSlide), dataCarouselInterval);
+      }
       carouselLiElementsReady();
     });
 
-    const changeSlide = (index) => {
+    const changeSlide = index => {
       carouselCurrentSlide = index;
-      if (carouselCurrentSlide === dataCarouselItemsNum){
+      if (carouselCurrentSlide === dataCarouselItemsNum) {
         carouselCurrentSlide = 0;
-      } else if (carouselCurrentSlide === -1){
+      } else if (carouselCurrentSlide === -1) {
         carouselCurrentSlide = dataCarouselItemsNum-1;
       }
 
-      if (dataCarouselInterval){
+      if (dataCarouselInterval) {
         $interval.cancel(carouselInterval);
         carouselInterval = $interval(()=> changeSlide(++carouselCurrentSlide), dataCarouselInterval);
       }
 
       slidesList.style.left = carouselCurrentSlide * -100 + '%';
-    }
+    };
 
     $scope.nextSlide = () => changeSlide(++carouselCurrentSlide);
 
@@ -41,16 +43,14 @@ const directive = ($interval) => {
       $interval.cancel(carouselInterval);
       $element.remove();
     });
-
   };
 
-  return{
+  return {
     restrict: "A",
     link
-  }
-
+  };
 };
 
 directive.$inject = ['$interval'];
 
-export default directive
+export default directive;

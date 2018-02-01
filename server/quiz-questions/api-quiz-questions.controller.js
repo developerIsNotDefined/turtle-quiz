@@ -1,13 +1,15 @@
 const Question = require('./quiz-questions.model');
 const authenticate = require('./../middleware/authenticate');
+const {tryCatchHelper, mongoErrorsFormattingHelper} = require('./../middleware/errorhelpers');
 
 module.exports = app => {
   app.get('/api/quizQuestions', authenticate, async (req, res) => {
-    try{
-      const questions = await Question.find();
-      res.send(questions);
-    } catch(err){
-      res.status(400).send(err);
-    }
+    let err, questions;
+
+    [err, questions] = await tryCatchHelper(Question.find());
+    if (!questions)
+      return res.status(400).send(mongoErrorsFormattingHelper(err));
+
+    res.send(questions);
   });
 }

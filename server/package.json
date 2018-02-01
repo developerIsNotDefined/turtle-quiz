@@ -4,10 +4,12 @@
   "description": "quiz server",
   "main": "index.js",
   "scripts": {
-    "server": "node index.js"
+    "start": "node index.js",
+    "debug": "node --debug-brk --inspect index.js",
+    "watch": "nodemon index.js"
   },
   "author": "developerIsNotDefined",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.1",
@@ -18,5 +20,9 @@
     "mongoose-connect-db": "^1.4.4",
     "validator": "^8.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-google": "^0.9.1",
+    "nodemon": "^1.14.11"
+  }
 }

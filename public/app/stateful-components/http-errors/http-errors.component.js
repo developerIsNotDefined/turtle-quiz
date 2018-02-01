@@ -1,5 +1,5 @@
 const controller = class {
-  constructor($state){
+  constructor($state) {
     this.$state = $state;
   }
 };
@@ -13,6 +13,6 @@ templateUrl.$inject = ['$element', '$attrs', 'httpResponseErrorService'];
 const component = {
   controller,
   templateUrl
-}
+};
 
-export default component
+export default component;

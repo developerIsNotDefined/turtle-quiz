@@ -2,18 +2,18 @@ const controller = class {
   constructor() {}
 
   $onChanges(changes) {
-    if(typeof changes.numAnsweredQuestions !== 'undefined'){
-      if(this.numAnsweredQuestions !== 0){
+    if (typeof changes.numAnsweredQuestions !== 'undefined') {
+      if (this.numAnsweredQuestions !== 0) {
         this.updateProgressBar();
       }
     }
 
-    if(typeof changes.quizLength !== 'undefined'){
-      if(Number.isInteger(this.numAnsweredQuestions)){
+    if (typeof changes.quizLength !== 'undefined') {
+      if (Number.isInteger(this.numAnsweredQuestions)) {
         this.updateProgressBar();
       }
     }
-  };
+  }
 
   updateProgressBar() {
     this.cssOptions.values = [{
@@ -27,8 +27,8 @@ const controller = class {
       number: this.quizLength - this.numAnsweredQuestions + '/' + this.quizLength
     }];
 
-    this.cssCompleted = {'width': this.cssOptions.values[0].value + '%'}
-  };
+    this.cssCompleted = {'width': this.cssOptions.values[0].value + '%'};
+  }
 };
 
 const component = {
@@ -41,4 +41,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

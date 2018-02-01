@@ -1,5 +1,5 @@
-const controller = class{
-  constructor(dataService, $state, resultsService, toastr, modalService){
+const controller = class {
+  constructor(dataService, $state, resultsService, toastr, modalService) {
     this.$state = $state;
     this.dataService = dataService;
     this.toastr = toastr;
@@ -19,21 +19,21 @@ const controller = class{
   }
 
   onUpdateQuestionBar(event) {
-    if((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)){
+    if ((typeof event.askForConfirm !== 'undefined') && (event.askForConfirm === true)) {
       this.confirm();
     }
   }
 
   onUpdateProgressButtonToolbar(event) {
-    if(typeof event.activeQuestion !== 'undefined'){
+    if (typeof event.activeQuestion !== 'undefined') {
       this.activeQuestion = event.activeQuestion;
     }
   }
 
-  confirm(){
+  confirm() {
     this.modalService.open({
       templateUrl: 'app/shared/templates/confirm.tpl.html',
-      data:{
+      data: {
         message: 'You won\'t be able to see your results in case you agree.'
       }
     })
@@ -50,6 +50,6 @@ controller.$inject = ['dataService', '$state', 'resultsService', 'toastr', 'moda
 const component = {
   templateUrl: 'app/stateful-components/results/results.html',
   controller
-}
+};
 
-export default component
+export default component;

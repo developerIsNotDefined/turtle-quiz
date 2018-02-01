@@ -5,4 +5,4 @@ const component = {
   templateUrl: 'app/stateful-components/facts/carousel.turtles/carousel.turtles.html'
 };
 
-export default component
+export default component;

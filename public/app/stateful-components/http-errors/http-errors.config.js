@@ -14,4 +14,4 @@ const config = function($stateProvider, $httpProvider) {
 
 config.$inject = ['$stateProvider', '$httpProvider'];
 
-export default config
+export default config;

@@ -3,6 +3,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
+const {tryCatchHelper, errorsFormattingHelper, mongoErrorsFormattingHelper} = require('./../middleware/errorhelpers');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -46,74 +47,86 @@ const userSchema = new mongoose.Schema({
   }]
 });
 
-class UserModel extends mongoose.model{
-  toJSON(){
+class UserModel extends mongoose.model {
+  toJSON() {
     const userObject = this.toObject();
     return _.pick(userObject, ['_id', 'email', 'name']);
   }
 
-  async generateAuthToken(){
-    try{
-      let access = 'auth';
-      let token = jwt.sign({_id: this._id.toHexString(), access}, process.env.JWT_SECRET_KEY).toString();
-      this.tokens.push({access, token});
-      await this.preSave();
-      return token;
-    } catch(err){
-      throw new Error(err.message);
-    }
+  async generateAuthToken() {
+    let err, user, access = 'auth';
+    let token = jwt.sign({_id: this._id.toHexString(), access}, process.env.JWT_SECRET_KEY).toString();
+    this.tokens.push({access, token});
+
+    [err, user] = await this.preSave();
+    if (!user)
+      return [err];
+    
+    return [null, token];
   }
 
-  async removeToken(token){
-    return this.update({
+  async removeToken(token) {
+    let err, removeResult;
+
+    [err, removeResult] = await tryCatchHelper(this.update({
       $pull: {
         tokens: {token}
       }
-    });
+    }));
+    if(!removeResult)
+      return [mongoErrorsFormattingHelper(err)];
+
+    return [null, removeResult];
   }
 
-  static async findByToken(token){
-    try{
-      const access = 'auth';
-      let decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-      const foundedUser = await this.findOne({
-        '_id': decoded._id,
-        'tokens.token': token,
-        'tokens.access': access
-      });
-      return foundedUser;
-    } catch (err) {
-      throw new Error(err.message);
+  static async findByToken(token) {
+    let err, decoded, user, access = 'auth';
+
+    try {
+      decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    } catch(err) {
+      return [err];
     }
+    
+    [err, user] = await tryCatchHelper(this.findOne({
+      '_id': decoded._id,
+      'tokens.token': token,
+      'tokens.access': access
+    }));
+    if (!user)
+      return [errorsFormattingHelper(['user not found'])];
+
+    return [null, user];
   }
 
-  static async findByCredentials(email, password){
-    try{
-      let foundedUser = await this.findOne({email});
-      if (!foundedUser) {
-        throw new Error('wrong email');
-      }
-      const result = await bcrypt.compare(password, foundedUser.password);
-      if(!result){
-        throw new Error('wrong password');
-      }
-      return foundedUser;
-    } catch(err){
-      throw new Error(err.message);
-    }
+  static async findByCredentials(email, password) {
+    let err, user, compareResult;
+
+    [err, user] = await tryCatchHelper(this.findOne({email}));
+    if (!user)
+      return [errorsFormattingHelper(['wrong email'])];
+
+    [err, compareResult] = await tryCatchHelper(bcrypt.compare(password, user.password));
+    if(!compareResult)
+      return [['wrong password']];
+
+    return [null, user];
   }
 
-  async preSave(){
+  async preSave() {
+    let err, user;
+
     if (this.isModified('password')) {
-      try{
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(this.password, salt);
-        this.password = hash;
-      } catch(err){
-        throw new Error(err);
-      }
+      const salt = await bcrypt.genSalt(10);
+      const hash = await bcrypt.hash(this.password, salt);
+      this.password = hash;
     }
-    return this.save();
+
+    [err, user] = await tryCatchHelper(this.save());
+    if(!user)
+      return [mongoErrorsFormattingHelper(err)];
+
+    return [null, user];
   }
 }
 

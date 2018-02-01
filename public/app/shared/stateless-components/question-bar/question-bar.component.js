@@ -1,5 +1,5 @@
 const controller = class {
-  constructor(toastr){
+  constructor(toastr) {
     this.toastr = toastr;
 
     this.numAnsweredQuestions = 0;
@@ -23,7 +23,7 @@ controller.$inject = ['toastr'];
 const component = {
   bindings: {
     activeQuestion: '<',
-    quizQuestions:'<',
+    quizQuestions: '<',
     onChange: '&',
     proceed: '<',
     questionBarOptions: '<',
@@ -34,4 +34,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

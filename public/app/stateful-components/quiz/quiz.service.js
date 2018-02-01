@@ -1,11 +1,11 @@
 const service = class {
-  constructor($http, toastr, $q){
+  constructor($http, toastr, $q) {
     this.$http = $http;
     this.toastr = toastr;
     this.$q = $q;
 
     this.cssOptions = {
-      progressBar : {
+      progressBar: {
         values: [{value: 0, type: 'progress-ui-bar__inner--answered'},
           {value: 100, type: 'progress-ui-bar__outer--unanswered'}],
         hintIcons: [
@@ -14,7 +14,7 @@ const service = class {
         ]
       },
       questionBarOptions: {
-        btn:'Continue',
+        btn: 'Continue',
         checkHover: 'question-bar-card__answer-container-hover'
       },
       progressButtonToolbar: {
@@ -23,14 +23,14 @@ const service = class {
     };
   }
 
-  getQuizQuestions(){
+  getQuizQuestions() {
     return this.$q((resolve, reject) => {
       const quizQuestions = sessionStorage.getItem('quizQuestions');
-      if (quizQuestions !== null){
+      if (quizQuestions !== null) {
         const response = {
           data: JSON.parse(quizQuestions),
           cashed: true
-        }
+        };
         return resolve(response);
       }
       this.toastr.info('Questions for quiz are being loaded!');
@@ -48,12 +48,12 @@ const service = class {
 
   getAnswerClass(index) {
     let question = this.quizQuestions[this.activeQuestion];
-    if(this.confirmedAnswer.questionNumber === this.activeQuestion){
-      if (index === this.confirmedAnswer.chosenVariant){
-        return question.type === 'text' ? "question-bar-card__answer--selected-text" : "question-bar-card__answer--selected-image";
+    if (this.confirmedAnswer.questionNumber === this.activeQuestion) {
+      if (index === this.confirmedAnswer.chosenVariant) {
+        return question.type === 'text' ? 'question-bar-card__answer--selected-text' : 'question-bar-card__answer--selected-image';
       }
-    } else if (index === question.selected){
-        return question.type === 'text' ? "question-bar-card__answer--selected-text" : "question-bar-card__answer--selected-image";
+    } else if (index === question.selected) {
+        return question.type === 'text' ? 'question-bar-card__answer--selected-text' : 'question-bar-card__answer--selected-image';
       }
   }
 
@@ -64,12 +64,12 @@ const service = class {
   }
 
   proceed() {
-    if((this.confirmedAnswer.questionNumber !== this.activeQuestion) && (this.activeQuestion.selected === false)){
+    if ((this.confirmedAnswer.questionNumber !== this.activeQuestion) && (this.activeQuestion.selected === false)) {
       this.toastr.warning('You probably forgot to choose an answer!');
       return;
     }
 
-    if (this.quizQuestions[this.activeQuestion].selected === false){
+    if (this.quizQuestions[this.activeQuestion].selected === false) {
       this.numAnsweredQuestions++;
       let numAnsweredQuestions = this.numAnsweredQuestions;
       this.onChange({
@@ -81,7 +81,7 @@ const service = class {
 
     this.quizQuestions[this.activeQuestion].selected = this.confirmedAnswer.chosenVariant;
 
-    if (this.numAnsweredQuestions !== this.quizQuestions.length){
+    if (this.numAnsweredQuestions !== this.quizQuestions.length) {
       let notAnsweredQuestion = this.quizQuestions.find(quizQuestion => quizQuestion.selected === false);
       this.onChange({
         $event: {
@@ -101,4 +101,4 @@ const service = class {
 
 service.$inject = ['$http', 'toastr', '$q'];
 
-export default service
+export default service;

@@ -1,5 +1,5 @@
 const checkPermission = (dataService, $state, toastr) => {
-  if(!dataService.isAuthenticated()){
+  if (!dataService.isAuthenticated()) {
     toastr.warning('You have to be authenticated to start quiz!');
     return $state.go('facts.authorization');
   }
@@ -11,7 +11,7 @@ const config = $stateProvider => {
     $stateProvider.state('quiz', {
       url: '/quiz',
       component: 'quizComponent',
-      resolve:{
+      resolve: {
         checkPermission
       }
     });
@@ -19,4 +19,4 @@ const config = $stateProvider => {
 
 config.$inject = ['$stateProvider'];
 
-export default config
+export default config;

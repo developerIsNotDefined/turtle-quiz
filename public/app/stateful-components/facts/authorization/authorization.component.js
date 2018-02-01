@@ -1,5 +1,5 @@
 const controller = class {
-  constructor($state, authService, toastr, dataService, modalService){
+  constructor($state, authService, toastr, dataService, modalService) {
     this.$state = $state;
     this.authService = authService;
     this.toastr = toastr;
@@ -13,7 +13,7 @@ const controller = class {
   }
 
   signUp(authData) {
-    if (this.isAuthenticated){
+    if (this.isAuthenticated) {
       const user = JSON.parse(localStorage.getItem('user'));
       return this.toastr.warning(`Looks like you, ${user.name.toUpperCase()}, are signed in already!`);
     }
@@ -26,13 +26,13 @@ const controller = class {
   signIn(authData) {
     this.authService.signIn(authData)
       .then(name => this.toastr.success(`Welcome back ${name.toUpperCase()}! Long time no see, you can start quiz!`))
-      .catch(error => this.toastr.error(error.data.message + ', please enter true information!', {timeOut: 0}));
+      .catch(error => this.toastr.error(error, {timeOut: 0}));
   }
 
   signOut() {
     this.authService.signOut()
       .then(name => this.toastr.warning(`Goodbye ${name.toUpperCase()}... hope we meet again soon!`))
-      .catch(error => this.toastr.error(error.data.message + ', please try again later!', {timeOut: 0}));
+      .catch(error => this.toastr.error(error, {timeOut: 0}));
   }
 
   delegate(authData) {
@@ -53,7 +53,7 @@ const controller = class {
   open(isAuthenticated) {
     this.modalService.open({
       templateUrl: 'app/stateful-components/facts/authorization/authorization.html',
-      data:{
+      data: {
         isAuthenticated
       }
     })
@@ -68,4 +68,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

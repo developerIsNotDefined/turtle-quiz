@@ -1,7 +1,7 @@
 const service = class {
-  constructor(){
+  constructor() {
     this.cssOptions = {
-      progressBar : {
+      progressBar: {
         values: [{value: 0, type: 'progress-ui-bar__inner--correct'},
           {value: 100, type: 'progress-ui-bar__outer--incorrect'}],
         hintIcons: [
@@ -10,7 +10,7 @@ const service = class {
         ]
       },
       questionBarOptions: {
-        btn:'Go Back To Facts',
+        btn: 'Go Back To Facts',
         checkHover: ''
       },
       progressButtonToolbar: {
@@ -21,10 +21,10 @@ const service = class {
 
   getAnswerClass(index) {
     let question = this.quizQuestions[this.activeQuestion];
-    if (index === question.correct){
-      return question.type === 'text' ? "question-bar-card__answer--correct-text" : "question-bar-card__answer--correct-image";
-    } else if (index === question.selected){
-      return question.type === 'text' ? "question-bar-card__answer--incorrect-text" : "question-bar-card__answer--incorrect-image";
+    if (index === question.correct) {
+      return question.type === 'text' ? 'question-bar-card__answer--correct-text' : 'question-bar-card__answer--correct-image';
+    } else if (index === question.selected) {
+      return question.type === 'text' ? 'question-bar-card__answer--incorrect-text' : 'question-bar-card__answer--incorrect-image';
     }
   }
 
@@ -43,4 +43,4 @@ const service = class {
   }
 };
 
-export default service
+export default service;

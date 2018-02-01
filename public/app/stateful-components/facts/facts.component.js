@@ -1,11 +1,11 @@
-const controller = class{
-  constructor($state, factsService, toastr){
+const controller = class {
+  constructor($state, factsService, toastr) {
     this.$state = $state;
     this.factsService = factsService;
     this.toastr = toastr;
 
     this.loading = {turtlesFacts: 'true'};
-    this.search = "";
+    this.search = '';
     this.socialLinks = [
       'icon-facebook2',
       'icon-twitter',
@@ -18,7 +18,7 @@ const controller = class{
     this.loading.turtlesFacts = 'true';
     this.factsService.getTurtlesData()
       .then(response => {
-        if(!response.cashed){
+        if (!response.cashed) {
           this.toastr.success('Turtles information has been successfully loaded!');
         }
         this.turtlesFacts = response.data;
@@ -42,4 +42,4 @@ const component = {
   controller
 };
 
-export default component
+export default component;

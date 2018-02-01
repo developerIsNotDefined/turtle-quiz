@@ -1,11 +1,11 @@
 const service = class {
-  constructor($state){
+  constructor($state) {
     this.$state = $state;
     this.templateUrl = 'app/stateful-components/http-errors/http-error-404.html';
   }
 
-  errorTemplateUrl(errorCode){
-    if (arguments.length === 0){
+  errorTemplateUrl(errorCode) {
+    if (arguments.length === 0) {
       return this.templateUrl;
     }
 
@@ -24,4 +24,4 @@ const service = class {
 
 service.$inject = ['$state'];
 
-export default service
+export default service;

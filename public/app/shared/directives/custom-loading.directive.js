@@ -23,8 +23,8 @@ const directive = ($compile, $templateCache, $http) => {
 
     const customLoadingWatcher = $scope.$watch(() => {
       return $attrs.customLoading;
-    }, (value) => {
-      if (transcludedScope){
+    }, value => {
+      if (transcludedScope) {
         transcludedScope.$destroy();
         transcludedScope = null;
       }
@@ -39,7 +39,7 @@ const directive = ($compile, $templateCache, $http) => {
             transcludedScope = scope;
             $element.append(originalContent);
             $compile($element.contents())(transcludedScope);
-          })
+          });
           break;
         case 'notFound':
           $element.html($attrs.customLoadingNotFound ? $attrs.customLoadingNotFound : "Not found.");
@@ -51,18 +51,16 @@ const directive = ($compile, $templateCache, $http) => {
       customLoadingWatcher();
       $element.remove();
     });
-
   };
 
   return {
     restrict: "A",
     transclude: true,
-    scope:{},
+    scope: {},
     link
-  }
-
+  };
 };
 
 directive.$inject = ['$compile', '$templateCache', '$http'];
 
-export default directive
+export default directive;

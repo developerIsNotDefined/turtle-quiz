@@ -10,4 +10,4 @@ const config = $stateProvider => {
 
 config.$inject = ['$stateProvider'];
 
-export default config
+export default config;
