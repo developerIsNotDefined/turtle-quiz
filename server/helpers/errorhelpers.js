@@ -27,3 +27,18 @@ module.exports = {
   errorsFormattingHelper,
   mongoErrorsFormattingHelper
 };
+
+// const tryCatchHelper = (functionToCall, wrapInPromise) => {
+//   if (!wrapInPromise){
+//     return functionToCall
+//     .then(data => [null, data])
+//     .catch(err => [err]);
+//   }
+  
+//   return new Promise((resolve, reject) => {
+//     const result = functionToCall();
+//     resolve(result);
+//   })
+//     .then(data => [null, data])
+//     .catch(err => [err]);
+// };

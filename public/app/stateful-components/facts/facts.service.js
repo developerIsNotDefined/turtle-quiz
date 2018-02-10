@@ -1,8 +1,9 @@
 const service = class {
-  constructor($http, toastr, $q) {
+  constructor($http, toastr, $q, dataService) {
     this.$http = $http;
     this.toastr = toastr;
     this.$q = $q;
+    this.dataService = dataService;
   }
 
   getTurtlesData() {
@@ -17,7 +18,7 @@ const service = class {
       }
       this.toastr.info('Turtles information is being loaded!');
       this.$http({
-        url: 'http://localhost:3003/api/turtlesFacts',
+        url: `${this.dataService.serverUrl}/api/turtlesFacts`,
         skipAuthorization: true,
         method: 'GET'
       })
@@ -30,6 +31,6 @@ const service = class {
   }
 };
 
-service.$inject = ['$http', 'toastr', '$q'];
+service.$inject = ['$http', 'toastr', '$q', 'dataService'];
 
 export default service;

@@ -15,7 +15,7 @@ const controller = class {
   signUp(authData) {
     if (this.isAuthenticated) {
       const user = JSON.parse(localStorage.getItem('user'));
-      return this.toastr.warning(`Looks like you, ${user.name.toUpperCase()}, are signed in already!`);
+      return this.toastr.warning(`Seems like, you, ${user.name.toUpperCase()}, are signed in already!`);
     }
 
     this.authService.signUp(authData)

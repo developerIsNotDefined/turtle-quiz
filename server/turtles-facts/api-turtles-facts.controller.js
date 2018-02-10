@@ -1,5 +1,5 @@
 const Turtle = require('./turtles-facts.model');
-const {tryCatchHelper, mongoErrorsFormattingHelper} = require('./../middleware/errorhelpers');
+const {tryCatchHelper, mongoErrorsFormattingHelper} = require('./../helpers/errorhelpers');
 
 module.exports = app => {
   app.get('/api/turtlesFacts', async (req, res) => {

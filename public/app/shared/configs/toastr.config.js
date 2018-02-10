@@ -1,7 +1,5 @@
-import angular from 'angular';
-
 const config = toastrConfig => {
-  angular.extend(toastrConfig, {
+  Object.assign(toastrConfig, {
     closeButton: true,
     iconClasses: {
       error: 'toast-error',

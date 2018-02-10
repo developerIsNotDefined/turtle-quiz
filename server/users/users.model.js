@@ -3,7 +3,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
-const {tryCatchHelper, errorsFormattingHelper, mongoErrorsFormattingHelper} = require('./../middleware/errorhelpers');
+const {tryCatchHelper, errorsFormattingHelper, mongoErrorsFormattingHelper} = require('./../helpers/errorhelpers');
 
 const userSchema = new mongoose.Schema({
   name: {

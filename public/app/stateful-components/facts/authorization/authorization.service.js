@@ -1,15 +1,16 @@
 const service = class {
-  constructor($http, toastr, $q) {
+  constructor($http, toastr, $q, dataService) {
     this.$http = $http;
     this.toastr = toastr;
     this.$q = $q;
+    this.dataService = dataService;
   }
 
   signUp(authData) {
     this.toastr.info('Data submited, it is being checked!');
     return this.$q((resolve, reject) => {
       this.$http({
-        url: 'http://localhost:3003/sign-up',
+        url: `${this.dataService.serverUrl}/sign-up`,
         data: authData,
         skipAuthorization: true,
         method: 'POST'
@@ -35,7 +36,7 @@ const service = class {
     this.toastr.info('Data submited, it is being checked!');
     return this.$q((resolve, reject) => {
       this.$http({
-        url: 'http://localhost:3003/sign-in',
+        url: `${this.dataService.serverUrl}/sign-in`,
         data: authData,
         skipAuthorization: true,
         method: 'POST'
@@ -60,7 +61,7 @@ const service = class {
   signOut() {
     this.toastr.info('Submited!');
     return this.$q((resolve, reject) => {
-      this.$http.delete('http://localhost:3003/sign-out')
+      this.$http.delete(`${this.dataService.serverUrl}/sign-out`)
         .then(() => {
           const user = JSON.parse(localStorage.getItem('user'));
           localStorage.removeItem('jwt_auth');
@@ -74,6 +75,6 @@ const service = class {
   }
 };
 
-service.$inject = ['$http', 'toastr', '$q'];
+service.$inject = ['$http', 'toastr', '$q', 'dataService'];
 
 export default service;

@@ -1,6 +1,6 @@
 const Question = require('./quiz-questions.model');
 const authenticate = require('./../middleware/authenticate');
-const {tryCatchHelper, mongoErrorsFormattingHelper} = require('./../middleware/errorhelpers');
+const {tryCatchHelper, mongoErrorsFormattingHelper} = require('./../helpers/errorhelpers');
 
 module.exports = app => {
   app.get('/api/quizQuestions', authenticate, async (req, res) => {

@@ -2,6 +2,7 @@ const service = class {
   constructor() {
     this.numCorrect = 0;
     this.quizQuestions = {};
+    this.serverUrl = 'http://localhost:3003';
   }
 
   markQuiz(quizQuestions) {

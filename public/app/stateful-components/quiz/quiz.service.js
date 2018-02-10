@@ -1,8 +1,9 @@
 const service = class {
-  constructor($http, toastr, $q) {
+  constructor($http, toastr, $q, dataService) {
     this.$http = $http;
     this.toastr = toastr;
     this.$q = $q;
+    this.dataService = dataService;
 
     this.cssOptions = {
       progressBar: {
@@ -35,7 +36,7 @@ const service = class {
       }
       this.toastr.info('Questions for quiz are being loaded!');
       this.$http({
-        url: 'http://localhost:3003/api/quizQuestions',
+        url: `${this.dataService.serverUrl}/api/quizQuestions`,
         method: 'GET'
       })
         .then(response => {
@@ -99,6 +100,6 @@ const service = class {
   }
 };
 
-service.$inject = ['$http', 'toastr', '$q'];
+service.$inject = ['$http', 'toastr', '$q', 'dataService'];
 
 export default service;
