@@ -1,5 +1,5 @@
 const User = require('./../users/users.model');
-const {errorsFormattingHelper} = require('./errorhelpers');
+const {errorsFormattingHelper} = require('./../helpers/errorhelpers');
 
 module.exports = async (req, res, next) => {
   let err, user;

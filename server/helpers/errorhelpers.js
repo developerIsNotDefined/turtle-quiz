@@ -12,14 +12,14 @@ const mongoErrorsFormattingHelper = err => {
   if (err.code === 11000)
     return errorsFormattingHelper(['Desired email is already taken... Please take other one!']);
 
-  let returnedArray = [], message = '';
+  let errorsArray = [], message = '';
 
   for (let error in err.errors) {
     message = err.errors[error].message.replace(/Path/g, 'Field');
-    returnedArray.push(message);
+    errorsArray.push(message);
   }
 
-  return errorsFormattingHelper(returnedArray);
+  return errorsFormattingHelper(errorsArray);
 };
 
 module.exports = {
@@ -27,18 +27,3 @@ module.exports = {
   errorsFormattingHelper,
   mongoErrorsFormattingHelper
 };
-
-// const tryCatchHelper = (functionToCall, wrapInPromise) => {
-//   if (!wrapInPromise){
-//     return functionToCall
-//     .then(data => [null, data])
-//     .catch(err => [err]);
-//   }
-  
-//   return new Promise((resolve, reject) => {
-//     const result = functionToCall();
-//     resolve(result);
-//   })
-//     .then(data => [null, data])
-//     .catch(err => [err]);
-// };

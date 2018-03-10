@@ -2,7 +2,7 @@
   "quizQuestions": [{
     "id": 0,
     "type": "text",
-    "text": "How much can a loggerhead weigh?",
+    "text": "How much can a Loggerhead Turtle weigh?",
     "possibilities": [
       {
         "id": 0,
@@ -27,7 +27,7 @@
     {
       "id": 1,
       "type": "text",
-      "text": "What is the typical lifespan of a Green Sea Turtle?",
+      "text": "What is the typical lifespan of a Green Turtle?",
       "possibilities": [
         {
           "id": 0,
@@ -131,11 +131,11 @@
       "possibilities": [
         {
           "id": 0,
-          "answer": "Loggerhead turtle"
+          "answer": "Loggerhead Turtle"
         },
         {
           "id": 1,
-          "answer": "Leatherback turtle"
+          "answer": "Leatherback Turtle"
         },
         {
           "id": 2,
@@ -168,7 +168,7 @@
         },
         {
           "id": 3,
-          "answer": "Leatherback"
+          "answer": "Leatherback Turtle"
         }
       ],
       "selected": false,
@@ -177,7 +177,7 @@
     {
       "id": 7,
       "type": "image",
-      "text": "Which of these is the Olive Ridley Turtle?",
+      "text": "Which of these is the Olive Ridley Sea Turtle?",
       "possibilities": [
         {
           "id": 0,
@@ -202,7 +202,7 @@
     {
       "id": 8,
       "type": "text",
-      "text": "How Heavy can a leatherback turtle be?",
+      "text": "How heavy can a Leatherback Turtle be?",
       "possibilities": [
         {
           "id": 0,
@@ -227,7 +227,7 @@
     {
       "id": 9,
       "type": "text",
-      "text": "Which of these turtles are herbivores?",
+      "text": "Which of these turtles is herbivore?",
       "possibilities": [
         {
           "id": 0,
@@ -289,7 +289,7 @@
       "size": "Over 1m, 45-68kg",
       "lifespan": "30-50 Years",
       "diet": "Carnivore",
-      "description": "Dolor possimus voluptas hic aliquam rem doloremque minus maiores accusantium? Laborum perferendis harum blanditiis quod quia? Aspernatur sunt et fuga delectus ab rem excepturi. Ipsa quibusdam facere consequuntur magnam vitae? Consectetur consectetur necessitatibus beatae delectus quibusdam in! Est nobis omnis iusto illum fugiat maxime! Neque fugiat reiciendis sequi corrupti minima facere distinctio aliquam est voluptatibus. Sint incidunt soluta atque ducimus."
+      "description": "Adult hawksbill sea turtles typically grow to 1 m in length, weighing around 80 kg on average. The heaviest hawksbill ever captured weighed 127 kg. The turtle's shell, or carapace, has an amber background patterned with an irregular combination of light and dark streaks, with predominantly black and mottled-brown colors radiating to the sides. Its elongated, tapered head ends in a beak-like mouth, and its beak is more sharply pronounced and hooked than others. The hawksbill's forelimbs have two visible claws on each flipper. Adult hawksbill sea turtles are primarily found in tropical coral reefs. While the hawksbill sea turtles mainly feed on sponges found on coral reefs, they also feed on crustaceans, algae, and fish. They prey to large fish, sharks, and humans."
     },
     {
       "id": 4,
@@ -309,7 +309,7 @@
       "size": "65cm, up to 45kg",
       "lifespan": "Around 50 years",
       "diet": "Omnivore",
-      "description": "The Kemp’s ridley turtle is the world’s most endangered sea turtle, and with a worldwide female nesting population roughly estimated at just 1,000 individuals, its survival truly hangs in the balance. Their perilous situation is attributed primarily to the over-harvesting of their eggs during the last century. And though their nesting grounds are protected and many commercial fishing fleets now use turtle excluder devices in their nets, these turtles have not been able to rebound. For this reason, their nesting processions, called arribadas, make for especially high drama. During an arribada, females take over entire portions of beaches, lugging their big bodies through the sand with their flippers until they find a satisfying spot to lay their eggs. Even more riveting is the later struggle to the ocean of each tiny, vulnerable hatchling. Beset by predators, hatchlings make this journey at night, breaking out of their shells using their caruncle, a single temporary tooth grown just for this purpose."
+      "description": "The Kemp’s ridley turtle is the world’s most endangered sea turtle, and with a worldwide female nesting population roughly estimated at just 1,000 individuals, its survival truly hangs in the balance. Their perilous situation is attributed primarily to the over-harvesting of their eggs during the last century. During an arribada, females take over entire portions of beaches, lugging their big bodies through the sand with their flippers until they find a satisfying spot to lay their eggs. Even more riveting is the later struggle to the ocean of each tiny, vulnerable hatchling. Beset by predators, hatchlings make this journey at night, breaking out of their shells using their caruncle, a single temporary tooth grown just for this purpose."
     },
     {
       "id": 6,

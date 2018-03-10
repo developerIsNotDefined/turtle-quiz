@@ -1,14 +1,13 @@
 <div class="btn-modal-close hide-sm-dev" ng-click="$ctrl.cancel()"><span class="btn-modal-close__icon">&nbsp;</span></div>
 <section class="auth">
     <div class="auth__modal-button-close col-12 mb-zero" ng-click="$ctrl.cancel()">click to close</div>
-    <input id="menu-tab-sign-in-out" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-in-out" checked ng-if="!$ctrl.modalData.isAuthenticated">
+    <input id="menu-tab-sign-in-out" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-in-out" checked>
     <label for="menu-tab-sign-in-out" class="auth__menu-label" ng-if="!$ctrl.modalData.isAuthenticated">SIGN IN</label>
-    <input id="menu-tab-sign-in-out" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-in-out" checked ng-if="$ctrl.modalData.isAuthenticated">
     <label for="menu-tab-sign-in-out" class="auth__menu-label" ng-if="$ctrl.modalData.isAuthenticated">SIGN OUT</label>
     <input id="menu-tab-sign-up" type="radio" name="menu-tab-sign" class="auth__menu-item--sign-up">
     <label for="menu-tab-sign-up" class="auth__menu-label">SIGN UP</label>
     <form class="auth__form col-12" name="authForm">
-        <div class="auth__form-side--sign-in-out" ng-if="!$ctrl.modalData.isAuthenticated">
+        <section class="auth__form-side--sign-in-out" ng-if="!$ctrl.modalData.isAuthenticated">
             <article class="auth__form-group">
                 <input id="input-sign-in-email" name="inputSignInEmail" ng-model="$ctrl.user.email"
                        type="email" ng-maxlength="40" required placeholder="Email"
@@ -38,16 +37,16 @@
                     ng-disabled="authForm.inputSignInEmail.$invalid || authForm.inputSignInPassword.$invalid">
                 sign in
             </button>
-        </div>
-        <div class="auth__form-side--sign-in-out" ng-if="$ctrl.modalData.isAuthenticated">
+        </section>
+        <section class="auth__form-side--sign-in-out" ng-if="$ctrl.modalData.isAuthenticated">
             <button type="button" class="btn auth__form-button" value="Sign Out" ng-click="$ctrl.ok({method:'signOut'})">
                 sign out
                 <svg class="auth__form-button-icon">
                     <use xlink:href="assets/sprite.svg#icon-power-off"></use>
                 </svg>
             </button>
-        </div>
-        <div class="auth__form-side--sign-up">
+        </section>
+        <section class="auth__form-side--sign-up">
             <article class="auth__form-group">
                 <input id="input-sign-up-name" name="inputSignUpName" ng-model="$ctrl.user.name" type="text"
                        ng-minlength="6" ng-maxlength="20" required placeholder="Username">
@@ -89,6 +88,6 @@
                     ng-disabled="authForm.inputSignUpName.$invalid || authForm.inputSignUpEmail.$invalid || authForm.inputSignUpPassword.$invalid">
                 sign up
             </button>
-        </div>
+        </section>
     </form>
 </section>

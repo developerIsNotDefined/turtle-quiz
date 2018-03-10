@@ -2,28 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const connectDb = require('mongoose-connect-db');
+const config = require('./config');
 const apiTurtlesFacts = require('./turtles-facts/api-turtles-facts.controller');
 const apiQuizQuestions = require('./quiz-questions/api-quiz-questions.controller');
 const apiUsers = require('./users/api-users.controller');
 
 const app = express();
 
-process.env.PORT = 3003;
-process.env.JWT_SECRET_KEY = 'my_jwt_secret_key';
+process.env.JWT_SECRET_KEY = config.JWT_SECRET_KEY;
 
-const DB_COONECT_URL = 'mongodb://admin:admin@ds137054.mlab.com:37054/turtle-quiz';
-
-connectDb(mongoose, DB_COONECT_URL);
+connectDb(mongoose, config.DB_CONNECT_URL);
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.header('Access-Control-Expose-Headers', 'Authorization');
-  next();
-});
+config.cors(app);
 
 // START response delay
 app.all('*', (req, res, next) => {
@@ -37,4 +29,4 @@ apiTurtlesFacts(app);
 apiQuizQuestions(app);
 apiUsers(app);
 
-app.listen(process.env.PORT);
+app.listen(config.PORT);

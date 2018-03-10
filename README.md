@@ -7,11 +7,11 @@ Turtle quiz application built with MEAN stack provides information about turtles
 Application requires next actions to be done before using it:
 
 1. Clone or download repository.
-2. Open terminal in `turtle-quiz/server` folder.
-3. Run `npm i` via terminal.
-4. Run `npm server`.
-5. Open another terminal in `turtle-quiz/public` folder.
-6. Run `npm i` via terminal.
+2. Open terminal and go to the `turtle-quiz/server` folder.
+3. Run `npm i`.
+4. Run `npm start`.
+5. Open another terminal and go to the `turtle-quiz/public` folder.
+6. Run `npm i`.
 7. Run `npm start`.
 
 Congratulations! Turtle quiz application is up and running...
@@ -31,6 +31,7 @@ Congratulations! Turtle quiz application is up and running...
   - [x] ui-router(1.x).
 - Implements *`form inputs data validation`*, *`loader`* and *`notification system`* for better UX.
 - Implements *`JWT based athorization`* functionality.
+- Implements  404 HTTP interceptor.
 - Uses semantic **HTML5**.
 - **CSS3(BEM)** used for responsive web design implementation.
 - Uses CSS pre-processor **SASS**.

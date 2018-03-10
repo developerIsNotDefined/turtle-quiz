@@ -45,6 +45,8 @@
 
   &__menu-item--sign-up:checked ~ &__form &__form-side--sign-in-out{
     transform: rotateY(-180deg);
+    opacity: 0;
+    visibility: hidden;
   }
 
   &__menu-item--sign-up:checked ~ &__form &__form-side--sign-up{
