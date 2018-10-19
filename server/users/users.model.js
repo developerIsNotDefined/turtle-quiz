@@ -45,6 +45,8 @@ const userSchema = new mongoose.Schema({
       required: true
     }
   }]
+}, {
+  usePushEach: true
 });
 
 class UserModel extends mongoose.model {
